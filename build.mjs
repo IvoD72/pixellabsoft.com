@@ -2,7 +2,7 @@ import { mkdir, rm, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { APPS } from './src/apps/index.mjs';
 import { DOMAIN, LANGS, STRINGS } from './src/site.mjs';
-import { appBody, homeBody, legalBody, page, supportBody } from './src/template.mjs';
+import { FAVICON, appBody, homeBody, legalBody, page, supportBody } from './src/template.mjs';
 
 /**
  * Генерира сайта в docs/ (GitHub Pages сервира тази папка).
@@ -26,6 +26,7 @@ await rm(OUT, { recursive: true, force: true });
 await mkdir(OUT, { recursive: true });
 await writeFile(join(OUT, 'CNAME'), DOMAIN + '\n');
 await writeFile(join(OUT, '.nojekyll'), '');
+await writeFile(join(OUT, 'favicon.svg'), FAVICON);
 await writeFile(join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: https://${DOMAIN}/sitemap.xml\n`);
 
 const urls = [];
@@ -41,7 +42,7 @@ for (const lang of LANGS) {
   for (const app of apps) {
     await emit(lang, app.slug, page({
       lang, path: `${app.slug}/`, title: `${app.name} — ${app.tagline[lang]}`,
-      description: app.description[lang][0], body: appBody({ lang, app }),
+      description: app.description[lang][0], body: appBody({ lang, app }), color: app.color,
     }));
     add(`${app.slug}/`);
     if (!app.legal) continue;
@@ -50,7 +51,7 @@ for (const lang of LANGS) {
       const title = `${kind === 'privacy' ? t.privacy : t.terms} — ${app.name}`;
       await emit(lang, `${app.slug}/${kind}`, page({
         lang, path: `${app.slug}/${kind}/`, title, description: doc.intro,
-        body: legalBody({ lang, app, kind, doc }),
+        body: legalBody({ lang, app, kind, doc }), color: app.color,
       }));
       add(`${app.slug}/${kind}/`);
     }

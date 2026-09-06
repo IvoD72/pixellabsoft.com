@@ -7,6 +7,8 @@
  */
 export default {
   slug: 'glagoli',
+  color: '#f2a33a',
+  icon: '<path d="M12 6.5C10 5 7 5 4 6.5v13c3-1.5 6-1.5 8 0 2-1.5 5-1.5 8 0v-13c-3-1.5-6-1.5-8 0z"/><path d="M12 6.5v13"/>',
   name: 'Глаголи',
   status: 'soon',
   external: { site: 'https://glagoli.app' },

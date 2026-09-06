@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Support — Pixel Lab Soft</title>
 <meta name="description" content="Write to the address below. We answer on business days, usually within 24 hours. Tell us which app and which phone you use — it saves one question.">
+<meta name="theme-color" content="#0c0c0e">
 <link rel="canonical" href="https://pixellabsoft.com/en/support/">
 <link rel="alternate" hreflang="en" href="https://pixellabsoft.com/en/support/">
 <link rel="alternate" hreflang="bg" href="https://pixellabsoft.com/support/">
@@ -12,70 +13,214 @@
 <meta property="og:description" content="Write to the address below. We answer on business days, usually within 24 hours. Tell us which app and which phone you use — it saves one question.">
 <meta property="og:url" content="https://pixellabsoft.com/en/support/">
 <meta property="og:site_name" content="Pixel Lab Soft">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Unbounded:wght@500;600;700&display=swap">
 <style>
 :root {
-  --bg: #fbfaf7; --fg: #1d1d1b; --muted: #6b6a66; --line: #e6e3dc;
-  --accent: #2b5cff; --card: #ffffff; --max: 720px;
-  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+  --bg: #0c0c0e; --bg-2: #121216; --fg: #f4f2ec; --muted: #9a978f; --faint: #5e5c56;
+  --line: rgba(255,255,255,.09); --line-2: rgba(255,255,255,.16); --card: #15151a;
+  --accent: #8b7cff; --c: var(--accent);
+  --max: 1080px; --read: 700px;
+  --display: "Unbounded", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --text: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color-scheme: dark;
 }
-@media (prefers-color-scheme: dark) {
-  :root { --bg: #131313; --fg: #f1efe9; --muted: #a09e97; --line: #2a2a2a; --accent: #7a9bff; --card: #1c1c1c; }
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f6f4ef; --bg-2: #efece5; --fg: #17171a; --muted: #6a675f; --faint: #a19e95;
+    --line: rgba(0,0,0,.09); --line-2: rgba(0,0,0,.18); --card: #fffdf9;
+    color-scheme: light;
+  }
 }
 * { box-sizing: border-box; }
-html { color-scheme: light dark; }
-body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.6 var(--font); -webkit-font-smoothing: antialiased; }
-a { color: var(--accent); text-decoration: none; }
-a:hover { text-decoration: underline; }
-header, main, footer { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 28px; padding-bottom: 8px; }
-header .brand { font-weight: 700; letter-spacing: .01em; color: var(--fg); }
-header nav a { margin-left: 18px; color: var(--muted); font-size: 15px; }
-header nav a:hover { color: var(--fg); }
-main { padding-top: 32px; padding-bottom: 64px; }
-h1 { font-size: 34px; line-height: 1.15; margin: 0 0 8px; letter-spacing: -.01em; }
-h2 { font-size: 20px; margin: 36px 0 8px; }
-p { margin: 0 0 16px; }
-.lead { font-size: 20px; color: var(--muted); margin-bottom: 32px; }
-.meta { color: var(--muted); font-size: 14px; margin-bottom: 28px; }
-.apps { display: grid; gap: 14px; margin-top: 8px; }
-.app { display: block; padding: 20px; border: 1px solid var(--line); border-radius: 14px; background: var(--card); color: var(--fg); }
-.app:hover { text-decoration: none; border-color: var(--accent); }
-.app strong { font-size: 19px; }
-.app span { display: block; color: var(--muted); margin-top: 4px; }
-.badge { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); margin-left: 10px; vertical-align: middle; }
-.stores { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0; }
-.stores a, .button { display: inline-block; padding: 12px 18px; border-radius: 10px; background: var(--fg); color: var(--bg); font-weight: 600; }
-.stores a:hover, .button:hover { text-decoration: none; opacity: .9; }
-.legal-links { margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 15px; }
-.legal-links a { margin-right: 18px; }
-footer { border-top: 1px solid var(--line); padding-top: 24px; padding-bottom: 40px; color: var(--muted); font-size: 14px; line-height: 1.7; }
-footer a { color: var(--muted); }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font: 17px/1.65 var(--text); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  position: relative; min-height: 100vh;
+}
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(60% 40% at 15% 0%, color-mix(in srgb, var(--c) 22%, transparent), transparent 70%),
+    radial-gradient(40% 35% at 90% 10%, color-mix(in srgb, var(--c) 10%, transparent), transparent 70%);
+}
+a { color: inherit; text-decoration: none; }
+p { margin: 0 0 18px; }
+h1, h2, h3, .display { font-family: var(--display); font-weight: 600; letter-spacing: -.02em; line-height: 1.1; margin: 0; }
+h1 { font-size: clamp(32px, 4.8vw, 56px); }
+h2 { font-size: clamp(22px, 2.6vw, 30px); }
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+.read { max-width: var(--read); }
+
+/* ---- горе ---- */
+.top { position: sticky; top: 0; z-index: 10; backdrop-filter: saturate(140%) blur(14px); -webkit-backdrop-filter: saturate(140%) blur(14px); background: color-mix(in srgb, var(--bg) 72%, transparent); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; }
+.brand { display: inline-flex; align-items: center; gap: 11px; font-family: var(--display); font-weight: 600; font-size: 15px; letter-spacing: -.01em; }
+.brand svg { width: 26px; height: 26px; flex: none; }
+.brand .px { fill: var(--fg); }
+.brand .px-c { fill: var(--accent); }
+.top nav { display: flex; align-items: center; gap: 4px; }
+.top nav a { padding: 8px 12px; border-radius: 999px; color: var(--muted); font-size: 15px; font-weight: 500; transition: color .15s, background .15s; }
+.top nav a:hover { color: var(--fg); background: var(--line); }
+.top nav a.lang { border: 1px solid var(--line-2); color: var(--fg); margin-left: 8px; font-size: 13px; padding: 6px 12px; }
+.brand span { white-space: nowrap; }
+@media (max-width: 600px) { .top nav a.apps-link { display: none; } .top nav a { padding: 8px 9px; font-size: 14px; } .brand { font-size: 14px; gap: 9px; } }
+
+/* ---- начало ---- */
+.hero { padding: clamp(64px, 10vw, 128px) 0 clamp(40px, 6vw, 72px); }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; color: var(--muted); font-size: 13px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 26px; }
+.eyebrow::before { content: ""; width: 28px; height: 2px; background: var(--accent); border-radius: 2px; }
+.hero h1 { max-width: 16ch; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero .lead { font-size: clamp(18px, 1.6vw, 21px); color: var(--muted); max-width: 52ch; margin: 28px 0 0; }
+
+.apps-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin: 0 0 22px; }
+.apps-head .count { color: var(--faint); font-size: 14px; font-weight: 500; }
+.apps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 0 0 clamp(64px, 8vw, 112px); }
+@media (max-width: 720px) { .apps { grid-template-columns: 1fr; } }
+.card {
+  position: relative; display: flex; flex-direction: column; gap: 18px; padding: 26px 26px 24px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 22px; overflow: hidden;
+  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+.card::after {
+  content: ""; position: absolute; inset: auto -20% -60% auto; width: 70%; aspect-ratio: 1; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--c) 28%, transparent), transparent);
+  opacity: 0; transition: opacity .3s ease;
+}
+.card:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--c) 55%, var(--line-2)); box-shadow: 0 24px 60px -30px color-mix(in srgb, var(--c) 60%, transparent); }
+.card:hover::after { opacity: 1; }
+.card .row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.tile { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 16px; background: var(--c); color: #fff; box-shadow: 0 10px 30px -12px color-mix(in srgb, var(--c) 80%, transparent); flex: none; }
+.tile svg { width: 28px; height: 28px; }
+.tile.big { width: 96px; height: 96px; border-radius: 26px; box-shadow: 0 30px 70px -24px color-mix(in srgb, var(--c) 90%, transparent); }
+.tile.big svg { width: 48px; height: 48px; }
+.pill { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding: 6px 11px; border-radius: 999px; border: 1px solid var(--line-2); white-space: nowrap; }
+.pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 25%, transparent); }
+.pill.store { color: var(--fg); }
+.card h3 { font-size: 22px; margin: 0 0 6px; }
+.card .tag { color: var(--muted); font-size: 16px; margin: 0; }
+.card .go { margin-top: auto; display: flex; align-items: center; justify-content: space-between; color: var(--faint); font-size: 14px; font-weight: 500; padding-top: 6px; }
+.card .go svg { width: 22px; height: 22px; color: var(--fg); transition: transform .22s ease; }
+.card:hover .go svg { transform: translateX(4px); }
+
+.principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding: 0 0 clamp(56px, 7vw, 96px); }
+@media (max-width: 720px) { .principles { grid-template-columns: 1fr; } }
+.principle { padding: 6px 0 0; border-top: 1px solid var(--line-2); }
+.principle b { display: block; font-family: var(--display); font-weight: 600; font-size: 15px; letter-spacing: -.01em; margin: 18px 0 8px; }
+.principle p { color: var(--muted); font-size: 15px; margin: 0; }
+
+/* ---- страница на приложение ---- */
+.app-hero { padding: clamp(56px, 8vw, 104px) 0 clamp(28px, 4vw, 48px); display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start; }
+@media (max-width: 640px) { .app-hero { grid-template-columns: 1fr; gap: 22px; } }
+.app-hero .name { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; font-family: var(--display); font-weight: 600; font-size: 15px; color: var(--muted); margin-bottom: 14px; }
+.app-hero .name span:first-child { color: var(--fg); }
+.app-hero h1 { max-width: 18ch; font-size: clamp(30px, 4.4vw, 52px); }
+.prose { font-size: 18px; }
+.prose p { max-width: 62ch; }
+.prose p + p { margin-top: -2px; }
+.stores { display: flex; gap: 12px; flex-wrap: wrap; margin: 30px 0 8px; }
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 13px 20px; border-radius: 999px; font-weight: 600; font-size: 15px; border: 1px solid var(--line-2); transition: transform .15s ease, background .15s ease, border-color .15s ease; }
+.btn:hover { transform: translateY(-1px); border-color: var(--fg); }
+.btn.primary { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.btn.primary:hover { background: color-mix(in srgb, var(--fg) 88%, var(--c)); }
+.btn svg { width: 18px; height: 18px; }
+.links { display: flex; gap: 8px 22px; flex-wrap: wrap; margin: 36px 0 0; padding-top: 22px; border-top: 1px solid var(--line); font-size: 15px; }
+.links a { color: var(--muted); font-weight: 500; text-decoration: underline; text-decoration-color: var(--line-2); text-underline-offset: 4px; }
+.links a:hover { color: var(--fg); text-decoration-color: var(--c); }
+.section { padding-bottom: clamp(56px, 7vw, 96px); }
+
+/* ---- правни текстове ---- */
+.doc-head { padding: clamp(48px, 7vw, 88px) 0 8px; }
+.crumbs { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 14px; margin-bottom: 22px; }
+.crumbs a { color: var(--fg); font-weight: 500; }
+.crumbs .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--faint); }
+.doc-head h1 { font-size: clamp(28px, 4vw, 44px); }
+.doc-head .lead { font-size: 19px; color: var(--muted); margin: 22px 0 0; }
+.doc { display: grid; grid-template-columns: 220px minmax(0, var(--read)); gap: 48px; padding: 32px 0 clamp(56px, 7vw, 96px); }
+@media (max-width: 900px) { .doc { grid-template-columns: 1fr; gap: 12px; } .toc { position: static; } }
+.toc { position: sticky; top: 88px; align-self: start; font-size: 14px; }
+.toc b { display: block; color: var(--faint); font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; margin: 8px 0 12px; }
+.toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.toc a { display: block; padding: 6px 10px; border-radius: 8px; color: var(--muted); border-left: 2px solid var(--line); }
+.toc a:hover { color: var(--fg); border-left-color: var(--c); }
+.doc article h2 { font-size: 20px; margin: 34px 0 10px; padding-top: 8px; display: flex; gap: 14px; align-items: baseline; }
+.doc article h2 small { font-family: var(--text); font-size: 13px; font-weight: 600; color: var(--c); letter-spacing: .04em; }
+.doc article p { color: color-mix(in srgb, var(--fg) 86%, var(--muted)); }
+.doc article > p:first-of-type { margin-top: 8px; }
+
+/* ---- поддръжка ---- */
+.mail { display: inline-flex; align-items: center; gap: 14px; margin: 26px 0 6px; padding: 16px 22px 16px 18px; border-radius: 18px; background: var(--card); border: 1px solid var(--line-2); font-family: var(--display); font-weight: 600; font-size: clamp(16px, 2vw, 20px); letter-spacing: -.01em; transition: border-color .15s, transform .15s; }
+.mail:hover { border-color: var(--accent); transform: translateY(-1px); }
+.mail .tile { width: 40px; height: 40px; border-radius: 12px; background: var(--accent); }
+.mail .tile svg { width: 20px; height: 20px; }
+.list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.list li { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding: 14px 0; border-top: 1px solid var(--line); }
+.list li:last-child { border-bottom: 1px solid var(--line); }
+.list .tile { width: 36px; height: 36px; border-radius: 10px; }
+.list .tile svg { width: 18px; height: 18px; }
+.list .n { font-family: var(--display); font-weight: 600; font-size: 15px; min-width: 120px; }
+.list .l { display: flex; gap: 16px; flex-wrap: wrap; color: var(--muted); font-size: 14px; margin-left: auto; }
+.list .l a:hover { color: var(--fg); }
+
+/* ---- долу ---- */
+footer { border-top: 1px solid var(--line); padding: 44px 0 48px; color: var(--muted); font-size: 14px; line-height: 1.7; background: var(--bg-2); }
+footer .cols { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; }
+@media (max-width: 720px) { footer .cols { grid-template-columns: 1fr; } }
+footer .brand { color: var(--fg); margin-bottom: 12px; }
+footer b { display: block; color: var(--faint); font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 10px; }
+footer a:hover { color: var(--fg); }
+footer .fine { margin-top: 36px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--faint); font-size: 13px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 </style>
 </head>
 <body>
-<header>
-  <a class="brand" href="/en/">Pixel Lab Soft</a>
+<div class="top"><div class="wrap">
+  <a class="brand" href="/en/"><svg viewBox="0 0 26 26" aria-hidden="true"><rect class="px" x="1" y="1" width="11" height="11" rx="3"/><rect class="px-c" x="14" y="1" width="11" height="11" rx="3"/><rect class="px" x="1" y="14" width="11" height="11" rx="3"/><rect class="px" x="14" y="14" width="11" height="11" rx="3"/></svg><span>Pixel Lab Soft</span></a>
   <nav>
-    <a href="/en/#apps">Apps</a>
+    <a class="apps-link" href="/en/#apps">Apps</a>
     <a href="/en/support/">Support</a>
-    <a href="/support/" lang="bg">Български</a>
+    <a class="lang" href="/support/" lang="bg" hreflang="bg">Български</a>
   </nav>
-</header>
-<main>
-<h1>Support</h1>
-<p class="lead">Write to the address below. We answer on business days, usually within 24 hours. Tell us which app and which phone you use — it saves one question.</p>
-<p><strong>Support email:</strong> <a href="mailto:support@pixellabsoft.com">support@pixellabsoft.com</a></p>
-<h2>Apps</h2>
-<ul>
-<li><a href="/en/konspekt/">Konspekt</a> — <a href="/en/konspekt/privacy/">Privacy Policy</a>, <a href="/en/konspekt/terms/">Terms of Use</a></li>
-<li><a href="/en/sortis/">Sortis</a> — <a href="https://sortis.pro/privacy.html">Privacy Policy</a>, <a href="https://sortis.pro/terms.html">Terms of Use</a></li>
-<li><a href="/en/glagoli/">Глаголи</a></li>
-<li><a href="/en/sroko/">Сроко</a></li>
-</ul>
+</div></div>
+<main class="wrap">
+<div class="doc-head read">
+  <div class="eyebrow">Support</div>
+  <h1>Write to us — a person answers.</h1>
+  <p class="lead">Write to the address below. We answer on business days, usually within 24 hours. Tell us which app and which phone you use — it saves one question.</p>
+  <a class="mail" href="mailto:support@pixellabsoft.com"><span class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3 8 9 6 9-6"/></svg></span>support@pixellabsoft.com</a>
+</div>
+<section class="section read">
+  <h2 style="font-size:20px;margin:40px 0 16px">Apps</h2>
+  <ul class="list">
+<li><span class="tile " style="--c:#f0432f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10v4M8 7v10M12 4v16M16 8v8M20 11v2"/></svg></span><a class="n" href="/en/konspekt/">Konspekt</a><span class="l"><a href="/en/konspekt/privacy/">Privacy Policy</a>
+<a href="/en/konspekt/terms/">Terms of Use</a></span></li>
+<li><span class="tile " style="--c:#1fb886"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M10 12h5M10 15.5h5"/></svg></span><a class="n" href="/en/sortis/">Sortis</a><span class="l"><a href="https://sortis.pro/privacy.html">Privacy Policy</a>
+<a href="https://sortis.pro/terms.html">Terms of Use</a></span></li>
+<li><span class="tile " style="--c:#f2a33a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.5C10 5 7 5 4 6.5v13c3-1.5 6-1.5 8 0 2-1.5 5-1.5 8 0v-13c-3-1.5-6-1.5-8 0z"/><path d="M12 6.5v13"/></svg></span><a class="n" href="/en/glagoli/">Глаголи</a><span class="l"></span></li>
+<li><span class="tile " style="--c:#3d7bff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="m9 15.5 2 2 4-4"/></svg></span><a class="n" href="/en/sroko/">Сроко</a><span class="l"></span></li>
+  </ul>
+</section>
 </main>
-<footer>
-  <div>Pixel Lab EOOD · Company ID 205472124<br>24 Slavyanska St., 5100 Gorna Oryahovitsa, Bulgaria<br><a href="mailto:support@pixellabsoft.com">support@pixellabsoft.com</a></div>
-  <div style="margin-top:12px">© 2026 Pixel Lab EOOD. All rights reserved. Made in Gorna Oryahovitsa, Bulgaria.</div>
-</footer>
+<footer><div class="wrap">
+  <div class="cols">
+    <div>
+      <a class="brand" href="/en/"><svg viewBox="0 0 26 26" aria-hidden="true"><rect class="px" x="1" y="1" width="11" height="11" rx="3"/><rect class="px-c" x="14" y="1" width="11" height="11" rx="3"/><rect class="px" x="1" y="14" width="11" height="11" rx="3"/><rect class="px" x="14" y="14" width="11" height="11" rx="3"/></svg><span>Pixel Lab Soft</span></a>
+      <div>Small apps that do one job well.</div>
+    </div>
+    <div>
+      <b>Pixel Lab EOOD</b>
+      Company ID 205472124<br>24 Slavyanska St., 5100 Gorna Oryahovitsa, Bulgaria
+    </div>
+    <div>
+      <b>Support</b>
+      <a href="mailto:support@pixellabsoft.com">support@pixellabsoft.com</a><br>
+      <a href="/en/support/">Support page</a>
+    </div>
+  </div>
+  <div class="fine"><span>© 2026 Pixel Lab EOOD. All rights reserved.</span><span>Made in Gorna Oryahovitsa, Bulgaria.</span></div>
+</div></footer>
 </body>
 </html>

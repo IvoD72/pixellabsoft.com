@@ -8,6 +8,8 @@
  */
 export default {
   slug: 'sortis',
+  color: '#1fb886',
+  icon: '<path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M10 12h5M10 15.5h5"/>',
   name: 'Sortis',
   status: 'store',
   external: {

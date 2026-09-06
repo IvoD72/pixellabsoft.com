@@ -4,6 +4,8 @@
  */
 export default {
   slug: 'sroko',
+  color: '#3d7bff',
+  icon: '<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="m9 15.5 2 2 4-4"/>',
   name: 'Сроко',
   status: 'soon',
   tagline: {
