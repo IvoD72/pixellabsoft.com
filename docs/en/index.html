@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pixel Lab Soft — Small apps that do one job well.</title>
+<meta name="description" content="We build mobile apps for people who have no time for complicated software. Each one solves one specific problem — and nothing else.">
+<link rel="canonical" href="https://pixellabsoft.com/en/">
+<link rel="alternate" hreflang="en" href="https://pixellabsoft.com/en/">
+<link rel="alternate" hreflang="bg" href="https://pixellabsoft.com/">
+<meta property="og:title" content="Pixel Lab Soft — Small apps that do one job well.">
+<meta property="og:description" content="We build mobile apps for people who have no time for complicated software. Each one solves one specific problem — and nothing else.">
+<meta property="og:url" content="https://pixellabsoft.com/en/">
+<meta property="og:site_name" content="Pixel Lab Soft">
+<style>
+:root {
+  --bg: #fbfaf7; --fg: #1d1d1b; --muted: #6b6a66; --line: #e6e3dc;
+  --accent: #2b5cff; --card: #ffffff; --max: 720px;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #131313; --fg: #f1efe9; --muted: #a09e97; --line: #2a2a2a; --accent: #7a9bff; --card: #1c1c1c; }
+}
+* { box-sizing: border-box; }
+html { color-scheme: light dark; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.6 var(--font); -webkit-font-smoothing: antialiased; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+header, main, footer { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+header { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 28px; padding-bottom: 8px; }
+header .brand { font-weight: 700; letter-spacing: .01em; color: var(--fg); }
+header nav a { margin-left: 18px; color: var(--muted); font-size: 15px; }
+header nav a:hover { color: var(--fg); }
+main { padding-top: 32px; padding-bottom: 64px; }
+h1 { font-size: 34px; line-height: 1.15; margin: 0 0 8px; letter-spacing: -.01em; }
+h2 { font-size: 20px; margin: 36px 0 8px; }
+p { margin: 0 0 16px; }
+.lead { font-size: 20px; color: var(--muted); margin-bottom: 32px; }
+.meta { color: var(--muted); font-size: 14px; margin-bottom: 28px; }
+.apps { display: grid; gap: 14px; margin-top: 8px; }
+.app { display: block; padding: 20px; border: 1px solid var(--line); border-radius: 14px; background: var(--card); color: var(--fg); }
+.app:hover { text-decoration: none; border-color: var(--accent); }
+.app strong { font-size: 19px; }
+.app span { display: block; color: var(--muted); margin-top: 4px; }
+.badge { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); margin-left: 10px; vertical-align: middle; }
+.stores { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0; }
+.stores a, .button { display: inline-block; padding: 12px 18px; border-radius: 10px; background: var(--fg); color: var(--bg); font-weight: 600; }
+.stores a:hover, .button:hover { text-decoration: none; opacity: .9; }
+.legal-links { margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 15px; }
+.legal-links a { margin-right: 18px; }
+footer { border-top: 1px solid var(--line); padding-top: 24px; padding-bottom: 40px; color: var(--muted); font-size: 14px; line-height: 1.7; }
+footer a { color: var(--muted); }
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="/en/">Pixel Lab Soft</a>
+  <nav>
+    <a href="/en/#apps">Apps</a>
+    <a href="/en/support/">Support</a>
+    <a href="/" lang="bg">Български</a>
+  </nav>
+</header>
+<main>
+<h1>Pixel Lab Soft</h1>
+<p class="lead">Small apps that do one job well.</p>
+<p>We build mobile apps for people who have no time for complicated software. Each one solves one specific problem — and nothing else.</p>
+<h2 id="apps">Apps</h2>
+<div class="apps">
+<a class="app" href="/en/konspekt/"><strong>Konspekt</strong><span class="badge">In testing</span><span>The meeting minutes, without taking notes.</span></a>
+</div>
+</main>
+<footer>
+  <div>Pixel Lab EOOD · Company ID 205472124<br>24 Slavyanska St., 5100 Gorna Oryahovitsa, Bulgaria<br><a href="mailto:support@pixellabsoft.com">support@pixellabsoft.com</a></div>
+  <div style="margin-top:12px">© 2026 Pixel Lab EOOD. All rights reserved. Made in Gorna Oryahovitsa, Bulgaria.</div>
+</footer>
+</body>
+</html>
