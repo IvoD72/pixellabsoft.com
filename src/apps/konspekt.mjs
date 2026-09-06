@@ -22,6 +22,10 @@ export default {
   status: 'testing', // 'testing' | 'store' | 'soon'
   appStore: null,     // линкът идва след одобрението
   playStore: null,
+  features: {
+    bg: ['Запис при заключен екран', 'Кой какво е казал', 'Цитат към всяка задача', 'Български и английски'],
+    en: ['Records with the screen locked', 'Who said what', 'A quote behind every task', 'Bulgarian and English'],
+  },
   tagline: {
     bg: 'Протоколът от срещата, без да пишеш.',
     en: 'The meeting minutes, without taking notes.',

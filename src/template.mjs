@@ -1,4 +1,5 @@
 import { COMPANY, DOMAIN, STRINGS, SUPPORT_EMAIL } from './site.mjs';
+import { MOCK_CSS, mock } from './mocks.mjs';
 
 /**
  * Един шаблон за всички страници. Без JavaScript — текст, заглавия, връзки,
@@ -38,7 +39,7 @@ html { scroll-behavior: smooth; }
 body {
   margin: 0; background: var(--bg); color: var(--fg);
   font: 17px/1.65 var(--text); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
-  position: relative; min-height: 100vh;
+  position: relative; min-height: 100vh; overflow-x: hidden;
 }
 body::before {
   content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
@@ -69,10 +70,19 @@ h2 { font-size: clamp(22px, 2.6vw, 30px); }
 @media (max-width: 600px) { .top nav a.apps-link { display: none; } .top nav a { padding: 8px 9px; font-size: 14px; } .brand { font-size: 14px; gap: 9px; } }
 
 /* ---- начало ---- */
-.hero { padding: clamp(64px, 10vw, 128px) 0 clamp(40px, 6vw, 72px); }
+.hero { padding: clamp(48px, 7vw, 96px) 0 clamp(48px, 6vw, 80px); display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 40px; align-items: center; }
+@media (max-width: 900px) { .hero { grid-template-columns: 1fr; gap: 40px; } }
+.hero .ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 34px; }
+.compo { position: relative; height: 560px; display: flex; justify-content: center; align-items: flex-end; perspective: 1400px; }
+.compo .mockwrap { position: absolute; bottom: 0; transition: transform .4s ease; }
+.compo .c1 { z-index: 3; transform: translateX(0); }
+.compo .c2 { z-index: 2; transform: translateX(-190px) translateY(-24px) rotate(-7deg) scale(.86); opacity: .95; }
+.compo .c3 { z-index: 1; transform: translateX(190px) translateY(-24px) rotate(7deg) scale(.86); opacity: .95; }
+.compo::before { content: ""; position: absolute; inset: auto 0 -40px; height: 60%; background: radial-gradient(60% 60% at 50% 100%, color-mix(in srgb, var(--accent) 24%, transparent), transparent 70%); pointer-events: none; }
+@media (max-width: 900px) { .compo { display: none; } }
 .eyebrow { display: inline-flex; align-items: center; gap: 10px; color: var(--muted); font-size: 13px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 26px; }
 .eyebrow::before { content: ""; width: 28px; height: 2px; background: var(--accent); border-radius: 2px; }
-.hero h1 { max-width: 16ch; }
+.hero h1 { max-width: 14ch; }
 .hero h1 em { font-style: normal; color: var(--accent); }
 .hero .lead { font-size: clamp(18px, 1.6vw, 21px); color: var(--muted); max-width: 52ch; margin: 28px 0 0; }
 
@@ -112,9 +122,34 @@ h2 { font-size: clamp(22px, 2.6vw, 30px); }
 .principle b { display: block; font-family: var(--display); font-weight: 600; font-size: 15px; letter-spacing: -.01em; margin: 18px 0 8px; }
 .principle p { color: var(--muted); font-size: 15px; margin: 0; }
 
+/* ---- showcase секции на началото ---- */
+.show { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: center; padding: clamp(40px, 5vw, 72px) 0; border-top: 1px solid var(--line); }
+.show.flip .visual { order: 2; }
+@media (max-width: 860px) { .show { grid-template-columns: 1fr; gap: 32px; } .show.flip .visual { order: 0; } }
+.show .visual { display: flex; justify-content: center; align-items: center; min-height: 420px; position: relative; }
+@media (max-width: 860px) { .show .visual { min-height: 0; } }
+.show .visual::before { content: ""; position: absolute; inset: 10% 0; border-radius: 40px; background: radial-gradient(60% 60% at 50% 50%, color-mix(in srgb, var(--c) 18%, transparent), transparent 75%); pointer-events: none; }
+.show .visual .mockwrap { position: relative; }
+.show .head { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+.show .head b { font-family: var(--display); font-weight: 600; font-size: 15px; }
+.show h2 { font-size: clamp(26px, 3vw, 38px); max-width: 16ch; margin-bottom: 18px; }
+.show p { color: color-mix(in srgb, var(--fg) 80%, var(--muted)); max-width: 52ch; font-size: 17px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 26px; }
+.chip { display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px 7px 9px; border-radius: 999px; border: 1px solid var(--line-2); font-size: 13px; font-weight: 500; color: var(--fg); background: color-mix(in srgb, var(--card) 70%, transparent); }
+.chip::before { content: ""; width: 14px; height: 14px; border-radius: 50%; background: color-mix(in srgb, var(--c) 22%, transparent); box-shadow: inset 0 0 0 4px color-mix(in srgb, var(--c) 22%, transparent), 0 0 0 0 transparent; position: relative; }
+.chip::before { background: radial-gradient(circle at center, var(--c) 0 3px, color-mix(in srgb, var(--c) 22%, transparent) 3.5px); }
+.show .more { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: var(--fg); }
+.show .more svg { width: 18px; height: 18px; transition: transform .2s ease; color: var(--c); }
+.show .more:hover svg { transform: translateX(4px); }
+.show .actions { display: flex; gap: 12px 24px; align-items: center; flex-wrap: wrap; }
+
 /* ---- страница на приложение ---- */
-.app-hero { padding: clamp(56px, 8vw, 104px) 0 clamp(28px, 4vw, 48px); display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start; }
-@media (max-width: 640px) { .app-hero { grid-template-columns: 1fr; gap: 22px; } }
+.app-hero { padding: clamp(48px, 7vw, 96px) 0 clamp(28px, 4vw, 48px); display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 40px; align-items: center; }
+.app-hero .visual { display: flex; justify-content: center; position: relative; }
+.app-hero .visual::before { content: ""; position: absolute; inset: 5% 0; border-radius: 40px; background: radial-gradient(60% 60% at 50% 50%, color-mix(in srgb, var(--c) 20%, transparent), transparent 75%); pointer-events: none; }
+.app-hero .visual .mockwrap { position: relative; }
+.app-hero .tile.big { margin-bottom: 26px; }
+@media (max-width: 860px) { .app-hero { grid-template-columns: 1fr; gap: 36px; } }
 .app-hero .name { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; font-family: var(--display); font-weight: 600; font-size: 15px; color: var(--muted); margin-bottom: 14px; }
 .app-hero .name span:first-child { color: var(--fg); }
 .app-hero h1 { max-width: 18ch; font-size: clamp(30px, 4.4vw, 52px); }
@@ -225,7 +260,7 @@ export function page({ lang, title, description, path, body, alt, color }) {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="${FONTS}">
-<style>${CSS}</style>
+<style>${CSS}${MOCK_CSS}</style>
 </head>
 <body>
 <div class="top"><div class="wrap">
@@ -309,12 +344,15 @@ export function appBody({ lang, app }) {
     app.external?.download ? `<a class="btn primary" href="${app.external.download}">${esc(t.download)}${ARROW}</a>` : '',
     app.external?.site && !app.external?.download ? `<a class="btn" href="${app.external.site}">${esc(t.website)}${ARROW}</a>` : '',
   ].filter(Boolean).join('\n');
+  const m = mock(app, lang);
   return `<section class="app-hero">
-  ${tile(app, 'big')}
   <div>
+    ${tile(app, 'big')}
     <div class="name"><span>${esc(app.name)}</span>${pill(lang, app)}</div>
     <h1>${esc(app.tagline[lang])}</h1>
+    ${app.features ? `<div class="chips">${app.features[lang].map(f => `<span class="chip">${esc(f)}</span>`).join('')}</div>` : ''}
   </div>
+  ${m ? `<div class="visual">${m}</div>` : ''}
 </section>
 <section class="section read prose">
 ${app.description[lang].map(p => `<p>${esc(p)}</p>`).join('\n')}
@@ -327,22 +365,39 @@ ${stores ? `<div class="stores">${stores}</div>` : ''}
 
 export function homeBody({ lang, apps }) {
   const t = STRINGS[lang];
-  const cards = apps.map(app => `<a class="card" href="${href(lang, app.slug + '/')}" style="--c:${app.color ?? 'var(--accent)'}">
-  <div class="row">${tile(app)}${pill(lang, app)}</div>
-  <div><h3>${esc(app.name)}</h3><p class="tag">${esc(app.tagline[lang])}</p></div>
-  <div class="go"><span>${esc(t.more)}</span>${ARROW}</div>
-</a>`).join('\n');
+  const compo = ['konspekt', 'glagoli', 'sroko']
+    .map((slug, i) => { const a = apps.find(x => x.slug === slug); return a ? mock(a, lang).replace('class="mockwrap"', `class="mockwrap c${i + 1}"`) : ''; })
+    .join('\n');
+  const shows = apps.map((app, i) => {
+    const m = mock(app, lang);
+    const chips = app.features ? `<div class="chips">${app.features[lang].map(f => `<span class="chip">${esc(f)}</span>`).join('')}</div>` : '';
+    const store = app.appStore ? `<a class="btn primary" href="${app.appStore}">${esc(t.appStore)}</a>` : app.external?.download ? `<a class="btn primary" href="${app.external.download}">${esc(t.download)}</a>` : '';
+    return `<section class="show${i % 2 ? ' flip' : ''}" id="${app.slug}" style="--c:${app.color ?? 'var(--accent)'}">
+  <div class="visual">${m}</div>
+  <div>
+    <div class="head">${tile(app)}<b>${esc(app.name)}</b>${pill(lang, app)}</div>
+    <h2>${esc(app.tagline[lang])}</h2>
+    <p>${esc(app.description[lang][0])}</p>
+    ${chips}
+    <div class="actions">${store}<a class="more" href="${href(lang, app.slug + '/')}">${esc(t.more)}${ARROW}</a></div>
+  </div>
+</section>`;
+  }).join('\n');
   const principles = t.principles.map(([h, p]) => `<div class="principle"><b>${esc(h)}</b><p>${esc(p)}</p></div>`).join('\n');
   return `<section class="hero">
-  <div class="eyebrow">${esc(t.eyebrow)}</div>
-  <h1>${t.heroHtml}</h1>
-  <p class="lead">${esc(t.homeLead)}</p>
+  <div>
+    <div class="eyebrow">${esc(t.eyebrow)}</div>
+    <h1>${t.heroHtml}</h1>
+    <p class="lead">${esc(t.homeLead)}</p>
+    <div class="ctas"><a class="btn primary" href="#apps">${esc(t.apps)}${ARROW}</a><a class="btn" href="${href(lang, 'support/')}">${esc(t.support)}</a></div>
+  </div>
+  <div class="compo" aria-hidden="true">
+${compo}
+  </div>
 </section>
 <div class="apps-head"><h2 id="apps">${esc(t.apps)}</h2><span class="count">${apps.length}</span></div>
-<section class="apps">
-${cards}
-</section>
-<section class="principles">
+${shows}
+<section class="principles" style="padding-top:clamp(40px,5vw,72px)">
 ${principles}
 </section>`;
 }

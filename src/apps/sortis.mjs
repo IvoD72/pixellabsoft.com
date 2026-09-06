@@ -18,6 +18,10 @@ export default {
     terms: 'https://sortis.pro/terms.html',
     download: 'https://sortis.pro',
   },
+  features: {
+    bg: ['Снимка, скан или PDF', 'Над 90% сами', 'CSV и Excel', 'Документите не се пазят'],
+    en: ['Photo, scan or PDF', 'Over 90% read automatically', 'CSV and Excel', 'Documents are not stored'],
+  },
   tagline: {
     bg: 'Фактурите, въведени за секунди.',
     en: 'Invoices entered in seconds.',

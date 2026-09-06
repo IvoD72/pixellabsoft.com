@@ -12,6 +12,10 @@ export default {
   name: 'Глаголи',
   status: 'soon',
   external: { site: 'https://glagoli.app' },
+  features: {
+    bg: ['PDF и EPUB', 'Естествен български глас', 'Питай — без спойлери', 'Продължава откъдето спря'],
+    en: ['PDF and EPUB', 'Natural Bulgarian voice', 'Ask — no spoilers', 'Picks up where you left off'],
+  },
   tagline: {
     bg: 'Кара всичко написано да говори.',
     en: 'Makes everything written speak.',
