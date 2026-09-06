@@ -1,12 +1,13 @@
 /**
  * Списъкът с приложенията, в реда, в който се показват на началната страница.
  *
- * ⚑ Приложение с `draft: true` не се генерира — стои тук, докато Иво даде
- * описание и правни текстове. Никакви „lorem ipsum" на живия сайт.
+ * Приложение без `legal` (правни текстове тук) сочи към собствения си сайт
+ * през `external` — Sortis има sortis.pro. Приложение със статус „soon" няма
+ * правни страници, докато не влезе в магазините.
  */
 import konspekt from './konspekt.mjs';
+import sortis from './sortis.mjs';
+import glagoli from './glagoli.mjs';
+import sroko from './sroko.mjs';
 
-export const APPS = [
-  konspekt,
-  // Сортис, Глаголи, Сроко — идват, когато има текстове (виж статуса в проекта).
-];
+export const APPS = [konspekt, sortis, glagoli, sroko];

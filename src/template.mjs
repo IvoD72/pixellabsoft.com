@@ -109,21 +109,36 @@ ${sections}
 </div>`;
 }
 
+/** Къде са правните текстове на приложението: тук или на собствения му сайт. */
+export function legalLinks(lang, app) {
+  const t = STRINGS[lang];
+  const links = [];
+  if (app.legal) {
+    links.push(`<a href="${href(lang, app.slug + '/privacy/')}">${esc(t.privacy)}</a>`);
+    links.push(`<a href="${href(lang, app.slug + '/terms/')}">${esc(t.terms)}</a>`);
+  } else if (app.external?.privacy) {
+    links.push(`<a href="${app.external.privacy}">${esc(t.privacy)}</a>`);
+    if (app.external.terms) links.push(`<a href="${app.external.terms}">${esc(t.terms)}</a>`);
+  }
+  links.push(`<a href="${href(lang, 'support/')}">${esc(t.support)}</a>`);
+  return links;
+}
+
 export function appBody({ lang, app }) {
   const t = STRINGS[lang];
   const badge = app.status === 'store' ? '' : `<span class="badge">${esc(app.status === 'testing' ? t.statusTesting : t.statusSoon)}</span>`;
   const stores = [
     app.appStore ? `<a href="${app.appStore}">${esc(t.appStore)}</a>` : '',
     app.playStore ? `<a href="${app.playStore}">${esc(t.playStore)}</a>` : '',
+    app.external?.download ? `<a href="${app.external.download}">${esc(t.download)}</a>` : '',
+    app.external?.site && !app.external?.download ? `<a href="${app.external.site}">${esc(t.website)}</a>` : '',
   ].filter(Boolean).join('\n');
   return `<h1>${esc(app.name)}${badge}</h1>
 <p class="lead">${esc(app.tagline[lang])}</p>
 ${app.description[lang].map(p => `<p>${esc(p)}</p>`).join('\n')}
 ${stores ? `<div class="stores">${stores}</div>` : ''}
 <div class="legal-links">
-  <a href="${href(lang, app.slug + '/privacy/')}">${esc(t.privacy)}</a>
-  <a href="${href(lang, app.slug + '/terms/')}">${esc(t.terms)}</a>
-  <a href="${href(lang, 'support/')}">${esc(t.support)}</a>
+  ${legalLinks(lang, app).join('\n  ')}
 </div>`;
 }
 
@@ -144,9 +159,10 @@ ${cards}
 
 export function supportBody({ lang, apps }) {
   const t = STRINGS[lang];
-  const links = apps.map(app =>
-    `<li><a href="${href(lang, app.slug + '/')}">${esc(app.name)}</a> — <a href="${href(lang, app.slug + '/privacy/')}">${esc(t.privacy)}</a>, <a href="${href(lang, app.slug + '/terms/')}">${esc(t.terms)}</a></li>`,
-  ).join('\n');
+  const links = apps.map(app => {
+    const legal = legalLinks(lang, app).slice(0, -1); // без „Поддръжка" — това е самата страница
+    return `<li><a href="${href(lang, app.slug + '/')}">${esc(app.name)}</a>${legal.length ? ' — ' + legal.join(', ') : ''}</li>`;
+  }).join('\n');
   return `<h1>${esc(t.support)}</h1>
 <p class="lead">${esc(t.supportLead)}</p>
 <p><strong>${esc(t.supportEmailLabel)}:</strong> <a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a></p>

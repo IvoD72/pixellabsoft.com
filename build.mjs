@@ -44,6 +44,7 @@ for (const lang of LANGS) {
       description: app.description[lang][0], body: appBody({ lang, app }),
     }));
     add(`${app.slug}/`);
+    if (!app.legal) continue;
     for (const kind of ['privacy', 'terms']) {
       const doc = app.legal[kind][lang];
       const title = `${kind === 'privacy' ? t.privacy : t.terms} — ${app.name}`;
