@@ -299,7 +299,7 @@ ${body}
 
 export function legalBody({ lang, app, kind, doc }) {
   const t = STRINGS[lang];
-  const title = kind === 'privacy' ? t.privacy : t.terms;
+  const title = kind === 'privacy' ? t.privacy : kind === 'deletion' ? t.deletion : t.terms;
   const id = i => `s${i + 1}`;
   const toc = doc.sections.map(([h], i) => `<li><a href="#${id(i)}">${esc(h)}</a></li>`).join('\n');
   const sections = doc.sections.map(([h, p], i) => `<h2 id="${id(i)}"><small>${String(i + 1).padStart(2, '0')}</small>${esc(h)}</h2>\n<p>${esc(p)}</p>`).join('\n');
@@ -321,6 +321,13 @@ ${sections}
 </div>`;
 }
 
+/**
+ * Адресът на всеки правен текст. „deletion" е с говорящ адрес, защото
+ * Google Play го иска като отделна връзка в магазина и хората го четат
+ * от там — /konspekt/delete-account/ казва какво е, преди да се отвори.
+ */
+export const LEGAL_PATH = { privacy: 'privacy', terms: 'terms', deletion: 'delete-account' };
+
 /** Къде са правните текстове на приложението: тук или на собствения му сайт. */
 export function legalLinks(lang, app) {
   const t = STRINGS[lang];
@@ -328,6 +335,9 @@ export function legalLinks(lang, app) {
   if (app.legal) {
     links.push(`<a href="${href(lang, app.slug + '/privacy/')}">${esc(t.privacy)}</a>`);
     links.push(`<a href="${href(lang, app.slug + '/terms/')}">${esc(t.terms)}</a>`);
+    if (app.legal.deletion) {
+      links.push(`<a href="${href(lang, app.slug + '/' + LEGAL_PATH.deletion + '/')}">${esc(t.deletion)}</a>`);
+    }
   } else if (app.external?.privacy) {
     links.push(`<a href="${app.external.privacy}">${esc(t.privacy)}</a>`);
     if (app.external.terms) links.push(`<a href="${app.external.terms}">${esc(t.terms)}</a>`);

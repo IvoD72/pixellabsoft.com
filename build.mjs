@@ -2,7 +2,7 @@ import { mkdir, rm, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { APPS } from './src/apps/index.mjs';
 import { DOMAIN, LANGS, STRINGS } from './src/site.mjs';
-import { FAVICON, appBody, homeBody, legalBody, page, supportBody } from './src/template.mjs';
+import { FAVICON, LEGAL_PATH, appBody, homeBody, legalBody, page, supportBody } from './src/template.mjs';
 
 /**
  * Генерира сайта в docs/ (GitHub Pages сервира тази папка).
@@ -46,14 +46,16 @@ for (const lang of LANGS) {
     }));
     add(`${app.slug}/`);
     if (!app.legal) continue;
-    for (const kind of ['privacy', 'terms']) {
+    for (const kind of ['privacy', 'terms', 'deletion']) {
+      if (!app.legal[kind]) continue;
       const doc = app.legal[kind][lang];
-      const title = `${kind === 'privacy' ? t.privacy : t.terms} — ${app.name}`;
-      await emit(lang, `${app.slug}/${kind}`, page({
-        lang, path: `${app.slug}/${kind}/`, title, description: doc.intro,
+      const label = kind === 'privacy' ? t.privacy : kind === 'deletion' ? t.deletion : t.terms;
+      const path = `${app.slug}/${LEGAL_PATH[kind]}`;
+      await emit(lang, path, page({
+        lang, path: `${path}/`, title: `${label} — ${app.name}`, description: doc.intro,
         body: legalBody({ lang, app, kind, doc }), color: app.color,
       }));
-      add(`${app.slug}/${kind}/`);
+      add(`${path}/`);
     }
   }
 }
