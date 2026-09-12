@@ -175,12 +175,20 @@ h2 { font-size: clamp(22px, 2.6vw, 30px); }
 .doc-head h1 { font-size: clamp(28px, 4vw, 44px); }
 .doc-head .lead { font-size: 19px; color: var(--muted); margin: 22px 0 0; }
 .doc { display: grid; grid-template-columns: 220px minmax(0, var(--read)); gap: 48px; padding: 32px 0 clamp(56px, 7vw, 96px); }
-@media (max-width: 900px) { .doc { grid-template-columns: 1fr; gap: 12px; } .toc { position: static; } }
+@media (max-width: 900px) { .doc { grid-template-columns: 1fr; gap: 12px; } }
 .toc { position: sticky; top: 88px; align-self: start; font-size: 14px; }
 .toc b { display: block; color: var(--faint); font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; margin: 8px 0 12px; }
 .toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
 .toc a { display: block; padding: 6px 10px; border-radius: 8px; color: var(--muted); border-left: 2px solid var(--line); }
 .toc a:hover { color: var(--fg); border-left-color: var(--c); }
+/* На телефон съдържанието не е „залепено" (иначе стои върху текста при скрол),
+   а е ред от малки връзки над статията. Трябва да е СЛЕД .toc правилата, за да ги надделее. */
+@media (max-width: 900px) {
+  .toc { position: static; margin-bottom: 8px; }
+  .toc ol { display: flex; flex-wrap: wrap; gap: 8px; }
+  .toc a { padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; }
+  .toc a:hover { border-color: var(--c); }
+}
 .doc article h2 { font-size: 20px; margin: 34px 0 10px; padding-top: 8px; display: flex; gap: 14px; align-items: baseline; }
 .doc article h2 small { font-family: var(--text); font-size: 13px; font-weight: 600; color: var(--c); letter-spacing: .04em; }
 .doc article p { color: color-mix(in srgb, var(--fg) 86%, var(--muted)); }
