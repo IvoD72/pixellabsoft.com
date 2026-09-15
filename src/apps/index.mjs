@@ -9,5 +9,6 @@ import konspekt from './konspekt.mjs';
 import sortis from './sortis.mjs';
 import glagoli from './glagoli.mjs';
 import sroko from './sroko.mjs';
+import calvio from './calvio.mjs';
 
-export const APPS = [konspekt, sortis, glagoli, sroko];
+export const APPS = [konspekt, sortis, glagoli, sroko, calvio];
