@@ -342,7 +342,8 @@ export function legalLinks(lang, app) {
   const links = [];
   if (app.legal) {
     links.push(`<a href="${href(lang, app.slug + '/privacy/')}">${esc(t.privacy)}</a>`);
-    links.push(`<a href="${href(lang, app.slug + '/terms/')}">${esc(t.terms)}</a>`);
+    // Връзка към условията само ако приложението има такива (Сроко засега няма).
+    if (app.legal.terms) links.push(`<a href="${href(lang, app.slug + '/terms/')}">${esc(t.terms)}</a>`);
     if (app.legal.deletion) {
       links.push(`<a href="${href(lang, app.slug + '/' + LEGAL_PATH.deletion + '/')}">${esc(t.deletion)}</a>`);
     }

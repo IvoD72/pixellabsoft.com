@@ -1,5 +1,7 @@
 /**
- * Сроко — автомобилни срокове. Предстои (6.09.2026).
+ * Сроко — автомобилни срокове. В App Store от 17.09.2026
+ * (https://apps.apple.com/app/sroko/id6810996777); Google Play — в ревю,
+ * линкът се добавя в `playStore`, щом излезе.
  *
  * ⚑ Правният текст описва това, което кодът НАИСТИНА прави (7.09.2026):
  * няма акаунти и няма наш сървър; всичко се пази в localStorage на
@@ -18,21 +20,27 @@ export default {
   // Същият знак като иконката на приложението: магистрала + зелена чавка (бели пълни форми, не контури).
   icon: '<g transform="translate(12 12) scale(1.22) translate(-12 -12)"><g fill="#fff" stroke="#fff" stroke-width=".7" stroke-linejoin="round"><path d="M8.8 4.6h2.05L10.5 9.2H7.2zM13.15 4.6h2.05L16.8 9.2H13.5z"/><path d="M3.6 10.3h16.8v1.1H3.6zM4.7 11.4h1.4l-.4 1.3H4.3zM17.9 11.4h1.4l.3 1.3h-1.4z"/><path d="M6.8 12.6h3.2l-.3 8H4.6zM14 12.6h3.2l2.2 8h-5.1z"/></g><circle cx="18.2" cy="6" r="3.4" fill="#2ED47A" stroke="none"/><path d="m16.5 6.15 1.15 1.25 2.3-2.5" stroke="#fff" stroke-width="1.05" fill="none"/></g>',
   name: 'Сроко',
-  status: 'soon',
+  status: 'store', // 'testing' | 'store' | 'soon'
+  appStore: 'https://apps.apple.com/app/sroko/id6810996777',
+  playStore: null, // подадено за преглед 14.09.2026 — линкът идва след одобрението
   features: {
-    bg: ['Всички коли на едно място', 'Напомня преди да изтече', 'Без изненади на пътя'],
-    en: ['All your cars in one place', 'Reminds you before it expires', 'No surprises on the road'],
+    bg: ['Винетката се проверява сама', 'ГТП, гражданска, каско, книжка', 'Напомня 30…1 дни преди', 'Без акаунт, без абонамент'],
+    en: ['Vignette checked automatically', 'MOT, insurance, casco, licence', 'Reminds 30…1 days ahead', 'No account, no subscription'],
   },
   tagline: {
-    bg: 'Винетката — платена навреме, без изненади.',
-    en: 'Your vignette — paid on time, no surprises.',
+    bg: 'Сроковете на колата — на едно място, навреме.',
+    en: 'Every car deadline — in one place, on time.',
   },
   description: {
     bg: [
-      'Сроко следи винетките на колите ти и ти напомня, преди да изтекат. Скоро.',
+      'Сроко пази сроковете на колата ти на едно място и ти напомня, преди да е късно. Въвеждаш регистрационния номер — винетката се проверява сама през публичната проверка на БГ Толл и виждаш колко дни остават. Добавяш ГТП, гражданска, каско, книжка или сервиз веднъж; при годишно подновяване Сроко сама знае кога е следващият път.',
+      'Напомнянията идват 30, 14, 10, 7, 3 и 1 ден преди изтичане, в час по твой избор, а червено число върху иконката показва колко срока са спешни. „Купи винетка“ води направо към официалния портал на БГ Толл; „Провери онлайн“ отваря официалните проверки за гражданска и ГТП с вече копиран номер.',
+      'Без регистрация и без акаунт — данните стоят само в телефона ти. Безплатната версия следи 1 МПС; Sroko Pro отключва до 5 МПС с еднократно плащане, без абонамент. Сроко е независимо приложение и не е свързано с БГ Толл или АПИ.',
     ],
     en: [
-      'Sroko keeps track of the road vignettes for your cars and reminds you before they expire. Coming soon.',
+      'Sroko keeps every deadline for your car in one place and reminds you before it is too late. Enter the plate number — the vignette is checked automatically through BG Toll’s public check and you see how many days are left. Add the MOT, liability insurance, casco, driving licence or service once; for yearly renewals Sroko already knows when the next one is due.',
+      'Reminders arrive 30, 14, 10, 7, 3 and 1 day before expiry, at the hour you choose, and a red badge on the app icon shows how many deadlines are urgent. “Buy vignette” opens the official BG Toll portal; “Check online” opens the official insurance and MOT checks with your plate already copied.',
+      'No sign-up and no account — your data stays on your phone. The free version tracks 1 vehicle; Sroko Pro unlocks up to 5 with a one-time purchase, no subscription. Sroko is an independent app, not affiliated with BG Toll or the Road Infrastructure Agency.',
     ],
   },
   legal: {
