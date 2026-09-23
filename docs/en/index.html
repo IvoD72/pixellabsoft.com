@@ -284,15 +284,8 @@ footer .fine { margin-top: 36px; padding-top: 18px; border-top: 1px solid var(--
 .g-ask .a { background: var(--panel); border-bottom-left-radius: 4px; }
 
 /* Sroko */
-.r-head b { display: block; font-size: 15px; font-family: var(--display); font-weight: 600; letter-spacing: -.01em; }
-.r-head .bell { display: inline-block; margin-top: 6px; color: var(--ink-2); padding: 4px 8px; border-radius: 999px; background: var(--panel); font-size: 10px; }
-.r-cars { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 8px; }
-.r-cars li { padding: 10px 12px; border-radius: 12px; background: var(--panel); display: flex; flex-direction: column; gap: 3px; border-left: 3px solid var(--c); }
-.r-cars li.warn { border-left-color: #f2a33a; }
-.r-cars li.warn span:last-child { color: #f2a33a; font-weight: 600; }
-.r-cars .plate { font-family: var(--display); font-weight: 600; font-size: 12px; letter-spacing: .04em; }
-.r-cars span:last-child { color: var(--ink-2); }
-.r-cta { margin-top: auto; text-align: center; padding: 11px; border-radius: 12px; background: var(--c); color: #fff; font-weight: 600; font-size: 12px; }
+/* Истинска снимка на приложението: пълни екрана до ръба под лентата на телефона. */
+.mock .shot { flex: 1 1 auto; min-height: 0; width: calc(100% + 28px); margin: 0 -14px -12px; object-fit: cover; object-position: top center; border-radius: 0 0 26px 26px; }
 
 @media (prefers-reduced-motion: reduce) { .k-wave i, .k-rec .dot { animation: none; } }
 </style>
@@ -329,10 +322,7 @@ footer .fine { margin-top: 36px; padding-top: 18px; border-top: 1px solid var(--
 <div class="g-controls"><span></span><span class="play"></span><span></span></div>
 <p class="g-line">“She did not say a single word for six years…”</p>
 <div class="g-ask"><span class="q">Who is Theo?</span><span class="a">The psychotherapist telling the story. No spoilers.</span></div></div></div></div>
-<div class="mockwrap c3" style="--c:#4D64FA"><div class="mock phone"><div class="screen"><div class="statusbar"><span>9:41</span><span class="sig"></span></div>
-<div class="r-head"><b>My cars</b><span class="bell">Reminder 7 days before</span></div>
-<ul class="r-cars"><li class="ok"><span class="plate">CB 4821 KX</span><span>Annual · until 14 Mar 2027</span></li><li class="warn"><span class="plate">BT 1177 PA</span><span>Expires in 6 days</span></li><li class="ok"><span class="plate">CB 9034 MH</span><span>Weekend · until 8 Sep</span></li></ul>
-<div class="r-cta">Buy vignette</div></div></div></div>
+<div class="mockwrap c3" style="--c:#4D64FA"><div class="mock phone"><div class="screen"><div class="statusbar"><span>9:41</span><span class="sig"></span></div><img class="shot" src="/assets/sroko-en.webp" alt="Sroko screen: two vehicles with the days left on the vignette, roadworthiness test, insurance and licence." width="220" height="427" loading="lazy" decoding="async"></div></div></div>
   </div>
 </section>
 <div class="apps-head"><h2 id="apps">Apps</h2><span class="count">5</span></div>
@@ -383,10 +373,7 @@ footer .fine { margin-top: 36px; padding-top: 18px; border-top: 1px solid var(--
   </div>
 </section>
 <section class="show flip" id="sroko" style="--c:#4D64FA">
-  <div class="visual"><div class="mockwrap" style="--c:#4D64FA"><div class="mock phone"><div class="screen"><div class="statusbar"><span>9:41</span><span class="sig"></span></div>
-<div class="r-head"><b>My cars</b><span class="bell">Reminder 7 days before</span></div>
-<ul class="r-cars"><li class="ok"><span class="plate">CB 4821 KX</span><span>Annual · until 14 Mar 2027</span></li><li class="warn"><span class="plate">BT 1177 PA</span><span>Expires in 6 days</span></li><li class="ok"><span class="plate">CB 9034 MH</span><span>Weekend · until 8 Sep</span></li></ul>
-<div class="r-cta">Buy vignette</div></div></div></div></div>
+  <div class="visual"><div class="mockwrap" style="--c:#4D64FA"><div class="mock phone"><div class="screen"><div class="statusbar"><span>9:41</span><span class="sig"></span></div><img class="shot" src="/assets/sroko-en.webp" alt="Sroko screen: two vehicles with the days left on the vignette, roadworthiness test, insurance and licence." width="220" height="427" loading="lazy" decoding="async"></div></div></div></div>
   <div>
     <div class="head"><span class="tile " style="--c:#4D64FA"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g transform="translate(12 12) scale(1.22) translate(-12 -12)"><g fill="#fff" stroke="#fff" stroke-width=".7" stroke-linejoin="round"><path d="M8.8 4.6h2.05L10.5 9.2H7.2zM13.15 4.6h2.05L16.8 9.2H13.5z"/><path d="M3.6 10.3h16.8v1.1H3.6zM4.7 11.4h1.4l-.4 1.3H4.3zM17.9 11.4h1.4l.3 1.3h-1.4z"/><path d="M6.8 12.6h3.2l-.3 8H4.6zM14 12.6h3.2l2.2 8h-5.1z"/></g><circle cx="18.2" cy="6" r="3.4" fill="#2ED47A" stroke="none"/><path d="m16.5 6.15 1.15 1.25 2.3-2.5" stroke="#fff" stroke-width="1.05" fill="none"/></g></svg></span><b>Сроко</b><span class="pill store">Available</span></div>
     <h2>Every car deadline — in one place, on time.</h2>

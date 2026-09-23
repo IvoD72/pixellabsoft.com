@@ -1,7 +1,9 @@
 /**
- * Стилизирани екрани („mockups") на приложенията — чист HTML/CSS, без
- * картинки. Показват какво прави продуктът, не са истинските екрани;
- * когато има реални скрийншоти, се заменят (или се слагат до тях).
+ * Екраните („mockups") на приложенията в рамка на телефон.
+ * Сроко показва ИСТИНСКИ скрийншот (`src/assets/sroko-<език>.webp`,
+ * 23.09.2026) — при промяна в приложението се преснима. Останалите са
+ * стилизирани, чист HTML/CSS: показват какво прави продуктът и се сменят
+ * с истински, щом има такива.
  *
  * Всеки mock е телефон (`phone`) или прозорец за Windows (`window`).
  * Текстовете вътре са на езика на страницата. Цветът идва от `--c`
@@ -37,13 +39,7 @@ const T = {
       ask: 'Кой е Тео?', answer: 'Психотерапевтът, който разказва историята. Без да издавам края.',
     },
     sroko: {
-      title: 'Моите коли', bell: 'Напомняне 7 дни преди',
-      cars: [
-        ['CB 4821 KX', 'Годишна · до 14.03.2027', 'ok'],
-        ['BT 1177 PA', 'Изтича след 6 дни', 'warn'],
-        ['CB 9034 MH', 'Уикенд · до 8.09', 'ok'],
-      ],
-      cta: 'Плати винетка',
+      alt: 'Екран на Сроко: два автомобила с оставащите дни до винетката, ГТП, гражданската и книжката.',
     },
   },
   en: {
@@ -74,13 +70,7 @@ const T = {
       ask: 'Who is Theo?', answer: 'The psychotherapist telling the story. No spoilers.',
     },
     sroko: {
-      title: 'My cars', bell: 'Reminder 7 days before',
-      cars: [
-        ['CB 4821 KX', 'Annual · until 14 Mar 2027', 'ok'],
-        ['BT 1177 PA', 'Expires in 6 days', 'warn'],
-        ['CB 9034 MH', 'Weekend · until 8 Sep', 'ok'],
-      ],
-      cta: 'Buy vignette',
+      alt: 'Sroko screen: two vehicles with the days left on the vignette, roadworthiness test, insurance and licence.',
     },
   },
 };
@@ -115,11 +105,9 @@ const MOCKS = {
 <p class="g-line">${t.line}</p>
 <div class="g-ask"><span class="q">${t.ask}</span><span class="a">${t.answer}</span></div>`);
   },
-  sroko(t) {
-    return phone(`
-<div class="r-head"><b>${t.title}</b><span class="bell">${t.bell}</span></div>
-<ul class="r-cars">${t.cars.map(([plate, until, st]) => `<li class="${st}"><span class="plate">${plate}</span><span>${until}</span></li>`).join('')}</ul>
-<div class="r-cta">${t.cta}</div>`);
+  // Истинска снимка от приложението, не рисуван екран.
+  sroko(t, lang) {
+    return phone(`<img class="shot" src="/assets/sroko-${lang}.webp" alt="${t.alt}" width="220" height="427" loading="lazy" decoding="async">`);
   },
 };
 
@@ -127,7 +115,7 @@ const MOCKS = {
 export function mock(app, lang) {
   const fn = MOCKS[app.slug];
   const t = T[lang]?.[app.slug];
-  return fn && t ? `<div class="mockwrap" style="--c:${app.color}">${fn(t)}</div>` : '';
+  return fn && t ? `<div class="mockwrap" style="--c:${app.color}">${fn(t, lang)}</div>` : '';
 }
 
 export const MOCK_CSS = `
@@ -198,15 +186,8 @@ export const MOCK_CSS = `
 .g-ask .a { background: var(--panel); border-bottom-left-radius: 4px; }
 
 /* Sroko */
-.r-head b { display: block; font-size: 15px; font-family: var(--display); font-weight: 600; letter-spacing: -.01em; }
-.r-head .bell { display: inline-block; margin-top: 6px; color: var(--ink-2); padding: 4px 8px; border-radius: 999px; background: var(--panel); font-size: 10px; }
-.r-cars { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 8px; }
-.r-cars li { padding: 10px 12px; border-radius: 12px; background: var(--panel); display: flex; flex-direction: column; gap: 3px; border-left: 3px solid var(--c); }
-.r-cars li.warn { border-left-color: #f2a33a; }
-.r-cars li.warn span:last-child { color: #f2a33a; font-weight: 600; }
-.r-cars .plate { font-family: var(--display); font-weight: 600; font-size: 12px; letter-spacing: .04em; }
-.r-cars span:last-child { color: var(--ink-2); }
-.r-cta { margin-top: auto; text-align: center; padding: 11px; border-radius: 12px; background: var(--c); color: #fff; font-weight: 600; font-size: 12px; }
+/* Истинска снимка на приложението: пълни екрана до ръба под лентата на телефона. */
+.mock .shot { flex: 1 1 auto; min-height: 0; width: calc(100% + 28px); margin: 0 -14px -12px; object-fit: cover; object-position: top center; border-radius: 0 0 26px 26px; }
 
 @media (prefers-reduced-motion: reduce) { .k-wave i, .k-rec .dot { animation: none; } }
 `;

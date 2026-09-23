@@ -1,4 +1,4 @@
-import { mkdir, rm, writeFile } from 'node:fs/promises';
+import { cp, mkdir, rm, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { APPS } from './src/apps/index.mjs';
 import { DOMAIN, LANGS, STRINGS } from './src/site.mjs';
@@ -27,6 +27,8 @@ await mkdir(OUT, { recursive: true });
 await writeFile(join(OUT, 'CNAME'), DOMAIN + '\n');
 await writeFile(join(OUT, '.nojekyll'), '');
 await writeFile(join(OUT, 'favicon.svg'), FAVICON);
+// Снимки на приложенията (истински екрани) — влизат в сайта както са.
+await cp(join('src', 'assets'), join(OUT, 'assets'), { recursive: true });
 await writeFile(join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: https://${DOMAIN}/sitemap.xml\n`);
 
 const urls = [];
