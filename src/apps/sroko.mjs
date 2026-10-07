@@ -1,7 +1,6 @@
 /**
  * Сроко — автомобилни срокове. В App Store от 17.09.2026
- * (https://apps.apple.com/app/sroko/id6810996777); Google Play — в ревю,
- * линкът се добавя в `playStore`, щом излезе.
+ * (https://apps.apple.com/app/sroko/id6810996777); в Google Play от 1.10.2026.
  *
  * ⚑ Правният текст описва това, което кодът НАИСТИНА прави (7.09.2026):
  * няма акаунти и няма наш сървър; всичко се пази в localStorage на
@@ -22,7 +21,7 @@ export default {
   name: 'Сроко',
   status: 'store', // 'testing' | 'store' | 'soon'
   appStore: 'https://apps.apple.com/app/sroko/id6810996777',
-  playStore: null, // подадено за преглед 14.09.2026 — линкът идва след одобрението
+  playStore: 'https://play.google.com/store/apps/details?id=com.vinetka.pazach',
   features: {
     bg: ['Винетката се проверява сама', 'ГТП, гражданска, каско, книжка', 'Напомня 30…1 дни преди', 'Без акаунт, без абонамент'],
     en: ['Vignette checked automatically', 'MOT, insurance, casco, licence', 'Reminds 30…1 days ahead', 'No account, no subscription'],
