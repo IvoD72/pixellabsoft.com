@@ -116,6 +116,8 @@ h2 { font-size: clamp(28px, 3.4vw, 44px); }
 .tile { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 15px; background: var(--c); color: #fff; flex: none;
   box-shadow: 0 12px 28px -14px color-mix(in srgb, var(--c) 90%, transparent); }
 .tile svg { width: 26px; height: 26px; }
+.tile.img { background: none; overflow: hidden; box-shadow: 0 12px 26px -14px rgba(11,20,48,.45), 0 0 0 1px rgba(11,20,48,.06); }
+.tile.img img { width: 100%; height: 100%; display: block; }
 .tile.big { width: 88px; height: 88px; border-radius: 24px; }
 .tile.big svg { width: 44px; height: 44px; }
 .pill { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); padding: 5px 11px; border-radius: 999px; background: rgba(255,255,255,.9); border: 1px solid var(--line-2); white-space: nowrap; }
@@ -233,7 +235,7 @@ footer .fine { margin-top: 36px; padding-top: 18px; border-top: 1px solid var(--
 </div></div>
 <main class="wrap">
 <div class="doc-head read">
-  <div class="crumbs"><span class="tile " style="--c:#f0432f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10v4M8 7v10M12 4v16M16 8v8M20 11v2"/></svg></span><a href="/en/konspekt/">Konspekt</a><span class="dot"></span><span>Last updated: 6 September 2026</span></div>
+  <div class="crumbs"><span class="tile img "><img src="/assets/icon-konspekt.png" alt="" width="128" height="128"></span><a href="/en/konspekt/">Konspekt</a><span class="dot"></span><span>Last updated: 6 September 2026</span></div>
   <h1>Terms of Use</h1>
   <p class="lead">Short and in plain language. If anything here seems unclear, ask — we would rather rewrite it more clearly than leave it as it is.</p>
 </div>

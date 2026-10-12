@@ -17,6 +17,7 @@ const UPDATED = { bg: '6 септември 2026', en: '6 September 2026' };
 export default {
   slug: 'konspekt',
   color: '#f0432f',
+  iconImg: '/assets/icon-konspekt.png',
   icon: '<path d="M4 10v4M8 7v10M12 4v16M16 8v8M20 11v2"/>',
   name: 'Konspekt',
   status: 'testing', // 'testing' | 'store' | 'soon'

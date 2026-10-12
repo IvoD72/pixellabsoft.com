@@ -117,6 +117,8 @@ h2 { font-size: clamp(28px, 3.4vw, 44px); }
 .tile { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 15px; background: var(--c); color: #fff; flex: none;
   box-shadow: 0 12px 28px -14px color-mix(in srgb, var(--c) 90%, transparent); }
 .tile svg { width: 26px; height: 26px; }
+.tile.img { background: none; overflow: hidden; box-shadow: 0 12px 26px -14px rgba(11,20,48,.45), 0 0 0 1px rgba(11,20,48,.06); }
+.tile.img img { width: 100%; height: 100%; display: block; }
 .tile.big { width: 88px; height: 88px; border-radius: 24px; }
 .tile.big svg { width: 44px; height: 44px; }
 .pill { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); padding: 5px 11px; border-radius: 999px; background: rgba(255,255,255,.9); border: 1px solid var(--line-2); white-space: nowrap; }
@@ -225,13 +227,15 @@ const FALLBACK_ICON = `<rect x="4" y="4" width="16" height="16" rx="4"/>`;
 
 /** Иконата на приложение върху цветната плочка. */
 export function tile(app, cls = '') {
+  if (app.iconImg) return `<span class="tile img ${cls}"><img src="${app.iconImg}" alt="" width="128" height="128"></span>`;
   return `<span class="tile ${cls}" style="--c:${app.color ?? 'var(--accent)'}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${app.icon ?? FALLBACK_ICON}</svg></span>`;
 }
 
 function pill(lang, app) {
   const t = STRINGS[lang];
-  const label = app.status === 'store' ? t.statusStore : app.status === 'testing' ? t.statusTesting : t.statusSoon;
-  return `<span class="pill${app.status === 'store' ? ' store' : ''}">${esc(label)}</span>`;
+  const label = { store: t.statusStore, windows: t.statusWindows, testing: t.statusTesting }[app.status] ?? t.statusSoon;
+  const ok = app.status === 'store' || app.status === 'windows';
+  return `<span class="pill${ok ? ' store' : ''}">${esc(label)}</span>`;
 }
 
 /** Бутоните към магазините и сваляне — едни и същи на началото и на страницата на приложението. */
@@ -372,15 +376,16 @@ function visual(app, lang) {
 
 export function appBody({ lang, app }) {
   const stores = storeButtons(lang, app);
+  const m = mock(app, lang);
   return `<section class="app-hero">
   <div>
-    ${tile(app, 'big')}
+    ${m ? tile(app, 'big') : ''}
     <div class="name"><span>${esc(app.name)}</span>${pill(lang, app)}</div>
     <h1>${esc(app.tagline[lang])}</h1>
     ${app.features ? `<div class="chips">${app.features[lang].map(f => `<span class="chip">${esc(f)}</span>`).join('')}</div>` : ''}
     ${stores ? `<div class="stores">${stores}</div>` : ''}
   </div>
-  <div class="visual" style="--c:${app.color}">${visual(app, lang)}</div>
+  <div class="visual" style="--c:${app.color}">${m || tile(app, 'bigicon')}</div>
 </section>
 <section class="section read prose">
 ${app.description[lang].map(p => `<p>${esc(p)}</p>`).join('\n')}

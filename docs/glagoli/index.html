@@ -116,6 +116,8 @@ h2 { font-size: clamp(28px, 3.4vw, 44px); }
 .tile { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 15px; background: var(--c); color: #fff; flex: none;
   box-shadow: 0 12px 28px -14px color-mix(in srgb, var(--c) 90%, transparent); }
 .tile svg { width: 26px; height: 26px; }
+.tile.img { background: none; overflow: hidden; box-shadow: 0 12px 26px -14px rgba(11,20,48,.45), 0 0 0 1px rgba(11,20,48,.06); }
+.tile.img img { width: 100%; height: 100%; display: block; }
 .tile.big { width: 88px; height: 88px; border-radius: 24px; }
 .tile.big svg { width: 44px; height: 44px; }
 .pill { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); padding: 5px 11px; border-radius: 999px; background: rgba(255,255,255,.9); border: 1px solid var(--line-2); white-space: nowrap; }
@@ -234,13 +236,13 @@ footer .fine { margin-top: 36px; padding-top: 18px; border-top: 1px solid var(--
 <main class="wrap">
 <section class="app-hero">
   <div>
-    <span class="tile big" style="--c:#8b6cf6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.5C10 5 7 5 4 6.5v13c3-1.5 6-1.5 8 0 2-1.5 5-1.5 8 0v-13c-3-1.5-6-1.5-8 0z"/><path d="M12 6.5v13"/></svg></span>
+    <span class="tile img big"><img src="/assets/icon-glagoli.png" alt="" width="128" height="128"></span>
     <div class="name"><span>Глаголи</span><span class="pill store">Наличен</span></div>
     <h1>Твоите книги, прочетени на глас.</h1>
     <div class="chips"><span class="chip">EPUB, PDF, Word или снимка</span><span class="chip">Български и английски</span><span class="chip">Спри и питай — без спойлери</span><span class="chip">Пакети часове, без абонамент</span></div>
     <div class="stores"><a class="store-btn" href="https://play.google.com/store/apps/details?id=bg.glagoli.app"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#34d17a" d="M3.6 2.3c-.3.3-.5.8-.5 1.4v16.6c0 .6.2 1.1.5 1.4l9.3-9.7z"/><path fill="#ffd23f" d="m16 15.1-3.1-3.1L16 8.9l3.7 2.1c1.1.6 1.1 1.6 0 2.2z"/><path fill="#ff4d5e" d="M16 15.1 12.9 12l-9.3 9.7c.4.4 1 .4 1.7 0z"/><path fill="#3aa0ff" d="M16 8.9 5.3 2.3c-.7-.4-1.3-.4-1.7 0l9.3 9.7z"/></svg><span>Изтегли от<b>Google Play</b></span></a></div>
   </div>
-  <div class="visual" style="--c:#8b6cf6"><div class="mockwrap" style="--c:#8b6cf6"><div class="device phone"><div class="screen" style="aspect-ratio:520 / 860"><img src="/assets/glagoli-bg.webp" alt="Екран на Глаголи: книгата се чете на глас, а отдолу е бутонът „Спри и попитай“." width="520" height="860" loading="lazy" decoding="async"></div></div></div></div>
+  <div class="visual" style="--c:#8b6cf6"><div class="mockwrap" style="--c:#8b6cf6"><div class="device phone"><div class="screen" style="aspect-ratio:520 / 1125"><img src="/assets/glagoli-bg.webp" alt="Екран на Глаголи: книгата се чете на глас, а отдолу е бутонът „Спри и попитай“." width="520" height="1125" loading="lazy" decoding="async"></div></div></div></div>
 </section>
 <section class="section read prose">
 <p>Качваш своя книга — EPUB, PDF, Word или снимки на страниците — и Глаголи ти я чете на глас, на езика, на който е написана: български или английски.</p>

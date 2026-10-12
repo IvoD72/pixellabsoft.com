@@ -116,6 +116,8 @@ h2 { font-size: clamp(28px, 3.4vw, 44px); }
 .tile { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 15px; background: var(--c); color: #fff; flex: none;
   box-shadow: 0 12px 28px -14px color-mix(in srgb, var(--c) 90%, transparent); }
 .tile svg { width: 26px; height: 26px; }
+.tile.img { background: none; overflow: hidden; box-shadow: 0 12px 26px -14px rgba(11,20,48,.45), 0 0 0 1px rgba(11,20,48,.06); }
+.tile.img img { width: 100%; height: 100%; display: block; }
 .tile.big { width: 88px; height: 88px; border-radius: 24px; }
 .tile.big svg { width: 44px; height: 44px; }
 .pill { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); padding: 5px 11px; border-radius: 999px; background: rgba(255,255,255,.9); border: 1px solid var(--line-2); white-space: nowrap; }
@@ -234,13 +236,13 @@ footer .fine { margin-top: 36px; padding-top: 18px; border-top: 1px solid var(--
 <main class="wrap">
 <section class="app-hero">
   <div>
-    <span class="tile big" style="--c:#f0432f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10v4M8 7v10M12 4v16M16 8v8M20 11v2"/></svg></span>
+    <span class="tile img big"><img src="/assets/icon-konspekt.png" alt="" width="128" height="128"></span>
     <div class="name"><span>Konspekt</span><span class="pill">In testing</span></div>
     <h1>The meeting minutes, without taking notes.</h1>
     <div class="chips"><span class="chip">Records with the screen locked</span><span class="chip">Who said what</span><span class="chip">A quote behind every task</span><span class="chip">Bulgarian and English</span></div>
     
   </div>
-  <div class="visual" style="--c:#f0432f"><div class="mockwrap" style="--c:#f0432f"><div class="device phone"><div class="screen" style="aspect-ratio:520 / 1127"><img src="/assets/konspekt-en.webp" alt="Konspekt screen: a meeting summary, the decisions taken and a “Send minutes” button." width="520" height="1127" loading="lazy" decoding="async"></div></div></div></div>
+  <div class="visual" style="--c:#f0432f"><div class="mockwrap" style="--c:#f0432f"><div class="device phone"><div class="screen" style="aspect-ratio:520 / 1125"><img src="/assets/konspekt-en.webp" alt="Konspekt screen: a meeting summary, the decisions taken and a “Send minutes” button." width="520" height="1125" loading="lazy" decoding="async"></div></div></div></div>
 </section>
 <section class="section read prose">
 <p>Konspekt records your business meeting on your phone, turns it into text in Bulgarian and English, separates who said what, and after the meeting prepares a summary, the decisions taken and the tasks — each with a verbatim quote so you can check.</p>

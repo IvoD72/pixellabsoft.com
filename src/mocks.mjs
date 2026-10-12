@@ -4,27 +4,30 @@
  * екрани няма: Иво, 12.10.2026 — „това не е екранът“. Приложение без снимка
  * (Calvio) показва иконата си, не измислен екран.
  *
+ * Всички снимки на телефон са с една пропорция (1284×2778) — `tools/assets.py`
+ * доудължава по-ниските отдолу, вместо рамката да се сплесква.
+ *
  * Телефон (`phone`) или прозорец за Windows (`window`). Цветът идва от `--c`
  * на приложението.
  */
 
 const SHOTS = {
   konspekt: {
-    kind: 'phone', w: 520, h: 1127,
+    kind: 'phone', w: 520, h: 1125,
     alt: {
       bg: 'Екран на Konspekt: резюмето на среща, взетите решения и бутон „Изпрати протокол“.',
       en: 'Konspekt screen: a meeting summary, the decisions taken and a “Send minutes” button.',
     },
   },
   glagoli: {
-    kind: 'phone', w: 520, h: { bg: 860, en: 1125 },
+    kind: 'phone', w: 520, h: 1125,
     alt: {
       bg: 'Екран на Глаголи: книгата се чете на глас, а отдолу е бутонът „Спри и попитай“.',
       en: 'Glagoli screen: the book is read aloud, with a “Pause and ask” button below.',
     },
   },
   sroko: {
-    kind: 'phone', w: 660, h: 1281,
+    kind: 'phone', w: 520, h: 1125,
     alt: {
       bg: 'Екран на Сроко: два автомобила с оставащите дни до винетката, ГТП, гражданската и книжката.',
       en: 'Sroko screen: two vehicles with the days left on the vignette, roadworthiness test, insurance and licence.',
