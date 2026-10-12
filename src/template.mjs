@@ -163,6 +163,21 @@ h2 { font-size: clamp(28px, 3.4vw, 44px); }
 
 /* ---- правни текстове ---- */
 .doc-head { padding: clamp(40px, 6vw, 80px) 0 8px; }
+/* Назад и нагоре (Иво, 12.10.2026: „няма как да се върнеш една стъпка“). */
+.back { display: inline-flex; align-items: center; gap: 8px; margin: 22px 0 -6px; padding: 8px 16px 8px 10px; border-radius: 999px; background: #fff; border: 1px solid var(--line-2); color: var(--muted); font-size: 14.5px; font-weight: 600; box-shadow: 0 6px 18px -12px rgba(13,25,70,.35); transition: color .15s, transform .15s, border-color .15s; }
+.back svg { width: 18px; height: 18px; transition: transform .15s; }
+.back:hover { color: var(--fg); border-color: var(--fg); }
+.back:hover svg { transform: translateX(-3px); }
+.totop { position: fixed; right: max(16px, env(safe-area-inset-right)); bottom: max(18px, env(safe-area-inset-bottom)); z-index: 20; width: 52px; height: 52px; border-radius: 50%; border: 0; cursor: pointer; display: grid; place-items: center;
+  color: #fff; background: var(--grad); box-shadow: 0 16px 34px -14px rgba(33,82,255,.75), 0 0 0 4px rgba(255,255,255,.7);
+  opacity: 0; transform: translateY(16px) scale(.9); pointer-events: none; transition: opacity .25s, transform .25s; }
+.totop.on { opacity: 1; transform: none; pointer-events: auto; }
+.totop:hover { transform: translateY(-3px); }
+.totop svg { width: 22px; height: 22px; }
+.totop .ring { position: absolute; inset: -4px; width: 60px; height: 60px; transform: rotate(-90deg); pointer-events: none; }
+.totop .ring circle { fill: none; stroke: #0b1430; stroke-width: 3; stroke-linecap: round; stroke-dasharray: 176; stroke-dashoffset: 176; opacity: .55; }
+@media (prefers-reduced-motion: reduce) { .totop, .back, .back svg { transition: none; } }
+@media (max-width: 640px) { footer .fine { padding-right: 64px; } }
 .crumbs { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 14px; margin-bottom: 22px; }
 .crumbs .tile { width: 32px; height: 32px; border-radius: 10px; } .crumbs .tile svg { width: 17px; height: 17px; }
 .crumbs a { color: var(--fg); font-weight: 600; }
@@ -367,6 +382,19 @@ function storeButtons(lang, app) {
   ].filter(Boolean).join('\n');
 }
 
+/**
+ * Една стъпка назад, горе на всяка вътрешна страница: от приложение и
+ * поддръжка — към всички приложения; от условия/поверителност — към приложението.
+ */
+const ARROW_BACK = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>`;
+function backLink(lang, path) {
+  const t = STRINGS[lang];
+  const parts = (path || '').split('/').filter(Boolean);
+  if (!parts.length) return '';
+  const [to, label] = parts.length === 1 ? [href(lang) + '#apps', t.allApps] : [href(lang, parts[0] + '/'), t.back];
+  return `<a class="back" href="${to}">${ARROW_BACK}${esc(label)}</a>\n`;
+}
+
 export function page({ lang, title, description, path, body, alt, color, glow, after = '', image = '', jsonld = null }) {
   const t = STRINGS[lang];
   const co = COMPANY[lang];
@@ -412,7 +440,7 @@ ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld).replace(
   </nav>
 </div></div>
 <main class="wrap${glow ? ' glow' : ''}">
-${body}
+${backLink(lang, path)}${body}
 </main>
 ${after}<footer><div class="wrap">
   <div class="cols">
@@ -436,6 +464,34 @@ ${after}<footer><div class="wrap">
   </div>
   <div class="fine">© ${new Date().getFullYear()} ${esc(co.name)}. ${esc(t.footerRights)}</div>
 </div></footer>
+<button class="totop" type="button" aria-label="${esc(t.toTop)}" title="${esc(t.toTop)}"><svg class="ring" viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="28"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+<script>
+(() => {
+  // Назад: ако идваш от нашия сайт — истинска стъпка назад (пази и докъде си бил);
+  // иначе — обикновената връзка.
+  const b = document.querySelector('.back');
+  if (b) b.addEventListener('click', e => {
+    try {
+      if (document.referrer && new URL(document.referrer).origin === location.origin && history.length > 1) {
+        e.preventDefault(); history.back();
+      }
+    } catch (err) { console.warn('back', err); }
+  });
+  // Нагоре: появява се след първия екран; пръстенът показва докъде си стигнал.
+  const t = document.querySelector('.totop'), c = t && t.querySelector('circle');
+  if (!t) return;
+  const smooth = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const upd = () => {
+    const max = document.documentElement.scrollHeight - innerHeight;
+    t.classList.toggle('on', scrollY > innerHeight * 0.8);
+    if (c && max > 0) c.style.strokeDashoffset = 176 * (1 - Math.min(1, scrollY / max));
+  };
+  addEventListener('scroll', upd, { passive: true });
+  addEventListener('resize', upd);
+  upd();
+  t.addEventListener('click', () => scrollTo({ top: 0, behavior: smooth ? 'smooth' : 'auto' }));
+})();
+</script>
 </body>
 </html>
 `;

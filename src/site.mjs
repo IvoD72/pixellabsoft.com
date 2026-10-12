@@ -28,6 +28,9 @@ export const STRINGS = {
     deletion: 'Изтриване на акаунт',
     terms: 'Условия за ползване',
     home: 'Начало',
+    allApps: 'Всички приложения',
+    back: 'Назад',
+    toTop: 'Към началото на страницата',
     otherLang: 'English',
     updated: 'Последна промяна',
     supportLead:
@@ -84,6 +87,9 @@ export const STRINGS = {
     deletion: 'Deleting your account',
     terms: 'Terms of Use',
     home: 'Home',
+    allApps: 'All apps',
+    back: 'Back',
+    toTop: 'Back to the top of the page',
     otherLang: 'Български',
     updated: 'Last updated',
     supportLead:
