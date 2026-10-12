@@ -328,6 +328,9 @@ footer .fine { margin-top: 36px; padding-top: 18px; border-top: 1px solid rgba(2
 
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
+/** Името на приложението на езика на страницата (Сроко → Sroko на английски). */
+export const imeto = (app, lang) => (lang === 'en' && app.nameEn) || app.name;
+
 /** Пътищата: BG е в корена, EN под /en/. */
 export const href = (lang, path = '') => (lang === 'bg' ? '/' : '/en/') + path;
 
@@ -364,7 +367,7 @@ function storeButtons(lang, app) {
   ].filter(Boolean).join('\n');
 }
 
-export function page({ lang, title, description, path, body, alt, color, glow, after = '' }) {
+export function page({ lang, title, description, path, body, alt, color, glow, after = '', image = '', jsonld = null }) {
   const t = STRINGS[lang];
   const co = COMPANY[lang];
   const other = lang === 'bg' ? 'en' : 'bg';
@@ -385,14 +388,19 @@ export function page({ lang, title, description, path, body, alt, color, glow, a
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${canonical}">
 <meta property="og:site_name" content="${esc(t.siteName)}">
-<meta property="og:image" content="https://${DOMAIN}/assets/favicon-512.png">
+<meta property="og:image" content="https://${DOMAIN}${image || `/assets/og/home-${lang}.png`}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="${lang === 'bg' ? 'bg_BG' : 'en_US'}">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/assets/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="/assets/favicon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="${FONTS}">
 <style>${CSS}${MOCK_CSS}</style>
-</head>
+${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld).replace(/</g, '\\u003c')}</script>\n` : ''}</head>
 <body>
 <div class="top"><div class="wrap">
   <a class="brand" href="${href(lang)}" aria-label="${esc(t.siteName)}">${BRAND}</a>
@@ -414,7 +422,7 @@ ${after}<footer><div class="wrap">
     </div>
     <div>
       <b>${esc(t.apps)}</b>
-      ${APPS.filter(a => !a.draft).map(a => `<a href="${href(lang, a.slug + '/')}">${esc(a.name)}</a>`).join('\n      ')}
+      ${APPS.filter(a => !a.draft).map(a => `<a href="${href(lang, a.slug + '/')}">${esc(imeto(a, lang))}</a>`).join('\n      ')}
     </div>
     <div>
       <b>${esc(t.support)}</b>
@@ -440,7 +448,7 @@ export function legalBody({ lang, app, kind, doc }) {
   const toc = doc.sections.map(([h], i) => `<li><a href="#${id(i)}">${esc(h)}</a></li>`).join('\n');
   const sections = doc.sections.map(([h, p], i) => `<h2 id="${id(i)}"><small>${String(i + 1).padStart(2, '0')}</small>${esc(h)}</h2>\n<p>${esc(p)}</p>`).join('\n');
   return `<div class="doc-head read">
-  <div class="crumbs">${tile(app)}<a href="${href(lang, app.slug + '/')}">${esc(app.name)}</a><span class="dot"></span><span>${esc(t.updated)}: ${esc(doc.updated)}</span></div>
+  <div class="crumbs">${tile(app)}<a href="${href(lang, app.slug + '/')}">${esc(imeto(app, lang))}</a><span class="dot"></span><span>${esc(t.updated)}: ${esc(doc.updated)}</span></div>
   <h1>${esc(title)}</h1>
   <p class="lead">${esc(doc.intro)}</p>
 </div>
@@ -496,7 +504,7 @@ export function appBody({ lang, app }) {
   return `<section class="app-hero">
   <div>
     ${m ? tile(app, 'big') : ''}
-    <div class="name"><span>${esc(app.name)}</span>${pill(lang, app)}</div>
+    <div class="name"><span>${esc(imeto(app, lang))}</span>${pill(lang, app)}</div>
     <h1>${esc(app.tagline[lang])}</h1>
     ${app.features ? `<div class="chips">${app.features[lang].map(f => `<span class="chip">${esc(f)}</span>`).join('')}</div>` : ''}
     ${stores ? `<div class="stores">${stores}</div>` : ''}
@@ -535,7 +543,7 @@ export function homeBody({ lang, apps }) {
 
   const card = a => `<a class="bcard" href="${href(lang, a.slug + '/')}" style="--c:${a.color}">
   <div class="row">${tile(a)}${pill(lang, a, true)}</div>
-  <b>${esc(a.name)}</b>
+  <b>${esc(imeto(a, lang))}</b>
   <p>${esc(a.short?.[lang] ?? a.tagline[lang])}</p>
   <span class="peek">${mock(a, lang)}</span>
   <span class="go">${esc(t.more)}${ARROW}</span>
@@ -544,7 +552,7 @@ export function homeBody({ lang, apps }) {
   const f = by(FEATURED);
   const featured = f ? `<section class="feat" id="${f.slug}" style="--c:${f.color}">
   <div class="txt">
-    <div class="head"><span class="num">01</span>${tile(f)}<b>${esc(f.name)}</b>${pill(lang, f)}</div>
+    <div class="head"><span class="num">01</span>${tile(f)}<b>${esc(imeto(f, lang))}</b>${pill(lang, f)}</div>
     <h2>${esc(f.tagline[lang])}</h2>
     <p>${esc(f.description[lang][0])}</p>
     <ul class="checks">${(f.features?.[lang] ?? []).map(x => `<li>${CHECK}${esc(x)}</li>`).join('')}</ul>
@@ -555,7 +563,7 @@ export function homeBody({ lang, apps }) {
 
   const medium = MEDIUM.map(by).filter(Boolean).map((a, i) => `<section class="mid" id="${a.slug}" style="--c:${a.color}">
   <div class="txt">
-    <div class="head"><span class="num">0${i + 2}</span>${tile(a)}<b>${esc(a.name)}</b>${pill(lang, a)}</div>
+    <div class="head"><span class="num">0${i + 2}</span>${tile(a)}<b>${esc(imeto(a, lang))}</b>${pill(lang, a)}</div>
     <h3>${esc(a.tagline[lang])}</h3>
     <p>${esc(a.short?.[lang] ?? '')}</p>
     <div class="actions">${storeButtons(lang, a)}<a class="more" href="${href(lang, a.slug + '/')}">${esc(t.more)}${ARROW}</a></div>
@@ -565,7 +573,7 @@ export function homeBody({ lang, apps }) {
 
   const also = apps.filter(a => a.slug !== FEATURED && !MEDIUM.includes(a.slug)).map(a => `<a class="small" id="${a.slug}" href="${href(lang, a.slug + '/')}" style="--c:${a.color}">
   <div>
-    <div class="head">${tile(a)}<b>${esc(a.name)}</b>${pill(lang, a)}</div>
+    <div class="head">${tile(a)}<b>${esc(imeto(a, lang))}</b>${pill(lang, a)}</div>
     <h3>${esc(a.tagline[lang])}</h3>
     <p>${esc(a.short?.[lang] ?? '')}</p>
     <span class="go">${esc(t.more)}${ARROW}</span>
@@ -615,7 +623,7 @@ export function supportBody({ lang, apps }) {
   const t = STRINGS[lang];
   const items = apps.map(app => {
     const legal = legalLinks(lang, app).slice(0, -1); // без „Поддръжка" — това е самата страница
-    return `<li>${tile(app)}<a class="n" href="${href(lang, app.slug + '/')}">${esc(app.name)}</a><span class="l">${legal.join('\n')}</span></li>`;
+    return `<li>${tile(app)}<a class="n" href="${href(lang, app.slug + '/')}">${esc(imeto(app, lang))}</a><span class="l">${legal.join('\n')}</span></li>`;
   }).join('\n');
   return `<div class="doc-head read">
   <h1>${esc(t.supportTitle)}</h1>

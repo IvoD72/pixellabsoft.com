@@ -20,6 +20,7 @@ export default {
   iconImg: '/assets/icon-sroko.png',
   icon: '<g transform="translate(12 12) scale(1.22) translate(-12 -12)"><g fill="#fff" stroke="#fff" stroke-width=".7" stroke-linejoin="round"><path d="M8.8 4.6h2.05L10.5 9.2H7.2zM13.15 4.6h2.05L16.8 9.2H13.5z"/><path d="M3.6 10.3h16.8v1.1H3.6zM4.7 11.4h1.4l-.4 1.3H4.3zM17.9 11.4h1.4l.3 1.3h-1.4z"/><path d="M6.8 12.6h3.2l-.3 8H4.6zM14 12.6h3.2l2.2 8h-5.1z"/></g><circle cx="18.2" cy="6" r="3.4" fill="#2ED47A" stroke="none"/><path d="m16.5 6.15 1.15 1.25 2.3-2.5" stroke="#fff" stroke-width="1.05" fill="none"/></g>',
   name: 'Сроко',
+  nameEn: 'Sroko', // на английските страници
   status: 'store', // 'testing' | 'store' | 'soon'
   appStore: 'https://apps.apple.com/app/sroko/id6810996777',
   playStore: 'https://play.google.com/store/apps/details?id=com.vinetka.pazach',

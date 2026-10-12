@@ -1,8 +1,8 @@
 import { cp, mkdir, rm, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { APPS } from './src/apps/index.mjs';
-import { DOMAIN, LANGS, STRINGS } from './src/site.mjs';
-import { LEGAL_PATH, aboutBand, appBody, homeBody, legalBody, page, supportBody } from './src/template.mjs';
+import { COMPANY, DOMAIN, LANGS, STRINGS, SUPPORT_EMAIL } from './src/site.mjs';
+import { LEGAL_PATH, imeto, aboutBand, appBody, homeBody, legalBody, page, supportBody } from './src/template.mjs';
 
 /**
  * Генерира сайта в docs/ (GitHub Pages сервира тази папка).
@@ -14,6 +14,28 @@ import { LEGAL_PATH, aboutBand, appBody, homeBody, legalBody, page, supportBody 
  */
 
 const OUT = 'docs';
+
+// ---- за търсачките: кой сме и какви са приложенията (JSON-LD, schema.org) ----
+const ORG = lang => ({
+  '@type': 'Organization', name: COMPANY[lang].name, alternateName: 'Pixel Lab Soft',
+  url: `https://${DOMAIN}/`, logo: `https://${DOMAIN}/assets/favicon-512.png`, email: SUPPORT_EMAIL,
+  sameAs: ['https://sortis.pro', 'https://glagoli.app'],
+});
+const KATEGORIA = { sroko: 'UtilitiesApplication', glagoli: 'BookApplication', sortis: 'BusinessApplication',
+  konspekt: 'BusinessApplication', calvio: 'BusinessApplication' };
+const appLd = (app, lang) => {
+  const os = app.external?.download ? ['Windows'] : [app.appStore && 'iOS', app.playStore && 'Android'].filter(Boolean);
+  const ld = {
+    '@context': 'https://schema.org', '@type': app.external?.download ? 'SoftwareApplication' : 'MobileApplication',
+    name: imeto(app, lang), description: app.description[lang][0], url: `https://${DOMAIN}${lang === 'bg' ? '/' : '/en/'}${app.slug}/`,
+    applicationCategory: KATEGORIA[app.slug] ?? 'UtilitiesApplication', publisher: ORG(lang),
+    image: `https://${DOMAIN}/assets/og/${app.slug}-${lang}.png`,
+  };
+  if (os.length) ld.operatingSystem = os.join(', ');
+  const dl = [app.appStore, app.playStore, app.external?.download].filter(Boolean);
+  if (dl.length) ld.downloadUrl = dl.length === 1 ? dl[0] : dl;
+  return ld;
+};
 const apps = APPS.filter(a => !a.draft);
 
 async function emit(lang, path, html) {
@@ -28,6 +50,10 @@ await writeFile(join(OUT, 'CNAME'), DOMAIN + '\n');
 await writeFile(join(OUT, '.nojekyll'), '');
 // Снимки на приложенията (истински екрани) — влизат в сайта както са.
 await cp(join('src', 'assets'), join(OUT, 'assets'), { recursive: true });
+// IndexNow (Bing, Yandex…): ключът е публичен по замисъл — файлът доказва, че сайтът е наш.
+// Пинг след качване: python tools/indexnow.py
+export const INDEXNOW_KEY = 'ce9627f068b626b12c972aaa0735b430';
+await writeFile(join(OUT, `${INDEXNOW_KEY}.txt`), INDEXNOW_KEY);
 await writeFile(join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: https://${DOMAIN}/sitemap.xml\n`);
 
 const urls = [];
@@ -35,15 +61,17 @@ for (const lang of LANGS) {
   const t = STRINGS[lang];
   const add = p => urls.push(`https://${DOMAIN}${lang === 'bg' ? '/' : '/en/'}${p}`);
 
-  await emit(lang, '', page({ lang, path: '', title: `${t.siteName} — ${t.tagline}`, description: t.homeLead, body: homeBody({ lang, apps }), after: aboutBand(lang) }));
+  await emit(lang, '', page({ lang, path: '', title: `${t.siteName} — ${t.tagline}`, description: t.homeLead, body: homeBody({ lang, apps }), after: aboutBand(lang),
+    jsonld: { '@context': 'https://schema.org', '@graph': [ORG(lang), { '@type': 'WebSite', name: t.siteName, url: `https://${DOMAIN}${lang === 'bg' ? '/' : '/en/'}`, inLanguage: lang }] } }));
   add('');
   await emit(lang, 'support', page({ lang, path: 'support/', title: `${t.support} — ${t.siteName}`, description: t.supportLead, body: supportBody({ lang, apps }) }));
   add('support/');
 
   for (const app of apps) {
     await emit(lang, app.slug, page({
-      lang, path: `${app.slug}/`, title: `${app.name} — ${app.tagline[lang]}`,
+      lang, path: `${app.slug}/`, title: `${imeto(app, lang)} — ${app.tagline[lang]}`,
       description: app.description[lang][0], body: appBody({ lang, app }), color: app.color,
+      image: `/assets/og/${app.slug}-${lang}.png`, jsonld: appLd(app, lang),
     }));
     add(`${app.slug}/`);
     if (!app.legal) continue;
@@ -53,8 +81,8 @@ for (const lang of LANGS) {
       const label = kind === 'privacy' ? t.privacy : kind === 'deletion' ? t.deletion : t.terms;
       const path = `${app.slug}/${LEGAL_PATH[kind]}`;
       await emit(lang, path, page({
-        lang, path: `${path}/`, title: `${label} — ${app.name}`, description: doc.intro,
-        body: legalBody({ lang, app, kind, doc }), color: app.color,
+        lang, path: `${path}/`, title: `${label} — ${imeto(app, lang)}`, description: doc.intro,
+        body: legalBody({ lang, app, kind, doc }), color: app.color, image: `/assets/og/${app.slug}-${lang}.png`,
       }));
       add(`${path}/`);
     }
