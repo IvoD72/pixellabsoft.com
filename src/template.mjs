@@ -18,11 +18,11 @@ import { APPS } from './apps/index.mjs';
  * Fonts; без мрежа пада към системния.
  */
 
-export const FONTS = 'https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap';
+export const FONTS = 'https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=Caveat:wght@500&display=swap';
 
 export const CSS = `
 :root {
-  --bg: #ffffff; --bg-2: #f4f7fc; --fg: #0b1430; --muted: #556079; --faint: #8a93a8;
+  --bg: #faf9f6; --bg-2: #f2f1ec; --fg: #0b1430; --muted: #556079; --faint: #8a93a8;
   --line: rgba(11,20,48,.08); --line-2: rgba(11,20,48,.15); --card: #f6f8fc;
   --blue: #2152ff; --cyan: #18c3f0; --accent: var(--blue); --c: var(--accent);
   --grad: linear-gradient(115deg, #3a3dff 0%, #2163ff 35%, #1a9bff 70%, #18c8f0 100%);
@@ -44,7 +44,7 @@ h2 { font-size: clamp(28px, 3.4vw, 44px); }
 .grad { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
 /* ---- горе ---- */
-.top { position: sticky; top: 0; z-index: 10; backdrop-filter: saturate(160%) blur(16px); -webkit-backdrop-filter: saturate(160%) blur(16px); background: rgba(255,255,255,.78); border-bottom: 1px solid var(--line); }
+.top { position: sticky; top: 0; z-index: 10; backdrop-filter: saturate(160%) blur(16px); -webkit-backdrop-filter: saturate(160%) blur(16px); background: rgba(250,249,246,.82); border-bottom: 1px solid var(--line); }
 .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 68px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; font-size: 19px; letter-spacing: -.03em; white-space: nowrap; }
 .brand img { width: 34px; height: 34px; }
@@ -200,15 +200,130 @@ h2 { font-size: clamp(28px, 3.4vw, 44px); }
 .list .l a:hover { color: var(--fg); }
 
 /* ---- долу ---- */
-footer { border-top: 1px solid var(--line); padding: 52px 0 44px; color: var(--muted); font-size: 14.5px; line-height: 1.7; background: var(--bg-2); }
+footer { padding: 52px 0 44px; color: #9aa3bf; font-size: 14.5px; line-height: 1.7; background: #070b17; }
 footer .cols { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px; }
 @media (max-width: 860px) { footer .cols { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 520px) { footer .cols { grid-template-columns: 1fr; } }
 footer .logo { width: 150px; height: auto; margin-bottom: 10px; }
-footer b { display: block; color: var(--fg); font-size: 13px; font-weight: 700; margin-bottom: 10px; }
+footer b { display: block; color: #fff; font-size: 13px; font-weight: 700; margin-bottom: 10px; }
 footer a { display: block; }
-footer a:hover { color: var(--fg); }
-footer .fine { margin-top: 36px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--faint); font-size: 13px; }
+footer a:hover { color: #fff; }
+footer .fine { margin-top: 36px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.08); color: #6b7390; font-size: 13px; }
+
+/* ==== началото, 12.10.2026: решетка, водещо, ръкописни бележки, тъмна лента ==== */
+.kicker { font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 18px; }
+.btn.dark { background: #0b1430; color: #fff; border-color: #0b1430; }
+.btn.dark:hover { box-shadow: 0 16px 30px -16px rgba(11,20,48,.7); }
+.top .cta { background: #0b1430; color: #fff !important; padding: 8px 16px !important; margin-left: 8px; }
+.top .cta:hover { background: #1b2550 !important; }
+@media (max-width: 760px) { .top .cta { display: none; } }
+
+.hero2 { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: 24px; align-items: center; padding: clamp(36px, 5vw, 72px) 0 clamp(24px, 3vw, 40px); }
+@media (max-width: 920px) { .hero2 { grid-template-columns: 1fr; } }
+.hero2 h1 { font-size: clamp(40px, 5.4vw, 70px); line-height: 1.02; letter-spacing: -.04em; }
+.hero2 .lead { font-size: clamp(17px, 1.5vw, 20px); color: var(--muted); max-width: 44ch; margin: 24px 0 0; }
+.compo2 { position: relative; height: 560px; }
+.compo2 .mockwrap { position: absolute; top: 50%; left: 50%; }
+.compo2 .device.phone { width: 230px; }
+.compo2 .c1 { transform: translate(-128%, -46%) rotate(-7deg) scale(.88); z-index: 1; }
+.compo2 .c2 { transform: translate(-50%, -54%); z-index: 3; }
+.compo2 .c3 { transform: translate(28%, -46%) rotate(7deg) scale(.88); z-index: 2; }
+.note { position: absolute; z-index: 4; font-family: "Caveat", cursive; font-size: 25px; line-height: 1; color: #2b3550; white-space: nowrap; pointer-events: none; }
+.note .sq { position: absolute; width: 46px; height: 32px; color: #8a93a8; }
+.compo2 .n1 { left: -2%; bottom: 3%; } .compo2 .n1 .sq { left: 70px; top: -34px; transform: scaleY(-1) rotate(10deg); }
+.compo2 .n2 { left: 40%; top: -2%; } .compo2 .n2 .sq { left: -42px; top: 6px; transform: scaleX(-1) rotate(-30deg); }
+.compo2 .n3 { right: 0; bottom: 2%; } .compo2 .n3 .sq { left: -40px; top: -30px; transform: scale(-1, -1); }
+@media (max-width: 920px) { .compo2 { height: 500px; } .hero2 { overflow-x: clip; } }
+@media (max-width: 560px) { .compo2 { height: 420px; } .compo2 .device.phone { width: 180px; } .note { font-size: 20px; } .compo2 .n2 { display: none; } }
+
+.grid-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; padding: clamp(40px, 5vw, 64px) 0 22px; }
+.grid-head h2 { font-size: clamp(28px, 3.2vw, 42px); }
+.grid-head p { color: var(--muted); margin: 10px 0 0; max-width: 60ch; }
+
+.bento { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; }
+@media (max-width: 1080px) { .bento { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 720px) { .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 460px) { .bento { grid-template-columns: 1fr; } }
+.bcard { position: relative; display: flex; flex-direction: column; gap: 8px; padding: 18px 18px 16px; height: 400px; border-radius: 24px; overflow: hidden;
+  background: linear-gradient(170deg, color-mix(in srgb, var(--c) 12%, #fff), color-mix(in srgb, var(--c) 4%, #fff) 55%); border: 1px solid color-mix(in srgb, var(--c) 16%, transparent);
+  transition: transform .2s ease, box-shadow .2s ease; }
+.bcard:hover { transform: translateY(-4px); box-shadow: 0 26px 50px -30px color-mix(in srgb, var(--c) 70%, transparent); }
+.bcard .row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.bcard .tile { width: 40px; height: 40px; border-radius: 12px; }
+.bcard .pill { font-size: 10px; padding: 4px 8px; letter-spacing: .03em; }
+.bcard b { font-size: 19px; font-weight: 700; letter-spacing: -.02em; margin-top: 6px; }
+.bcard p { color: var(--muted); font-size: 14.5px; line-height: 1.45; margin: 0; }
+.bcard .peek { position: absolute; left: 50%; bottom: -150px; transform: translateX(-50%); transition: bottom .3s ease; }
+.bcard:hover .peek { bottom: -130px; }
+.bcard .peek .device.phone { width: 170px; padding: 6px; border-radius: 30px; }
+.bcard .peek .device.phone .screen { border-radius: 25px; }
+.bcard .peek .mockwrap:has(.window) { width: 340px; margin-bottom: 60px; transform: translateX(22%); }
+.bcard .peek .device.window { width: 340px; }
+.bcard .peek .tile.bigicon { width: 110px; height: 110px; border-radius: 30px; margin-bottom: 210px; }
+.bcard .go { position: absolute; left: 18px; bottom: 14px; z-index: 2; display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 999px; background: rgba(255,255,255,.92); font-size: 13.5px; font-weight: 600; box-shadow: 0 6px 18px -10px rgba(11,20,48,.4); }
+.bcard .go svg { width: 15px; height: 15px; color: var(--c); }
+
+.num { font-size: 14px; font-weight: 700; color: var(--faint); margin-right: 4px; }
+.feat { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 4vw, 56px); align-items: center; margin: clamp(48px, 6vw, 80px) 0 18px; padding: clamp(28px, 4vw, 56px);
+  border-radius: 36px; background: radial-gradient(70% 90% at 85% 50%, color-mix(in srgb, var(--c) 22%, #fff), #fff 70%); border: 1px solid var(--line); position: relative; }
+@media (max-width: 860px) { .feat { grid-template-columns: 1fr; } }
+.feat .head, .mid .head, .small .head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+.feat .head b, .mid .head b, .small .head b { font-size: 18px; font-weight: 700; }
+.feat h2 { font-size: clamp(28px, 3.4vw, 46px); max-width: 15ch; margin-bottom: 16px; }
+.feat p { color: var(--muted); max-width: 52ch; }
+.checks { list-style: none; padding: 0; margin: 4px 0 26px; display: grid; gap: 10px; }
+.checks li { display: flex; align-items: center; gap: 10px; font-weight: 500; }
+.checks svg { width: 20px; height: 20px; color: var(--c); flex: none; }
+.feat .visual { position: relative; display: flex; justify-content: center; }
+.feat .nf { right: 0; top: -34px; } .feat .nf .sq { left: -46px; top: 18px; transform: scaleX(-1) rotate(-10deg); }
+
+.mids { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+@media (max-width: 960px) { .mids { grid-template-columns: 1fr; } }
+.mid { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 20px; align-items: end; padding: 30px 30px 0; border-radius: 32px; overflow: hidden;
+  background: linear-gradient(160deg, color-mix(in srgb, var(--c) 13%, #fff), color-mix(in srgb, var(--c) 4%, #fff)); border: 1px solid color-mix(in srgb, var(--c) 16%, transparent); }
+.mid .txt { padding-bottom: 30px; align-self: center; }
+.mid h3 { font-size: clamp(22px, 2.2vw, 28px); letter-spacing: -.03em; line-height: 1.12; margin-bottom: 12px; }
+.mid p { color: var(--muted); font-size: 16px; }
+.mid .actions { gap: 10px; }
+.mid .store-btn { min-width: 0; padding: 8px 14px 8px 12px; }
+.mid .visual { height: 340px; overflow: hidden; align-self: end; }
+.mid .device.phone { width: 200px; }
+.mid:has(.window) { grid-template-columns: 1fr; }
+.mid:has(.window) .txt { padding-bottom: 6px; }
+.mid:has(.window) .visual { height: 230px; }
+.mid .mockwrap:has(.window) { width: 100%; }
+.mid .device.window { width: 100%; }
+@media (max-width: 1100px) { .mid { grid-template-columns: 1fr; } .mid .visual { justify-self: center; } }
+
+.also-head { padding: clamp(48px, 6vw, 80px) 0 20px; }
+.also-head h2 { font-size: clamp(26px, 3vw, 38px); }
+.also-head p { color: var(--muted); margin: 8px 0 0; }
+.alsos { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; padding-bottom: clamp(56px, 7vw, 96px); }
+@media (max-width: 860px) { .alsos { grid-template-columns: 1fr; } }
+.small { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 18px; align-items: center; padding: 26px 26px 0; height: 270px; overflow: hidden; border-radius: 28px;
+  background: linear-gradient(160deg, color-mix(in srgb, var(--c) 11%, #fff), #fff); border: 1px solid color-mix(in srgb, var(--c) 14%, transparent); transition: transform .2s ease; }
+.small:hover { transform: translateY(-3px); }
+.small > div { align-self: center; padding-bottom: 26px; }
+.small h3 { font-size: 21px; letter-spacing: -.02em; margin-bottom: 8px; }
+.small p { color: var(--muted); font-size: 15px; margin: 0 0 12px; }
+.small .go { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; font-size: 14px; }
+.small .go svg { width: 15px; height: 15px; color: var(--c); }
+.small .peek { align-self: start; padding-top: 10px; }
+.small .device.phone { width: 160px; }
+.small .tile.bigicon { width: 120px; height: 120px; border-radius: 32px; }
+
+.about { background: #0b1020; color: #e8ecf6; padding: clamp(48px, 6vw, 80px) 0; }
+.about .wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px 56px; align-items: start; }
+.about .a3 { grid-column: 1 / -1; margin-top: 18px; }
+@media (max-width: 960px) { .about .wrap { grid-template-columns: 1fr; } }
+.about .kicker { color: #8a93b8; }
+.about h2 { font-size: clamp(26px, 2.8vw, 36px); color: #fff; }
+.about .a2 { color: #b9c1d8; font-size: 16.5px; }
+.about .a3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,.08); }
+@media (max-width: 560px) { .about .a3 { grid-template-columns: 1fr; } }
+.about .a3 i { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; border: 1px solid rgba(255,255,255,.18); font-style: normal; color: #6fd3ff; font-size: 13px; margin-bottom: 12px; }
+.about .a3 b { display: block; color: #fff; font-size: 15px; margin-bottom: 6px; }
+.about .a3 p { color: #9aa3bf; font-size: 13.5px; line-height: 1.5; margin: 0; }
 `;
 
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -231,9 +346,9 @@ export function tile(app, cls = '') {
   return `<span class="tile ${cls}" style="--c:${app.color ?? 'var(--accent)'}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${app.icon ?? FALLBACK_ICON}</svg></span>`;
 }
 
-function pill(lang, app) {
+function pill(lang, app, short = false) {
   const t = STRINGS[lang];
-  const label = { store: t.statusStore, windows: t.statusWindows, testing: t.statusTesting }[app.status] ?? t.statusSoon;
+  const label = { store: t.statusStore, windows: short ? 'Windows' : t.statusWindows, testing: t.statusTesting }[app.status] ?? t.statusSoon;
   const ok = app.status === 'store' || app.status === 'windows';
   return `<span class="pill${ok ? ' store' : ''}">${esc(label)}</span>`;
 }
@@ -249,7 +364,7 @@ function storeButtons(lang, app) {
   ].filter(Boolean).join('\n');
 }
 
-export function page({ lang, title, description, path, body, alt, color, glow }) {
+export function page({ lang, title, description, path, body, alt, color, glow, after = '' }) {
   const t = STRINGS[lang];
   const co = COMPANY[lang];
   const other = lang === 'bg' ? 'en' : 'bg';
@@ -285,15 +400,16 @@ export function page({ lang, title, description, path, body, alt, color, glow })
     <a class="apps-link" href="${href(lang)}#apps">${esc(t.apps)}</a>
     <a href="${href(lang, 'support/')}">${esc(t.support)}</a>
     <a class="lang" href="${href(other, alt ?? path)}" lang="${other}" hreflang="${other}">${esc(t.otherLang)}</a>
+    <a class="cta" href="${href(lang)}#apps">${esc(t.seeApps)}</a>
   </nav>
 </div></div>
 <main class="wrap${glow ? ' glow' : ''}">
 ${body}
 </main>
-<footer><div class="wrap">
+${after}<footer><div class="wrap">
   <div class="cols">
     <div>
-      <img class="logo" src="/assets/logo-light.webp" alt="Pixel Lab" width="150" height="131">
+      <img class="logo" src="/assets/logo-dark.webp" alt="Pixel Lab" width="150" height="131">
       <div>${esc(t.tagline)}</div>
     </div>
     <div>
@@ -395,45 +511,104 @@ ${app.description[lang].map(p => `<p>${esc(p)}</p>`).join('\n')}
 </section>`;
 }
 
+/** Ръкописна стрелка до бележката (SVG, без картинка). */
+const SQUIGGLE = `<svg class="sq" viewBox="0 0 60 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 6c14 2 30 10 38 26"/><path d="M34 30l8 3 1-9"/></svg>`;
+const CHECK = `<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="m7 12.5 3.2 3 6.8-7" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+/**
+ * Началото (12.10.2026, по картинката на Иво): заглавие с три телефона и
+ * ръкописни бележки → решетка с всички приложения → водещото на голямо →
+ * двете следващи → „още в лабораторията“ → тъмна лента „за нас“.
+ * Само истински екрани, икони и статуси.
+ */
+const FEATURED = 'sroko';
+const MEDIUM = ['glagoli', 'sortis'];
+
 export function homeBody({ lang, apps }) {
   const t = STRINGS[lang];
-  const compo = ['glagoli', 'konspekt', 'sroko']
-    .map((slug, i) => { const a = apps.find(x => x.slug === slug); return a ? mock(a, lang).replace('class="mockwrap"', `class="mockwrap c${i + 1}"`) : ''; })
-    .join('\n');
-  const strip = apps.map(a => `<a href="#${a.slug}">${tile(a)}${esc(a.name)}</a>`).join('\n');
-  const shows = apps.map((app, i) => {
-    const chips = app.features ? `<div class="chips">${app.features[lang].map(f => `<span class="chip">${esc(f)}</span>`).join('')}</div>` : '';
-    return `<section class="show${i % 2 ? ' flip' : ''}" id="${app.slug}" style="--c:${app.color ?? 'var(--accent)'}">
-  <div class="visual">${visual(app, lang)}</div>
-  <div>
-    <div class="head">${tile(app)}<b>${esc(app.name)}</b>${pill(lang, app)}</div>
-    <h2>${esc(app.tagline[lang])}</h2>
-    <p>${esc(app.description[lang][0])}</p>
-    ${chips}
-    <div class="actions">${storeButtons(lang, app)}<a class="more" href="${href(lang, app.slug + '/')}">${esc(t.more)}${ARROW}</a></div>
+  const by = slug => apps.find(a => a.slug === slug);
+  const note = (a, cls) => a.note ? `<span class="note ${cls}">${esc(a.note[lang])}${SQUIGGLE}</span>` : '';
+
+  const heroApps = ['konspekt', 'glagoli', 'sroko'].map(by).filter(Boolean);
+  const compo = heroApps.map((a, i) =>
+    mock(a, lang).replace('class="mockwrap"', `class="mockwrap c${i + 1}"`) + note(a, `n${i + 1}`)).join('\n');
+
+  const card = a => `<a class="bcard" href="${href(lang, a.slug + '/')}" style="--c:${a.color}">
+  <div class="row">${tile(a)}${pill(lang, a, true)}</div>
+  <b>${esc(a.name)}</b>
+  <p>${esc(a.short?.[lang] ?? a.tagline[lang])}</p>
+  <span class="peek">${mock(a, lang)}</span>
+  <span class="go">${esc(t.more)}${ARROW}</span>
+</a>`;
+
+  const f = by(FEATURED);
+  const featured = f ? `<section class="feat" id="${f.slug}" style="--c:${f.color}">
+  <div class="txt">
+    <div class="head"><span class="num">01</span>${tile(f)}<b>${esc(f.name)}</b>${pill(lang, f)}</div>
+    <h2>${esc(f.tagline[lang])}</h2>
+    <p>${esc(f.description[lang][0])}</p>
+    <ul class="checks">${(f.features?.[lang] ?? []).map(x => `<li>${CHECK}${esc(x)}</li>`).join('')}</ul>
+    <div class="actions">${storeButtons(lang, f)}<a class="more" href="${href(lang, f.slug + '/')}">${esc(t.more)}${ARROW}</a></div>
   </div>
-</section>`;
-  }).join('\n');
-  const principles = t.principles.map(([h, p], i) => `<div class="principle"><i>${i + 1}</i><b>${esc(h)}</b><p>${esc(p)}</p></div>`).join('\n');
-  return `<section class="hero">
+  <div class="visual">${mock(f, lang)}${note(f, 'nf')}</div>
+</section>` : '';
+
+  const medium = MEDIUM.map(by).filter(Boolean).map((a, i) => `<section class="mid" id="${a.slug}" style="--c:${a.color}">
+  <div class="txt">
+    <div class="head"><span class="num">0${i + 2}</span>${tile(a)}<b>${esc(a.name)}</b>${pill(lang, a)}</div>
+    <h3>${esc(a.tagline[lang])}</h3>
+    <p>${esc(a.short?.[lang] ?? '')}</p>
+    <div class="actions">${storeButtons(lang, a)}<a class="more" href="${href(lang, a.slug + '/')}">${esc(t.more)}${ARROW}</a></div>
+  </div>
+  <div class="visual">${mock(a, lang)}</div>
+</section>`).join('\n');
+
+  const also = apps.filter(a => a.slug !== FEATURED && !MEDIUM.includes(a.slug)).map(a => `<a class="small" id="${a.slug}" href="${href(lang, a.slug + '/')}" style="--c:${a.color}">
   <div>
-    <div class="eyebrow"><img src="/assets/logo-mark.png" alt="" width="22" height="22">${esc(t.eyebrow)}</div>
-    <h1>${t.heroHtml}</h1>
+    <div class="head">${tile(a)}<b>${esc(a.name)}</b>${pill(lang, a)}</div>
+    <h3>${esc(a.tagline[lang])}</h3>
+    <p>${esc(a.short?.[lang] ?? '')}</p>
+    <span class="go">${esc(t.more)}${ARROW}</span>
+  </div>
+  <span class="peek">${mock(a, lang) || tile(a, 'bigicon')}</span>
+</a>`).join('\n');
+
+  const principles = t.principles.map(([h, p], i) => `<div><i>${['◆', '●', '■'][i] ?? '•'}</i><b>${esc(h)}</b><p>${esc(p)}</p></div>`).join('\n');
+
+  return `<section class="hero2">
+  <div>
+    <div class="kicker">${esc(t.studio)}</div>
+    <h1>${t.heroLines.map((l, i) => `<span${i === 1 ? ' class="grad"' : ''}>${esc(l)}</span>`).join('<br>')}</h1>
     <p class="lead">${esc(t.homeLead)}</p>
-    <div class="ctas"><a class="btn primary" href="#apps">${esc(t.seeApps)}${ARROW}</a><a class="btn" href="${href(lang, 'support/')}">${esc(t.support)}</a></div>
+    <div class="ctas"><a class="btn dark" href="#apps">${esc(t.seeApps)}${ARROW}</a><a class="btn" href="${href(lang, 'support/')}">${esc(t.contact)}</a></div>
   </div>
-  <div class="compo" aria-hidden="true">
+  <div class="compo2" aria-hidden="true">
 ${compo}
   </div>
 </section>
-<nav class="strip" aria-label="${esc(t.apps)}">
-${strip}
-</nav>
-<div class="apps-head"><h2 id="apps">${esc(t.apps)}</h2><p>${esc(t.appsLead)}</p></div>
-${shows}
-<section class="principles">
-${principles}
-</section>`;
+<section class="grid-head" id="apps"><div><h2>${esc(t.gridTitle)}</h2><p>${esc(t.gridLead)}</p></div></section>
+<div class="bento">
+${apps.map(card).join('\n')}
+</div>
+${featured}
+<div class="mids">
+${medium}
+</div>
+<section class="also-head"><h2>${esc(t.alsoTitle)}</h2><p>${esc(t.alsoLead)}</p></section>
+<div class="alsos">
+${also}
+</div>`;
+}
+
+/** Тъмната лента „за нас“ — извън <main>, на цялата ширина, точно над долната част. */
+export function aboutBand(lang) {
+  const t = STRINGS[lang];
+  const principles = t.principles.map(([h, p], i) => `<div><i>${['◆', '●', '■'][i] ?? '•'}</i><b>${esc(h)}</b><p>${esc(p)}</p></div>`).join('\n');
+  return `<section class="about"><div class="wrap">
+  <div class="a1"><div class="kicker">${esc(t.aboutEyebrow)}</div><h2>${esc(t.aboutTitle)}</h2></div>
+  <p class="a2">${esc(t.aboutText)}</p>
+  <div class="a3">${principles}</div>
+</div></section>`;
 }
 
 export function supportBody({ lang, apps }) {

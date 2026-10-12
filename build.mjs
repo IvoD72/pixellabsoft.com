@@ -2,7 +2,7 @@ import { cp, mkdir, rm, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { APPS } from './src/apps/index.mjs';
 import { DOMAIN, LANGS, STRINGS } from './src/site.mjs';
-import { LEGAL_PATH, appBody, homeBody, legalBody, page, supportBody } from './src/template.mjs';
+import { LEGAL_PATH, aboutBand, appBody, homeBody, legalBody, page, supportBody } from './src/template.mjs';
 
 /**
  * Генерира сайта в docs/ (GitHub Pages сервира тази папка).
@@ -35,7 +35,7 @@ for (const lang of LANGS) {
   const t = STRINGS[lang];
   const add = p => urls.push(`https://${DOMAIN}${lang === 'bg' ? '/' : '/en/'}${p}`);
 
-  await emit(lang, '', page({ lang, path: '', title: `${t.siteName} — ${t.tagline}`, description: t.homeLead, body: homeBody({ lang, apps }), glow: true }));
+  await emit(lang, '', page({ lang, path: '', title: `${t.siteName} — ${t.tagline}`, description: t.homeLead, body: homeBody({ lang, apps }), after: aboutBand(lang) }));
   add('');
   await emit(lang, 'support', page({ lang, path: 'support/', title: `${t.support} — ${t.siteName}`, description: t.supportLead, body: supportBody({ lang, apps }) }));
   add('support/');

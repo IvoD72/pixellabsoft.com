@@ -18,10 +18,10 @@
 <link rel="apple-touch-icon" href="/assets/favicon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=Caveat:wght@500&display=swap">
 <style>
 :root {
-  --bg: #ffffff; --bg-2: #f4f7fc; --fg: #0b1430; --muted: #556079; --faint: #8a93a8;
+  --bg: #faf9f6; --bg-2: #f2f1ec; --fg: #0b1430; --muted: #556079; --faint: #8a93a8;
   --line: rgba(11,20,48,.08); --line-2: rgba(11,20,48,.15); --card: #f6f8fc;
   --blue: #2152ff; --cyan: #18c3f0; --accent: var(--blue); --c: var(--accent);
   --grad: linear-gradient(115deg, #3a3dff 0%, #2163ff 35%, #1a9bff 70%, #18c8f0 100%);
@@ -43,7 +43,7 @@ h2 { font-size: clamp(28px, 3.4vw, 44px); }
 .grad { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
 /* ---- горе ---- */
-.top { position: sticky; top: 0; z-index: 10; backdrop-filter: saturate(160%) blur(16px); -webkit-backdrop-filter: saturate(160%) blur(16px); background: rgba(255,255,255,.78); border-bottom: 1px solid var(--line); }
+.top { position: sticky; top: 0; z-index: 10; backdrop-filter: saturate(160%) blur(16px); -webkit-backdrop-filter: saturate(160%) blur(16px); background: rgba(250,249,246,.82); border-bottom: 1px solid var(--line); }
 .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 68px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; font-size: 19px; letter-spacing: -.03em; white-space: nowrap; }
 .brand img { width: 34px; height: 34px; }
@@ -199,15 +199,130 @@ h2 { font-size: clamp(28px, 3.4vw, 44px); }
 .list .l a:hover { color: var(--fg); }
 
 /* ---- долу ---- */
-footer { border-top: 1px solid var(--line); padding: 52px 0 44px; color: var(--muted); font-size: 14.5px; line-height: 1.7; background: var(--bg-2); }
+footer { padding: 52px 0 44px; color: #9aa3bf; font-size: 14.5px; line-height: 1.7; background: #070b17; }
 footer .cols { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px; }
 @media (max-width: 860px) { footer .cols { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 520px) { footer .cols { grid-template-columns: 1fr; } }
 footer .logo { width: 150px; height: auto; margin-bottom: 10px; }
-footer b { display: block; color: var(--fg); font-size: 13px; font-weight: 700; margin-bottom: 10px; }
+footer b { display: block; color: #fff; font-size: 13px; font-weight: 700; margin-bottom: 10px; }
 footer a { display: block; }
-footer a:hover { color: var(--fg); }
-footer .fine { margin-top: 36px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--faint); font-size: 13px; }
+footer a:hover { color: #fff; }
+footer .fine { margin-top: 36px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.08); color: #6b7390; font-size: 13px; }
+
+/* ==== началото, 12.10.2026: решетка, водещо, ръкописни бележки, тъмна лента ==== */
+.kicker { font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 18px; }
+.btn.dark { background: #0b1430; color: #fff; border-color: #0b1430; }
+.btn.dark:hover { box-shadow: 0 16px 30px -16px rgba(11,20,48,.7); }
+.top .cta { background: #0b1430; color: #fff !important; padding: 8px 16px !important; margin-left: 8px; }
+.top .cta:hover { background: #1b2550 !important; }
+@media (max-width: 760px) { .top .cta { display: none; } }
+
+.hero2 { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: 24px; align-items: center; padding: clamp(36px, 5vw, 72px) 0 clamp(24px, 3vw, 40px); }
+@media (max-width: 920px) { .hero2 { grid-template-columns: 1fr; } }
+.hero2 h1 { font-size: clamp(40px, 5.4vw, 70px); line-height: 1.02; letter-spacing: -.04em; }
+.hero2 .lead { font-size: clamp(17px, 1.5vw, 20px); color: var(--muted); max-width: 44ch; margin: 24px 0 0; }
+.compo2 { position: relative; height: 560px; }
+.compo2 .mockwrap { position: absolute; top: 50%; left: 50%; }
+.compo2 .device.phone { width: 230px; }
+.compo2 .c1 { transform: translate(-128%, -46%) rotate(-7deg) scale(.88); z-index: 1; }
+.compo2 .c2 { transform: translate(-50%, -54%); z-index: 3; }
+.compo2 .c3 { transform: translate(28%, -46%) rotate(7deg) scale(.88); z-index: 2; }
+.note { position: absolute; z-index: 4; font-family: "Caveat", cursive; font-size: 25px; line-height: 1; color: #2b3550; white-space: nowrap; pointer-events: none; }
+.note .sq { position: absolute; width: 46px; height: 32px; color: #8a93a8; }
+.compo2 .n1 { left: -2%; bottom: 3%; } .compo2 .n1 .sq { left: 70px; top: -34px; transform: scaleY(-1) rotate(10deg); }
+.compo2 .n2 { left: 40%; top: -2%; } .compo2 .n2 .sq { left: -42px; top: 6px; transform: scaleX(-1) rotate(-30deg); }
+.compo2 .n3 { right: 0; bottom: 2%; } .compo2 .n3 .sq { left: -40px; top: -30px; transform: scale(-1, -1); }
+@media (max-width: 920px) { .compo2 { height: 500px; } .hero2 { overflow-x: clip; } }
+@media (max-width: 560px) { .compo2 { height: 420px; } .compo2 .device.phone { width: 180px; } .note { font-size: 20px; } .compo2 .n2 { display: none; } }
+
+.grid-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; padding: clamp(40px, 5vw, 64px) 0 22px; }
+.grid-head h2 { font-size: clamp(28px, 3.2vw, 42px); }
+.grid-head p { color: var(--muted); margin: 10px 0 0; max-width: 60ch; }
+
+.bento { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; }
+@media (max-width: 1080px) { .bento { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 720px) { .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 460px) { .bento { grid-template-columns: 1fr; } }
+.bcard { position: relative; display: flex; flex-direction: column; gap: 8px; padding: 18px 18px 16px; height: 400px; border-radius: 24px; overflow: hidden;
+  background: linear-gradient(170deg, color-mix(in srgb, var(--c) 12%, #fff), color-mix(in srgb, var(--c) 4%, #fff) 55%); border: 1px solid color-mix(in srgb, var(--c) 16%, transparent);
+  transition: transform .2s ease, box-shadow .2s ease; }
+.bcard:hover { transform: translateY(-4px); box-shadow: 0 26px 50px -30px color-mix(in srgb, var(--c) 70%, transparent); }
+.bcard .row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.bcard .tile { width: 40px; height: 40px; border-radius: 12px; }
+.bcard .pill { font-size: 10px; padding: 4px 8px; letter-spacing: .03em; }
+.bcard b { font-size: 19px; font-weight: 700; letter-spacing: -.02em; margin-top: 6px; }
+.bcard p { color: var(--muted); font-size: 14.5px; line-height: 1.45; margin: 0; }
+.bcard .peek { position: absolute; left: 50%; bottom: -150px; transform: translateX(-50%); transition: bottom .3s ease; }
+.bcard:hover .peek { bottom: -130px; }
+.bcard .peek .device.phone { width: 170px; padding: 6px; border-radius: 30px; }
+.bcard .peek .device.phone .screen { border-radius: 25px; }
+.bcard .peek .mockwrap:has(.window) { width: 340px; margin-bottom: 60px; transform: translateX(22%); }
+.bcard .peek .device.window { width: 340px; }
+.bcard .peek .tile.bigicon { width: 110px; height: 110px; border-radius: 30px; margin-bottom: 210px; }
+.bcard .go { position: absolute; left: 18px; bottom: 14px; z-index: 2; display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 999px; background: rgba(255,255,255,.92); font-size: 13.5px; font-weight: 600; box-shadow: 0 6px 18px -10px rgba(11,20,48,.4); }
+.bcard .go svg { width: 15px; height: 15px; color: var(--c); }
+
+.num { font-size: 14px; font-weight: 700; color: var(--faint); margin-right: 4px; }
+.feat { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 4vw, 56px); align-items: center; margin: clamp(48px, 6vw, 80px) 0 18px; padding: clamp(28px, 4vw, 56px);
+  border-radius: 36px; background: radial-gradient(70% 90% at 85% 50%, color-mix(in srgb, var(--c) 22%, #fff), #fff 70%); border: 1px solid var(--line); position: relative; }
+@media (max-width: 860px) { .feat { grid-template-columns: 1fr; } }
+.feat .head, .mid .head, .small .head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+.feat .head b, .mid .head b, .small .head b { font-size: 18px; font-weight: 700; }
+.feat h2 { font-size: clamp(28px, 3.4vw, 46px); max-width: 15ch; margin-bottom: 16px; }
+.feat p { color: var(--muted); max-width: 52ch; }
+.checks { list-style: none; padding: 0; margin: 4px 0 26px; display: grid; gap: 10px; }
+.checks li { display: flex; align-items: center; gap: 10px; font-weight: 500; }
+.checks svg { width: 20px; height: 20px; color: var(--c); flex: none; }
+.feat .visual { position: relative; display: flex; justify-content: center; }
+.feat .nf { right: 0; top: -34px; } .feat .nf .sq { left: -46px; top: 18px; transform: scaleX(-1) rotate(-10deg); }
+
+.mids { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+@media (max-width: 960px) { .mids { grid-template-columns: 1fr; } }
+.mid { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 20px; align-items: end; padding: 30px 30px 0; border-radius: 32px; overflow: hidden;
+  background: linear-gradient(160deg, color-mix(in srgb, var(--c) 13%, #fff), color-mix(in srgb, var(--c) 4%, #fff)); border: 1px solid color-mix(in srgb, var(--c) 16%, transparent); }
+.mid .txt { padding-bottom: 30px; align-self: center; }
+.mid h3 { font-size: clamp(22px, 2.2vw, 28px); letter-spacing: -.03em; line-height: 1.12; margin-bottom: 12px; }
+.mid p { color: var(--muted); font-size: 16px; }
+.mid .actions { gap: 10px; }
+.mid .store-btn { min-width: 0; padding: 8px 14px 8px 12px; }
+.mid .visual { height: 340px; overflow: hidden; align-self: end; }
+.mid .device.phone { width: 200px; }
+.mid:has(.window) { grid-template-columns: 1fr; }
+.mid:has(.window) .txt { padding-bottom: 6px; }
+.mid:has(.window) .visual { height: 230px; }
+.mid .mockwrap:has(.window) { width: 100%; }
+.mid .device.window { width: 100%; }
+@media (max-width: 1100px) { .mid { grid-template-columns: 1fr; } .mid .visual { justify-self: center; } }
+
+.also-head { padding: clamp(48px, 6vw, 80px) 0 20px; }
+.also-head h2 { font-size: clamp(26px, 3vw, 38px); }
+.also-head p { color: var(--muted); margin: 8px 0 0; }
+.alsos { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; padding-bottom: clamp(56px, 7vw, 96px); }
+@media (max-width: 860px) { .alsos { grid-template-columns: 1fr; } }
+.small { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 18px; align-items: center; padding: 26px 26px 0; height: 270px; overflow: hidden; border-radius: 28px;
+  background: linear-gradient(160deg, color-mix(in srgb, var(--c) 11%, #fff), #fff); border: 1px solid color-mix(in srgb, var(--c) 14%, transparent); transition: transform .2s ease; }
+.small:hover { transform: translateY(-3px); }
+.small > div { align-self: center; padding-bottom: 26px; }
+.small h3 { font-size: 21px; letter-spacing: -.02em; margin-bottom: 8px; }
+.small p { color: var(--muted); font-size: 15px; margin: 0 0 12px; }
+.small .go { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; font-size: 14px; }
+.small .go svg { width: 15px; height: 15px; color: var(--c); }
+.small .peek { align-self: start; padding-top: 10px; }
+.small .device.phone { width: 160px; }
+.small .tile.bigicon { width: 120px; height: 120px; border-radius: 32px; }
+
+.about { background: #0b1020; color: #e8ecf6; padding: clamp(48px, 6vw, 80px) 0; }
+.about .wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px 56px; align-items: start; }
+.about .a3 { grid-column: 1 / -1; margin-top: 18px; }
+@media (max-width: 960px) { .about .wrap { grid-template-columns: 1fr; } }
+.about .kicker { color: #8a93b8; }
+.about h2 { font-size: clamp(26px, 2.8vw, 36px); color: #fff; }
+.about .a2 { color: #b9c1d8; font-size: 16.5px; }
+.about .a3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,.08); }
+@media (max-width: 560px) { .about .a3 { grid-template-columns: 1fr; } }
+.about .a3 i { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; border: 1px solid rgba(255,255,255,.18); font-style: normal; color: #6fd3ff; font-size: 13px; margin-bottom: 12px; }
+.about .a3 b { display: block; color: #fff; font-size: 15px; margin-bottom: 6px; }
+.about .a3 p { color: #9aa3bf; font-size: 13.5px; line-height: 1.5; margin: 0; }
 
 .mockwrap { display: inline-block; max-width: 100%; }
 .device { position: relative; }
@@ -231,91 +346,124 @@ footer .fine { margin-top: 36px; padding-top: 18px; border-top: 1px solid var(--
     <a class="apps-link" href="/#apps">Приложенията</a>
     <a href="/support/">Поддръжка</a>
     <a class="lang" href="/en/" lang="en" hreflang="en">English</a>
+    <a class="cta" href="/#apps">Виж приложенията</a>
   </nav>
 </div></div>
-<main class="wrap glow">
-<section class="hero">
+<main class="wrap">
+<section class="hero2">
   <div>
-    <div class="eyebrow"><img src="/assets/logo-mark.png" alt="" width="22" height="22">Пиксел Лаб · приложения за телефон и компютър</div>
-    <h1>Малки приложения, които вършат <span class="grad">една работа</span> добре.</h1>
+    <div class="kicker">Малко студио за приложения</div>
+    <h1><span>Малки приложения.</span><br><span class="grad">Ясна цел.</span><br><span>Вършат работа.</span></h1>
     <p class="lead">Правим приложения за хора, които нямат време за сложни програми. Всяко решава един конкретен проблем — и толкова.</p>
-    <div class="ctas"><a class="btn primary" href="#apps">Виж приложенията<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a class="btn" href="/support/">Поддръжка</a></div>
+    <div class="ctas"><a class="btn dark" href="#apps">Виж приложенията<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a class="btn" href="/support/">Пиши ни</a></div>
   </div>
-  <div class="compo" aria-hidden="true">
-<div class="mockwrap c1" style="--c:#8b6cf6"><div class="device phone"><div class="screen" style="aspect-ratio:520 / 1125"><img src="/assets/glagoli-bg.webp" alt="Екран на Глаголи: книгата се чете на глас, а отдолу е бутонът „Спри и попитай“." width="520" height="1125" loading="lazy" decoding="async"></div></div></div>
-<div class="mockwrap c2" style="--c:#f0432f"><div class="device phone"><div class="screen" style="aspect-ratio:520 / 1125"><img src="/assets/konspekt-bg.webp" alt="Екран на Konspekt: резюмето на среща, взетите решения и бутон „Изпрати протокол“." width="520" height="1125" loading="lazy" decoding="async"></div></div></div>
-<div class="mockwrap c3" style="--c:#4D64FA"><div class="device phone"><div class="screen" style="aspect-ratio:520 / 1125"><img src="/assets/sroko-bg.webp" alt="Екран на Сроко: два автомобила с оставащите дни до винетката, ГТП, гражданската и книжката." width="520" height="1125" loading="lazy" decoding="async"></div></div></div>
+  <div class="compo2" aria-hidden="true">
+<div class="mockwrap c1" style="--c:#f0432f"><div class="device phone"><div class="screen" style="aspect-ratio:520 / 1125"><img src="/assets/konspekt-bg.webp" alt="Екран на Konspekt: резюмето на среща, взетите решения и бутон „Изпрати протокол“." width="520" height="1125" loading="lazy" decoding="async"></div></div></div><span class="note n1">от срещата — протокол<svg class="sq" viewBox="0 0 60 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 6c14 2 30 10 38 26"/><path d="M34 30l8 3 1-9"/></svg></span>
+<div class="mockwrap c2" style="--c:#8b6cf6"><div class="device phone"><div class="screen" style="aspect-ratio:520 / 1125"><img src="/assets/glagoli-bg.webp" alt="Екран на Глаголи: книгата се чете на глас, а отдолу е бутонът „Спри и попитай“." width="520" height="1125" loading="lazy" decoding="async"></div></div></div><span class="note n2">книгата ти — на глас<svg class="sq" viewBox="0 0 60 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 6c14 2 30 10 38 26"/><path d="M34 30l8 3 1-9"/></svg></span>
+<div class="mockwrap c3" style="--c:#4D64FA"><div class="device phone"><div class="screen" style="aspect-ratio:520 / 1125"><img src="/assets/sroko-bg.webp" alt="Екран на Сроко: два автомобила с оставащите дни до винетката, ГТП, гражданската и книжката." width="520" height="1125" loading="lazy" decoding="async"></div></div></div><span class="note n3">не изпускай срок!<svg class="sq" viewBox="0 0 60 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 6c14 2 30 10 38 26"/><path d="M34 30l8 3 1-9"/></svg></span>
   </div>
 </section>
-<nav class="strip" aria-label="Приложенията">
-<a href="#sroko"><span class="tile img "><img src="/assets/icon-sroko.png" alt="" width="128" height="128"></span>Сроко</a>
-<a href="#glagoli"><span class="tile img "><img src="/assets/icon-glagoli.png" alt="" width="128" height="128"></span>Глаголи</a>
-<a href="#sortis"><span class="tile img "><img src="/assets/icon-sortis.png" alt="" width="128" height="128"></span>Sortis</a>
-<a href="#konspekt"><span class="tile img "><img src="/assets/icon-konspekt.png" alt="" width="128" height="128"></span>Konspekt</a>
-<a href="#calvio"><span class="tile img "><img src="/assets/icon-calvio.png" alt="" width="128" height="128"></span>Calvio</a>
-</nav>
-<div class="apps-head"><h2 id="apps">Приложенията</h2><p>Всяко решава един конкретен проблем. Отваряш, свършваш работата, затваряш.</p></div>
-<section class="show" id="sroko" style="--c:#4D64FA">
-  <div class="visual"><div class="mockwrap" style="--c:#4D64FA"><div class="device phone"><div class="screen" style="aspect-ratio:520 / 1125"><img src="/assets/sroko-bg.webp" alt="Екран на Сроко: два автомобила с оставащите дни до винетката, ГТП, гражданската и книжката." width="520" height="1125" loading="lazy" decoding="async"></div></div></div></div>
-  <div>
-    <div class="head"><span class="tile img "><img src="/assets/icon-sroko.png" alt="" width="128" height="128"></span><b>Сроко</b><span class="pill store">Наличен</span></div>
+<section class="grid-head" id="apps"><div><h2>Пет приложения, пет конкретни задачи.</h2><p>Всяко е направено около една ясна работа — лесно за разбиране, лесно за ползване.</p></div></section>
+<div class="bento">
+<a class="bcard" href="/sroko/" style="--c:#4D64FA">
+  <div class="row"><span class="tile img "><img src="/assets/icon-sroko.png" alt="" width="128" height="128"></span><span class="pill store">Наличен</span></div>
+  <b>Сроко</b>
+  <p>Винетка, ГТП, гражданска — напомня, преди да изтекат.</p>
+  <span class="peek"><div class="mockwrap" style="--c:#4D64FA"><div class="device phone"><div class="screen" style="aspect-ratio:520 / 1125"><img src="/assets/sroko-bg.webp" alt="Екран на Сроко: два автомобила с оставащите дни до винетката, ГТП, гражданската и книжката." width="520" height="1125" loading="lazy" decoding="async"></div></div></div></span>
+  <span class="go">Виж повече<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+</a>
+<a class="bcard" href="/glagoli/" style="--c:#8b6cf6">
+  <div class="row"><span class="tile img "><img src="/assets/icon-glagoli.png" alt="" width="128" height="128"></span><span class="pill store">Наличен</span></div>
+  <b>Глаголи</b>
+  <p>Качваш книга и я слушаш. Спираш и питаш.</p>
+  <span class="peek"><div class="mockwrap" style="--c:#8b6cf6"><div class="device phone"><div class="screen" style="aspect-ratio:520 / 1125"><img src="/assets/glagoli-bg.webp" alt="Екран на Глаголи: книгата се чете на глас, а отдолу е бутонът „Спри и попитай“." width="520" height="1125" loading="lazy" decoding="async"></div></div></div></span>
+  <span class="go">Виж повече<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+</a>
+<a class="bcard" href="/sortis/" style="--c:#0ea5e9">
+  <div class="row"><span class="tile img "><img src="/assets/icon-sortis.png" alt="" width="128" height="128"></span><span class="pill store">Windows</span></div>
+  <b>Sortis</b>
+  <p>Фактурите стават файл за Делта, Алгос или ЕДИС.</p>
+  <span class="peek"><div class="mockwrap" style="--c:#0ea5e9"><div class="device window"><div class="bar"><i></i><i></i><i></i></div><img src="/assets/sortis.webp" alt="Екран на Sortis: таблото с покупките, продажбите, ДДС и документите за проверка." width="1280" height="800" loading="lazy" decoding="async"></div></div></span>
+  <span class="go">Виж повече<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+</a>
+<a class="bcard" href="/konspekt/" style="--c:#f0432f">
+  <div class="row"><span class="tile img "><img src="/assets/icon-konspekt.png" alt="" width="128" height="128"></span><span class="pill">В тестване</span></div>
+  <b>Konspekt</b>
+  <p>Записва срещата и дава резюме, решения и задачи.</p>
+  <span class="peek"><div class="mockwrap" style="--c:#f0432f"><div class="device phone"><div class="screen" style="aspect-ratio:520 / 1125"><img src="/assets/konspekt-bg.webp" alt="Екран на Konspekt: резюмето на среща, взетите решения и бутон „Изпрати протокол“." width="520" height="1125" loading="lazy" decoding="async"></div></div></div></span>
+  <span class="go">Виж повече<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+</a>
+<a class="bcard" href="/calvio/" style="--c:#0EA5B7">
+  <div class="row"><span class="tile img "><img src="/assets/icon-calvio.png" alt="" width="128" height="128"></span><span class="pill">Скоро</span></div>
+  <b>Calvio</b>
+  <p>Вдига телефона на бизнеса, когато ти не можеш.</p>
+  <span class="peek"></span>
+  <span class="go">Виж повече<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+</a>
+</div>
+<section class="feat" id="sroko" style="--c:#4D64FA">
+  <div class="txt">
+    <div class="head"><span class="num">01</span><span class="tile img "><img src="/assets/icon-sroko.png" alt="" width="128" height="128"></span><b>Сроко</b><span class="pill store">Наличен</span></div>
     <h2>Сроковете на колата — на едно място, навреме.</h2>
     <p>Сроко пази сроковете на колата ти на едно място и ти напомня, преди да е късно. Въвеждаш регистрационния номер — винетката се проверява сама през публичната проверка на БГ Толл и виждаш колко дни остават. Добавяш ГТП, гражданска, каско, книжка или сервиз веднъж; при годишно подновяване Сроко сама знае кога е следващият път.</p>
-    <div class="chips"><span class="chip">Винетката се проверява сама</span><span class="chip">ГТП, гражданска, каско, книжка</span><span class="chip">Напомня 30…1 дни преди</span><span class="chip">Без акаунт, без абонамент</span></div>
+    <ul class="checks"><li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="m7 12.5 3.2 3 6.8-7" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Винетката се проверява сама</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="m7 12.5 3.2 3 6.8-7" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>ГТП, гражданска, каско, книжка</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="m7 12.5 3.2 3 6.8-7" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Напомня 30…1 дни преди</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="m7 12.5 3.2 3 6.8-7" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Без акаунт, без абонамент</li></ul>
     <div class="actions"><a class="store-btn" href="https://apps.apple.com/app/sroko/id6810996777"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.02-1.5-2.62-1.7-3.19-1.72-1.36-.14-2.65.8-3.34.8-.69 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.19-1.54 2.67-.39 6.62 1.11 8.79.73 1.06 1.6 2.25 2.75 2.2 1.1-.04 1.52-.71 2.85-.71 1.33 0 1.71.71 2.88.69 1.19-.02 1.94-1.08 2.66-2.14.84-1.23 1.19-2.42 1.21-2.48-.03-.01-2.32-.89-2.32-3.55zM14.18 6.13c.61-.74 1.02-1.76.91-2.78-.88.04-1.94.58-2.57 1.32-.56.65-1.06 1.69-.93 2.69.98.08 1.98-.5 2.59-1.23z"/></svg><span>Изтегли от<b>App Store</b></span></a>
 <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.vinetka.pazach"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#34d17a" d="M3.6 2.3c-.3.3-.5.8-.5 1.4v16.6c0 .6.2 1.1.5 1.4l9.3-9.7z"/><path fill="#ffd23f" d="m16 15.1-3.1-3.1L16 8.9l3.7 2.1c1.1.6 1.1 1.6 0 2.2z"/><path fill="#ff4d5e" d="M16 15.1 12.9 12l-9.3 9.7c.4.4 1 .4 1.7 0z"/><path fill="#3aa0ff" d="M16 8.9 5.3 2.3c-.7-.4-1.3-.4-1.7 0l9.3 9.7z"/></svg><span>Изтегли от<b>Google Play</b></span></a><a class="more" href="/sroko/">Виж повече<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
   </div>
+  <div class="visual"><div class="mockwrap" style="--c:#4D64FA"><div class="device phone"><div class="screen" style="aspect-ratio:520 / 1125"><img src="/assets/sroko-bg.webp" alt="Екран на Сроко: два автомобила с оставащите дни до винетката, ГТП, гражданската и книжката." width="520" height="1125" loading="lazy" decoding="async"></div></div></div><span class="note nf">не изпускай срок!<svg class="sq" viewBox="0 0 60 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 6c14 2 30 10 38 26"/><path d="M34 30l8 3 1-9"/></svg></span></div>
 </section>
-<section class="show flip" id="glagoli" style="--c:#8b6cf6">
-  <div class="visual"><div class="mockwrap" style="--c:#8b6cf6"><div class="device phone"><div class="screen" style="aspect-ratio:520 / 1125"><img src="/assets/glagoli-bg.webp" alt="Екран на Глаголи: книгата се чете на глас, а отдолу е бутонът „Спри и попитай“." width="520" height="1125" loading="lazy" decoding="async"></div></div></div></div>
-  <div>
-    <div class="head"><span class="tile img "><img src="/assets/icon-glagoli.png" alt="" width="128" height="128"></span><b>Глаголи</b><span class="pill store">Наличен</span></div>
-    <h2>Твоите книги, прочетени на глас.</h2>
-    <p>Качваш своя книга — EPUB, PDF, Word или снимки на страниците — и Глаголи ти я чете на глас, на езика, на който е написана: български или английски.</p>
-    <div class="chips"><span class="chip">EPUB, PDF, Word или снимка</span><span class="chip">Български и английски</span><span class="chip">Спри и питай — без спойлери</span><span class="chip">Пакети часове, без абонамент</span></div>
+<div class="mids">
+<section class="mid" id="glagoli" style="--c:#8b6cf6">
+  <div class="txt">
+    <div class="head"><span class="num">02</span><span class="tile img "><img src="/assets/icon-glagoli.png" alt="" width="128" height="128"></span><b>Глаголи</b><span class="pill store">Наличен</span></div>
+    <h3>Твоите книги, прочетени на глас.</h3>
+    <p>Качваш книга и я слушаш. Спираш и питаш.</p>
     <div class="actions"><a class="store-btn" href="https://play.google.com/store/apps/details?id=bg.glagoli.app"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#34d17a" d="M3.6 2.3c-.3.3-.5.8-.5 1.4v16.6c0 .6.2 1.1.5 1.4l9.3-9.7z"/><path fill="#ffd23f" d="m16 15.1-3.1-3.1L16 8.9l3.7 2.1c1.1.6 1.1 1.6 0 2.2z"/><path fill="#ff4d5e" d="M16 15.1 12.9 12l-9.3 9.7c.4.4 1 .4 1.7 0z"/><path fill="#3aa0ff" d="M16 8.9 5.3 2.3c-.7-.4-1.3-.4-1.7 0l9.3 9.7z"/></svg><span>Изтегли от<b>Google Play</b></span></a><a class="more" href="/glagoli/">Виж повече<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
   </div>
+  <div class="visual"><div class="mockwrap" style="--c:#8b6cf6"><div class="device phone"><div class="screen" style="aspect-ratio:520 / 1125"><img src="/assets/glagoli-bg.webp" alt="Екран на Глаголи: книгата се чете на глас, а отдолу е бутонът „Спри и попитай“." width="520" height="1125" loading="lazy" decoding="async"></div></div></div></div>
 </section>
-<section class="show" id="sortis" style="--c:#0ea5e9">
-  <div class="visual"><div class="mockwrap" style="--c:#0ea5e9"><div class="device window"><div class="bar"><i></i><i></i><i></i></div><img src="/assets/sortis.webp" alt="Екран на Sortis: таблото с покупките, продажбите, ДДС и документите за проверка." width="1280" height="800" loading="lazy" decoding="async"></div></div></div>
-  <div>
-    <div class="head"><span class="tile img "><img src="/assets/icon-sortis.png" alt="" width="128" height="128"></span><b>Sortis</b><span class="pill store">Програма за Windows</span></div>
-    <h2>Фактурите, въведени за секунди.</h2>
-    <p>Sortis е програма за Windows за счетоводители. Чете фактури, известия и касови бележки — PDF, скан или снимка — и прави готов файл за Микроинвест Делта Про, Алгос АС2012 или ЕДИС-АСО. За всяка друга програма — Excel или CSV.</p>
-    <div class="chips"><span class="chip">PDF, скан или снимка</span><span class="chip">Файл за Делта, Алгос и ЕДИС</span><span class="chip">Подсметки по редове</span><span class="chip">Документите не се пазят</span></div>
+<section class="mid" id="sortis" style="--c:#0ea5e9">
+  <div class="txt">
+    <div class="head"><span class="num">03</span><span class="tile img "><img src="/assets/icon-sortis.png" alt="" width="128" height="128"></span><b>Sortis</b><span class="pill store">Програма за Windows</span></div>
+    <h3>Фактурите, въведени за секунди.</h3>
+    <p>Фактурите стават файл за Делта, Алгос или ЕДИС.</p>
     <div class="actions"><a class="store-btn" href="https://sortis.pro"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.5 10 4.5v7H3zM11 4.4 21 3v8.5H11zM3 12.5h7v7L3 18.5zM11 12.5h10V21l-10-1.4z"/></svg><span>Изтегли за<b>Windows</b></span></a><a class="more" href="/sortis/">Виж повече<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
   </div>
+  <div class="visual"><div class="mockwrap" style="--c:#0ea5e9"><div class="device window"><div class="bar"><i></i><i></i><i></i></div><img src="/assets/sortis.webp" alt="Екран на Sortis: таблото с покупките, продажбите, ДДС и документите за проверка." width="1280" height="800" loading="lazy" decoding="async"></div></div></div>
 </section>
-<section class="show flip" id="konspekt" style="--c:#f0432f">
-  <div class="visual"><div class="mockwrap" style="--c:#f0432f"><div class="device phone"><div class="screen" style="aspect-ratio:520 / 1125"><img src="/assets/konspekt-bg.webp" alt="Екран на Konspekt: резюмето на среща, взетите решения и бутон „Изпрати протокол“." width="520" height="1125" loading="lazy" decoding="async"></div></div></div></div>
+</div>
+<section class="also-head"><h2>Още в лабораторията</h2><p>Тези още не са в магазините — работим по тях.</p></section>
+<div class="alsos">
+<a class="small" id="konspekt" href="/konspekt/" style="--c:#f0432f">
   <div>
     <div class="head"><span class="tile img "><img src="/assets/icon-konspekt.png" alt="" width="128" height="128"></span><b>Konspekt</b><span class="pill">В тестване</span></div>
-    <h2>Протоколът от срещата, без да пишеш.</h2>
-    <p>Konspekt записва деловата среща на телефона ти, превръща я в текст на български и английски, разделя кой какво е казал и след срещата изготвя резюме, взетите решения и задачите — всяка с дословен цитат, за да провериш.</p>
-    <div class="chips"><span class="chip">Запис при заключен екран</span><span class="chip">Кой какво е казал</span><span class="chip">Цитат към всяка задача</span><span class="chip">Български и английски</span></div>
-    <div class="actions"><a class="more" href="/konspekt/">Виж повече<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
+    <h3>Протоколът от срещата, без да пишеш.</h3>
+    <p>Записва срещата и дава резюме, решения и задачи.</p>
+    <span class="go">Виж повече<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
   </div>
-</section>
-<section class="show" id="calvio" style="--c:#0EA5B7">
-  <div class="visual"><span class="tile img bigicon"><img src="/assets/icon-calvio.png" alt="" width="128" height="128"></span></div>
+  <span class="peek"><div class="mockwrap" style="--c:#f0432f"><div class="device phone"><div class="screen" style="aspect-ratio:520 / 1125"><img src="/assets/konspekt-bg.webp" alt="Екран на Konspekt: резюмето на среща, взетите решения и бутон „Изпрати протокол“." width="520" height="1125" loading="lazy" decoding="async"></div></div></div></span>
+</a>
+<a class="small" id="calvio" href="/calvio/" style="--c:#0EA5B7">
   <div>
     <div class="head"><span class="tile img "><img src="/assets/icon-calvio.png" alt="" width="128" height="128"></span><b>Calvio</b><span class="pill">Скоро</span></div>
-    <h2>Телефонът на бизнеса ти вдига — дори когато ти не можеш.</h2>
-    <p>Calvio вдига телефона на бизнеса ти, когато ти си зает: с български гласов асистент или като звъни на жив човек от екипа ти. Записва кой е търсил и защо, и ти го праща. Скоро.</p>
-    <div class="chips"><span class="chip">Вдига вместо теб</span><span class="chip">Български глас</span><span class="chip">Жив асистент или ИИ</span><span class="chip">Съобщенията идват при теб</span></div>
-    <div class="actions"><a class="more" href="/calvio/">Виж повече<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
+    <h3>Телефонът на бизнеса ти вдига — дори когато ти не можеш.</h3>
+    <p>Вдига телефона на бизнеса, когато ти не можеш.</p>
+    <span class="go">Виж повече<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
   </div>
-</section>
-<section class="principles">
-<div class="principle"><i>1</i><b>Един проблем, едно приложение</b><p>Без излишни екрани и настройки. Отваряш, свършваш работата, затваряш.</p></div>
-<div class="principle"><i>2</i><b>Данните са твои</b><p>Записи и документи не стоят при нас повече, отколкото трябва за работата — и никога не се ползват за обучение на модели.</p></div>
-<div class="principle"><i>3</i><b>Написано на човешки</b><p>Условията и политиките казват какво приложението прави наистина — без юридическа мъгла.</p></div>
-</section>
+  <span class="peek"><span class="tile img bigicon"><img src="/assets/icon-calvio.png" alt="" width="128" height="128"></span></span>
+</a>
+</div>
 </main>
-<footer><div class="wrap">
+<section class="about"><div class="wrap">
+  <div class="a1"><div class="kicker">За Пиксел Лаб Софт</div><h2>Малко студио, което предпочита полезното пред сложното.</h2></div>
+  <p class="a2">Правим софтуер за истински ежедневни нужди. Всяко приложение решава едно нещо — и го решава така, че да се разбира от пръв поглед.</p>
+  <div class="a3"><div><i>◆</i><b>Един проблем, едно приложение</b><p>Без излишни екрани и настройки. Отваряш, свършваш работата, затваряш.</p></div>
+<div><i>●</i><b>Данните са твои</b><p>Записи и документи не стоят при нас повече, отколкото трябва за работата — и никога не се ползват за обучение на модели.</p></div>
+<div><i>■</i><b>Написано на човешки</b><p>Условията и политиките казват какво приложението прави наистина — без юридическа мъгла.</p></div></div>
+</div></section><footer><div class="wrap">
   <div class="cols">
     <div>
-      <img class="logo" src="/assets/logo-light.webp" alt="Pixel Lab" width="150" height="131">
+      <img class="logo" src="/assets/logo-dark.webp" alt="Pixel Lab" width="150" height="131">
       <div>Малки приложения, които вършат една работа добре.</div>
     </div>
     <div>

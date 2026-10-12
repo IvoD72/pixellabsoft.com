@@ -30,6 +30,9 @@ export default {
     bg: ['Вдига вместо теб', 'Български глас', 'Жив асистент или ИИ', 'Съобщенията идват при теб'],
     en: ['Answers for you', 'Bulgarian voice', 'Live assistant or AI', 'Messages reach you'],
   },
+  // Един ред за картата на началото и ръкописната бележка до екрана.
+  short: { bg: 'Вдига телефона на бизнеса, когато ти не можеш.', en: 'Answers your business phone when you can’t.' },
+  note: { bg: 'вдига вместо теб', en: 'answers for you' },
   tagline: {
     bg: 'Телефонът на бизнеса ти вдига — дори когато ти не можеш.',
     en: 'Your business phone answers — even when you can’t.',

@@ -27,6 +27,9 @@ export default {
     bg: ['Винетката се проверява сама', 'ГТП, гражданска, каско, книжка', 'Напомня 30…1 дни преди', 'Без акаунт, без абонамент'],
     en: ['Vignette checked automatically', 'MOT, insurance, casco, licence', 'Reminds 30…1 days ahead', 'No account, no subscription'],
   },
+  // Един ред за картата на началото и ръкописната бележка до екрана.
+  short: { bg: 'Винетка, ГТП, гражданска — напомня, преди да изтекат.', en: 'Vignette, MOT, insurance — reminded before they expire.' },
+  note: { bg: 'не изпускай срок!', en: 'never miss a deadline' },
   tagline: {
     bg: 'Сроковете на колата — на едно място, навреме.',
     en: 'Every car deadline — in one place, on time.',

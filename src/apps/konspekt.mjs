@@ -27,6 +27,9 @@ export default {
     bg: ['Запис при заключен екран', 'Кой какво е казал', 'Цитат към всяка задача', 'Български и английски'],
     en: ['Records with the screen locked', 'Who said what', 'A quote behind every task', 'Bulgarian and English'],
   },
+  // Един ред за картата на началото и ръкописната бележка до екрана.
+  short: { bg: 'Записва срещата и дава резюме, решения и задачи.', en: 'Records the meeting, returns summary, decisions and tasks.' },
+  note: { bg: 'от срещата — протокол', en: 'meeting → minutes' },
   tagline: {
     bg: 'Протоколът от срещата, без да пишеш.',
     en: 'The meeting minutes, without taking notes.',

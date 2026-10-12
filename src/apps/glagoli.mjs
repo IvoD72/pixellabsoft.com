@@ -26,6 +26,9 @@ export default {
     bg: ['EPUB, PDF, Word или снимка', 'Български и английски', 'Спри и питай — без спойлери', 'Пакети часове, без абонамент'],
     en: ['EPUB, PDF, Word or a photo', 'Bulgarian and English', 'Pause and ask — no spoilers', 'Hour packs, no subscription'],
   },
+  // Един ред за картата на началото и ръкописната бележка до екрана.
+  short: { bg: 'Качваш книга и я слушаш. Спираш и питаш.', en: 'Upload a book and listen. Pause and ask.' },
+  note: { bg: 'книгата ти — на глас', en: 'your book, read aloud' },
   tagline: {
     bg: 'Твоите книги, прочетени на глас.',
     en: 'Your books, read aloud.',

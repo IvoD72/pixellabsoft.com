@@ -26,6 +26,9 @@ export default {
     bg: ['PDF, скан или снимка', 'Файл за Делта, Алгос и ЕДИС', 'Подсметки по редове', 'Документите не се пазят'],
     en: ['PDF, scan or photo', 'Files for Delta, Algos and EDIS', 'Subaccounts per line', 'Documents are not stored'],
   },
+  // Един ред за картата на началото и ръкописната бележка до екрана.
+  short: { bg: 'Фактурите стават файл за Делта, Алгос или ЕДИС.', en: 'Invoices become a file for Delta, Algos or EDIS.' },
+  note: { bg: 'фактури за секунди', en: 'invoices in seconds' },
   tagline: {
     bg: 'Фактурите, въведени за секунди.',
     en: 'Invoices entered in seconds.',
