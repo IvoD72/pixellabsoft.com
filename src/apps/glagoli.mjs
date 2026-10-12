@@ -43,12 +43,12 @@ export default {
     bg: [
       'Глаголи чете на глас всичко написано: книга, договор, писмо, инструкция, документ от общината. Снимаш страниците с телефона или качваш файл — PDF, Word, EPUB или текст — и го слушаш на естествен глас, на езика, на който е написано: български или английски.',
       'Спираш и питаш нещо за прочетеното. При книга отговорът е само по това, което вече си чул, и не издава какво следва. После продължаваш точно оттам.',
-      'Плаща се с пакети часове слушане, без абонамент. Първата минута е безплатна.',
+      'Плаща се с пакети часове слушане, без абонамент. Първите 10 минути са безплатни.',
     ],
     en: [
       'Glagoli reads aloud anything written: a book, a contract, a letter, a manual, an official document. Snap the pages with your phone or upload a file — PDF, Word, EPUB or text — and listen in a natural voice, in the language it was written in: Bulgarian or English.',
       'Pause and ask something about what you have heard. With a book, the answer covers only what you have already listened to and never gives away what comes next. Then carry on right where you were.',
-      'You pay for packs of listening hours, with no subscription. The first minute is free.',
+      'You pay for packs of listening hours, with no subscription. The first 10 minutes are free.',
     ],
   },
 };
