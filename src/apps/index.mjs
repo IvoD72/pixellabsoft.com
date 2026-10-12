@@ -11,4 +11,5 @@ import glagoli from './glagoli.mjs';
 import sroko from './sroko.mjs';
 import calvio from './calvio.mjs';
 
-export const APPS = [konspekt, sortis, glagoli, sroko, calvio];
+// Първо тези, които са в магазините; после тестваните и идващите.
+export const APPS = [sroko, glagoli, sortis, konspekt, calvio];

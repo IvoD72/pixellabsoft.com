@@ -20,7 +20,7 @@ export const STRINGS = {
     siteName: 'Пиксел Лаб Софт',
     tagline: 'Малки приложения, които вършат една работа добре.',
     homeLead:
-      'Правим мобилни приложения за хора, които нямат време за сложни програми. ' +
+      'Правим приложения за хора, които нямат време за сложни програми. ' +
       'Всяко решава един конкретен проблем — и толкова.',
     apps: 'Приложенията',
     support: 'Поддръжка',
@@ -38,8 +38,8 @@ export const STRINGS = {
     statusTesting: 'В тестване',
     statusStore: 'Наличен',
     more: 'Виж повече',
-    eyebrow: 'Пиксел Лаб · Горна Оряховица',
-    heroHtml: 'Малки приложения, които вършат <em>една работа</em> добре.',
+    eyebrow: 'Пиксел Лаб · приложения за телефон и компютър',
+    heroHtml: 'Малки приложения, които вършат <span class="grad">една работа</span> добре.',
     principles: [
       ['Един проблем, едно приложение', 'Без излишни екрани и настройки. Отваряш, свършваш работата, затваряш.'],
       ['Данните са твои', 'Записи и документи не стоят при нас повече, отколкото трябва за работата — и никога не се ползват за обучение на модели.'],
@@ -54,13 +54,17 @@ export const STRINGS = {
     website: 'Сайтът на приложението',
     legalNote: 'Тези текстове описват какво приложението прави наистина, на човешки език.',
     footerRights: 'Всички права запазени.',
-    madeIn: 'Направено в Горна Оряховица.',
+    getOn: 'Изтегли от',
+    getOnPlay: 'Изтегли от',
+    downloadFor: 'Изтегли за',
+    seeApps: 'Виж приложенията',
+    appsLead: 'Всяко решава един конкретен проблем. Отваряш, свършваш работата, затваряш.',
   },
   en: {
     siteName: 'Pixel Lab Soft',
     tagline: 'Small apps that do one job well.',
     homeLead:
-      'We build mobile apps for people who have no time for complicated software. ' +
+      'We build apps for people who have no time for complicated software. ' +
       'Each one solves one specific problem — and nothing else.',
     apps: 'Apps',
     support: 'Support',
@@ -78,8 +82,8 @@ export const STRINGS = {
     statusTesting: 'In testing',
     statusStore: 'Available',
     more: 'Learn more',
-    eyebrow: 'Pixel Lab · Gorna Oryahovitsa, Bulgaria',
-    heroHtml: 'Small apps that do <em>one job</em> well.',
+    eyebrow: 'Pixel Lab · apps for phone and desktop',
+    heroHtml: 'Small apps that do <span class="grad">one job</span> well.',
     principles: [
       ['One problem, one app', 'No spare screens or settings. Open it, get the job done, close it.'],
       ['Your data stays yours', 'Recordings and documents are not kept longer than the job needs — and are never used to train models.'],
@@ -94,6 +98,10 @@ export const STRINGS = {
     website: 'App website',
     legalNote: 'These texts describe what the app actually does, in plain language.',
     footerRights: 'All rights reserved.',
-    madeIn: 'Made in Gorna Oryahovitsa, Bulgaria.',
+    getOn: 'Download on the',
+    getOnPlay: 'Get it on',
+    downloadFor: 'Download for',
+    seeApps: 'See the apps',
+    appsLead: 'Each one solves one specific problem. Open it, get the job done, close it.',
   },
 };

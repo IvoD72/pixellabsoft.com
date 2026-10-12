@@ -1,221 +1,212 @@
 import { COMPANY, DOMAIN, STRINGS, SUPPORT_EMAIL } from './site.mjs';
 import { MOCK_CSS, mock } from './mocks.mjs';
+import { APPS } from './apps/index.mjs';
 
 /**
  * Един шаблон за всички страници. Без JavaScript — текст, заглавия, връзки,
- * малко SVG за иконите. Визуалното е в `CSS` по-долу; цветовете и шрифтовете
+ * малко SVG за иконите. Визуалното е в `CSS` по-долу; цветовете и шрифтът
  * са променливи най-отгоре, за да се сменят от едно място.
  *
- * Всяко приложение носи свой цвят (`color`) и икона (`icon` — пътища в
- * 24×24 SVG); шаблонът ги слага в `--c`, така че картите, глоуът и
- * бутоните да са в цвета на приложението.
+ * Дизайн от 12.10.2026: светъл, в цветовете на новото лого (синьо → циан),
+ * с ИСТИНСКИ екрани на приложенията и бутони за двата магазина. Логото е в
+ * `7 Pixel Lab Soft\Logo\`; знакът и favicon-ите се правят от `tools/assets.py`.
  *
- * Шрифтове: Unbounded за заглавията (широк, геометричен, има кирилица),
- * Inter за текста. Идват от Google Fonts; при липса на мрежа падат към
- * системните.
+ * Всяко приложение носи свой цвят (`color`) и икона (`icon` — пътища в
+ * 24×24 SVG); шаблонът ги слага в `--c`.
+ *
+ * Шрифт: Onest — рисуван с кирилицата, не догонен към нея. Идва от Google
+ * Fonts; без мрежа пада към системния.
  */
 
-export const FONTS = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Unbounded:wght@500;600;700&display=swap';
+export const FONTS = 'https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap';
 
 export const CSS = `
 :root {
-  --bg: #0c0c0e; --bg-2: #121216; --fg: #f4f2ec; --muted: #9a978f; --faint: #5e5c56;
-  --line: rgba(255,255,255,.09); --line-2: rgba(255,255,255,.16); --card: #15151a;
-  --accent: #8b7cff; --c: var(--accent);
-  --max: 1080px; --read: 700px;
-  --display: "Unbounded", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --text: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  color-scheme: dark;
-}
-@media (prefers-color-scheme: light) {
-  :root {
-    --bg: #f6f4ef; --bg-2: #efece5; --fg: #17171a; --muted: #6a675f; --faint: #a19e95;
-    --line: rgba(0,0,0,.09); --line-2: rgba(0,0,0,.18); --card: #fffdf9;
-    color-scheme: light;
-  }
+  --bg: #ffffff; --bg-2: #f4f7fc; --fg: #0b1430; --muted: #556079; --faint: #8a93a8;
+  --line: rgba(11,20,48,.08); --line-2: rgba(11,20,48,.15); --card: #f6f8fc;
+  --blue: #2152ff; --cyan: #18c3f0; --accent: var(--blue); --c: var(--accent);
+  --grad: linear-gradient(115deg, #3a3dff 0%, #2163ff 35%, #1a9bff 70%, #18c8f0 100%);
+  --max: 1160px; --read: 720px;
+  --font: "Onest", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color-scheme: light;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body {
-  margin: 0; background: var(--bg); color: var(--fg);
-  font: 17px/1.65 var(--text); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
-  position: relative; min-height: 100vh; overflow-x: hidden;
-}
-body::before {
-  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
-  background:
-    radial-gradient(60% 40% at 15% 0%, color-mix(in srgb, var(--c) 22%, transparent), transparent 70%),
-    radial-gradient(40% 35% at 90% 10%, color-mix(in srgb, var(--c) 10%, transparent), transparent 70%);
-}
+body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.65 var(--font); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 a { color: inherit; text-decoration: none; }
 p { margin: 0 0 18px; }
-h1, h2, h3, .display { font-family: var(--display); font-weight: 600; letter-spacing: -.02em; line-height: 1.1; margin: 0; }
-h1 { font-size: clamp(32px, 4.8vw, 56px); }
-h2 { font-size: clamp(22px, 2.6vw, 30px); }
+img { max-width: 100%; }
+h1, h2, h3 { font-weight: 700; letter-spacing: -.03em; line-height: 1.08; margin: 0; }
+h1 { font-size: clamp(36px, 5vw, 62px); }
+h2 { font-size: clamp(28px, 3.4vw, 44px); }
 .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
 .read { max-width: var(--read); }
+.grad { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
 /* ---- горе ---- */
-.top { position: sticky; top: 0; z-index: 10; backdrop-filter: saturate(140%) blur(14px); -webkit-backdrop-filter: saturate(140%) blur(14px); background: color-mix(in srgb, var(--bg) 72%, transparent); border-bottom: 1px solid var(--line); }
-.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; }
-.brand { display: inline-flex; align-items: center; gap: 11px; font-family: var(--display); font-weight: 600; font-size: 15px; letter-spacing: -.01em; }
-.brand svg { width: 26px; height: 26px; flex: none; }
-.brand .px { fill: var(--fg); }
-.brand .px-c { fill: var(--accent); }
-.top nav { display: flex; align-items: center; gap: 4px; }
-.top nav a { padding: 8px 12px; border-radius: 999px; color: var(--muted); font-size: 15px; font-weight: 500; transition: color .15s, background .15s; }
-.top nav a:hover { color: var(--fg); background: var(--line); }
-.top nav a.lang { border: 1px solid var(--line-2); color: var(--fg); margin-left: 8px; font-size: 13px; padding: 6px 12px; }
-.brand span { white-space: nowrap; }
-@media (max-width: 600px) { .top nav a.apps-link { display: none; } .top nav a { padding: 8px 9px; font-size: 14px; } .brand { font-size: 14px; gap: 9px; } }
+.top { position: sticky; top: 0; z-index: 10; backdrop-filter: saturate(160%) blur(16px); -webkit-backdrop-filter: saturate(160%) blur(16px); background: rgba(255,255,255,.78); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 68px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; font-size: 19px; letter-spacing: -.03em; white-space: nowrap; }
+.brand img { width: 34px; height: 34px; }
+.brand .lab { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.brand small { font-weight: 500; font-size: 13px; color: var(--muted); letter-spacing: 0; margin-left: 2px; }
+.top nav { display: flex; align-items: center; gap: 2px; }
+.top nav a { padding: 8px 14px; border-radius: 999px; color: var(--muted); font-size: 15px; font-weight: 500; transition: color .15s, background .15s; }
+.top nav a:hover { color: var(--fg); background: var(--bg-2); }
+.top nav a.lang { border: 1px solid var(--line-2); color: var(--fg); margin-left: 8px; font-size: 13px; padding: 6px 13px; }
+@media (max-width: 600px) { .top nav a.apps-link, .brand small { display: none; } .top nav a { padding: 8px 10px; font-size: 14px; } }
+
+/* ---- фонът на началото: мекото синьо от логото и пиксели ---- */
+.glow { position: relative; isolation: isolate; }
+.glow::before { content: ""; position: absolute; z-index: -1; inset: -68px calc(50% - 50vw) 0; pointer-events: none;
+  background:
+    radial-gradient(42% 55% at 82% 30%, rgba(24,195,240,.20), transparent 70%),
+    radial-gradient(40% 50% at 62% 70%, rgba(33,82,255,.16), transparent 70%),
+    radial-gradient(30% 40% at 8% 10%, rgba(58,61,255,.08), transparent 70%); }
+.glow::after { content: ""; position: absolute; z-index: -1; inset: -68px calc(50% - 50vw) auto; height: 1100px; pointer-events: none; opacity: .5;
+  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 48px 48px; -webkit-mask-image: radial-gradient(60% 70% at 70% 35%, #000, transparent 75%); mask-image: radial-gradient(60% 70% at 70% 35%, #000, transparent 75%); }
 
 /* ---- начало ---- */
-.hero { padding: clamp(48px, 7vw, 96px) 0 clamp(48px, 6vw, 80px); display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 40px; align-items: center; }
-@media (max-width: 900px) { .hero { grid-template-columns: 1fr; gap: 40px; } }
-.hero .ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 34px; }
-.compo { position: relative; height: 560px; display: flex; justify-content: center; align-items: flex-end; perspective: 1400px; }
-.compo .mockwrap { position: absolute; bottom: 0; transition: transform .4s ease; }
-.compo .c1 { z-index: 3; transform: translateX(0); }
-.compo .c2 { z-index: 2; transform: translateX(-190px) translateY(-24px) rotate(-7deg) scale(.86); opacity: .95; }
-.compo .c3 { z-index: 1; transform: translateX(190px) translateY(-24px) rotate(7deg) scale(.86); opacity: .95; }
-.compo::before { content: ""; position: absolute; inset: auto 0 -40px; height: 60%; background: radial-gradient(60% 60% at 50% 100%, color-mix(in srgb, var(--accent) 24%, transparent), transparent 70%); pointer-events: none; }
-@media (max-width: 900px) { .compo { display: none; } }
-.eyebrow { display: inline-flex; align-items: center; gap: 10px; color: var(--muted); font-size: 13px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 26px; }
-.eyebrow::before { content: ""; width: 28px; height: 2px; background: var(--accent); border-radius: 2px; }
+.hero { padding: clamp(40px, 6vw, 88px) 0 clamp(40px, 5vw, 72px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: center; }
+@media (max-width: 920px) { .hero { grid-template-columns: 1fr; } }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; padding: 6px 14px 6px 8px; border-radius: 999px; background: #fff; border: 1px solid var(--line-2); color: var(--muted); font-size: 14px; font-weight: 500; margin-bottom: 26px; box-shadow: 0 6px 20px -12px rgba(13,25,70,.3); }
+.eyebrow img { width: 22px; height: 22px; }
 .hero h1 { max-width: 14ch; }
-.hero h1 em { font-style: normal; color: var(--accent); }
-.hero .lead { font-size: clamp(18px, 1.6vw, 21px); color: var(--muted); max-width: 52ch; margin: 28px 0 0; }
+.hero .lead { font-size: clamp(18px, 1.7vw, 21px); color: var(--muted); max-width: 46ch; margin: 26px 0 0; }
+.ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 34px; }
+.compo { position: relative; height: 580px; display: flex; justify-content: center; align-items: center; }
+.compo .mockwrap { position: absolute; transition: transform .4s ease; }
+.compo .c1 { z-index: 3; }
+.compo .c2 { z-index: 2; transform: translateX(-175px) translateY(30px) rotate(-8deg) scale(.84); }
+.compo .c3 { z-index: 1; transform: translateX(175px) translateY(30px) rotate(8deg) scale(.84); }
+@media (max-width: 920px) { .compo { height: 520px; } }
+@media (max-width: 560px) { .compo { height: 440px; } .compo .mockwrap { scale: .82; } .compo .c2 { transform: translateX(-110px) translateY(30px) rotate(-8deg) scale(.8); } .compo .c3 { transform: translateX(110px) translateY(30px) rotate(8deg) scale(.8); } }
 
-.apps-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin: 0 0 22px; }
-.apps-head .count { color: var(--faint); font-size: 14px; font-weight: 500; }
-.apps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 0 0 clamp(64px, 8vw, 112px); }
-@media (max-width: 720px) { .apps { grid-template-columns: 1fr; } }
-.card {
-  position: relative; display: flex; flex-direction: column; gap: 18px; padding: 26px 26px 24px;
-  background: var(--card); border: 1px solid var(--line); border-radius: 22px; overflow: hidden;
-  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
-}
-.card::after {
-  content: ""; position: absolute; inset: auto -20% -60% auto; width: 70%; aspect-ratio: 1; border-radius: 50%; pointer-events: none;
-  background: radial-gradient(closest-side, color-mix(in srgb, var(--c) 28%, transparent), transparent);
-  opacity: 0; transition: opacity .3s ease;
-}
-.card:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--c) 55%, var(--line-2)); box-shadow: 0 24px 60px -30px color-mix(in srgb, var(--c) 60%, transparent); }
-.card:hover::after { opacity: 1; }
-.card .row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.tile { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 16px; background: var(--c); color: #fff; box-shadow: 0 10px 30px -12px color-mix(in srgb, var(--c) 80%, transparent); flex: none; }
-.tile svg { width: 28px; height: 28px; }
-.tile.big { width: 96px; height: 96px; border-radius: 26px; box-shadow: 0 30px 70px -24px color-mix(in srgb, var(--c) 90%, transparent); }
-.tile.big svg { width: 48px; height: 48px; }
-.pill { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding: 6px 11px; border-radius: 999px; border: 1px solid var(--line-2); white-space: nowrap; }
-.pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 25%, transparent); }
-.pill.store { color: var(--fg); }
-.card h3 { font-size: 22px; margin: 0 0 6px; }
-.card .tag { color: var(--muted); font-size: 16px; margin: 0; }
-.card .go { margin-top: auto; display: flex; align-items: center; justify-content: space-between; color: var(--faint); font-size: 14px; font-weight: 500; padding-top: 6px; }
-.card .go svg { width: 22px; height: 22px; color: var(--fg); transition: transform .22s ease; }
-.card:hover .go svg { transform: translateX(4px); }
+/* лентата с приложенията под заглавието */
+.strip { display: flex; gap: 10px; flex-wrap: wrap; padding: 0 0 clamp(48px, 6vw, 80px); }
+.strip a { display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px 8px 8px; border-radius: 16px; background: #fff; border: 1px solid var(--line); font-weight: 600; font-size: 15px; transition: transform .15s, border-color .15s, box-shadow .15s; }
+.strip a:hover { transform: translateY(-2px); border-color: var(--line-2); box-shadow: 0 14px 30px -20px rgba(13,25,70,.35); }
+.strip .tile { width: 36px; height: 36px; border-radius: 11px; }
+.strip .tile svg { width: 19px; height: 19px; }
 
-.principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding: 0 0 clamp(56px, 7vw, 96px); }
-@media (max-width: 720px) { .principles { grid-template-columns: 1fr; } }
-.principle { padding: 6px 0 0; border-top: 1px solid var(--line-2); }
-.principle b { display: block; font-family: var(--display); font-weight: 600; font-size: 15px; letter-spacing: -.01em; margin: 18px 0 8px; }
-.principle p { color: var(--muted); font-size: 15px; margin: 0; }
-
-/* ---- showcase секции на началото ---- */
-.show { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: center; padding: clamp(40px, 5vw, 72px) 0; border-top: 1px solid var(--line); }
+/* ---- приложенията на началото ---- */
+.apps-head { text-align: center; margin: 0 auto 36px; max-width: 640px; }
+.apps-head p { color: var(--muted); font-size: 18px; margin: 14px 0 0; }
+.show { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); align-items: center;
+  padding: clamp(32px, 5vw, 64px); margin: 0 0 24px; border-radius: 36px; overflow: hidden;
+  background: linear-gradient(160deg, color-mix(in srgb, var(--c) 9%, #fff), color-mix(in srgb, var(--c) 3%, #fff) 60%); border: 1px solid color-mix(in srgb, var(--c) 14%, transparent); }
 .show.flip .visual { order: 2; }
-@media (max-width: 860px) { .show { grid-template-columns: 1fr; gap: 32px; } .show.flip .visual { order: 0; } }
-.show .visual { display: flex; justify-content: center; align-items: center; min-height: 420px; position: relative; }
+@media (max-width: 860px) { .show { grid-template-columns: 1fr; } .show.flip .visual { order: 0; } }
+.show .visual { display: flex; justify-content: center; align-items: center; min-height: 360px; }
 @media (max-width: 860px) { .show .visual { min-height: 0; } }
-.show .visual::before { content: ""; position: absolute; inset: 10% 0; border-radius: 40px; background: radial-gradient(60% 60% at 50% 50%, color-mix(in srgb, var(--c) 18%, transparent), transparent 75%); pointer-events: none; }
-.show .visual .mockwrap { position: relative; }
-.show .head { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
-.show .head b { font-family: var(--display); font-weight: 600; font-size: 15px; }
-.show h2 { font-size: clamp(26px, 3vw, 38px); max-width: 16ch; margin-bottom: 18px; }
-.show p { color: color-mix(in srgb, var(--fg) 80%, var(--muted)); max-width: 52ch; font-size: 17px; }
-.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 26px; }
-.chip { display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px 7px 9px; border-radius: 999px; border: 1px solid var(--line-2); font-size: 13px; font-weight: 500; color: var(--fg); background: color-mix(in srgb, var(--card) 70%, transparent); }
-.chip::before { content: ""; width: 14px; height: 14px; border-radius: 50%; background: color-mix(in srgb, var(--c) 22%, transparent); box-shadow: inset 0 0 0 4px color-mix(in srgb, var(--c) 22%, transparent), 0 0 0 0 transparent; position: relative; }
-.chip::before { background: radial-gradient(circle at center, var(--c) 0 3px, color-mix(in srgb, var(--c) 22%, transparent) 3.5px); }
-.show .more { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: var(--fg); }
-.show .more svg { width: 18px; height: 18px; transition: transform .2s ease; color: var(--c); }
-.show .more:hover svg { transform: translateX(4px); }
-.show .actions { display: flex; gap: 12px 24px; align-items: center; flex-wrap: wrap; }
+.tile.bigicon { width: 180px; height: 180px; border-radius: 48px; }
+.tile.bigicon svg { width: 90px; height: 90px; }
+.show .head { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+.show .head b { font-weight: 700; font-size: 18px; }
+.show h2 { font-size: clamp(26px, 3vw, 40px); max-width: 17ch; margin-bottom: 16px; }
+.show p { color: var(--muted); max-width: 50ch; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 26px; }
+.chip { display: inline-flex; align-items: center; gap: 8px; padding: 7px 13px 7px 10px; border-radius: 999px; background: rgba(255,255,255,.85); border: 1px solid var(--line); font-size: 14px; font-weight: 500; }
+.chip::before { content: ""; width: 7px; height: 7px; border-radius: 2px; background: var(--c); }
+.actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.more { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; padding: 12px 6px; }
+.more svg { width: 18px; height: 18px; color: var(--c); transition: transform .2s ease; }
+.more:hover svg { transform: translateX(4px); }
+
+.tile { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 15px; background: var(--c); color: #fff; flex: none;
+  box-shadow: 0 12px 28px -14px color-mix(in srgb, var(--c) 90%, transparent); }
+.tile svg { width: 26px; height: 26px; }
+.tile.big { width: 88px; height: 88px; border-radius: 24px; }
+.tile.big svg { width: 44px; height: 44px; }
+.pill { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); padding: 5px 11px; border-radius: 999px; background: rgba(255,255,255,.9); border: 1px solid var(--line-2); white-space: nowrap; }
+.pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #f2a33a; }
+.pill.store { color: #0d7a4f; }
+.pill.store::before { background: #19b26b; box-shadow: 0 0 0 3px rgba(25,178,107,.2); }
+
+/* ---- бутони и значките на магазините ---- */
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; border-radius: 14px; font-weight: 600; font-size: 16px; border: 1px solid var(--line-2); background: #fff; transition: transform .15s ease, box-shadow .15s ease, border-color .15s; }
+.btn:hover { transform: translateY(-1px); border-color: var(--fg); }
+.btn.primary { background: var(--grad); color: #fff; border-color: transparent; box-shadow: 0 16px 34px -16px rgba(33,82,255,.7); }
+.btn.primary:hover { box-shadow: 0 20px 40px -16px rgba(33,82,255,.85); }
+.btn svg { width: 18px; height: 18px; }
+.store-btn { display: inline-flex; align-items: center; gap: 11px; padding: 9px 18px 9px 14px; border-radius: 13px; background: #0b1430; color: #fff; transition: transform .15s ease, box-shadow .15s ease; min-width: 172px; }
+.store-btn:hover { transform: translateY(-2px); box-shadow: 0 16px 30px -16px rgba(11,20,48,.7); }
+.store-btn svg { width: 26px; height: 26px; flex: none; }
+.store-btn span { display: flex; flex-direction: column; line-height: 1.15; font-size: 11px; opacity: .85; }
+.store-btn b { font-size: 17px; font-weight: 600; opacity: 1; letter-spacing: -.01em; }
+.stores { display: flex; gap: 12px; flex-wrap: wrap; margin: 28px 0 8px; }
+
+/* ---- принципи ---- */
+.principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding: clamp(40px, 5vw, 72px) 0 clamp(56px, 7vw, 96px); }
+@media (max-width: 760px) { .principles { grid-template-columns: 1fr; } }
+.principle { padding: 26px; border-radius: 24px; background: var(--card); border: 1px solid var(--line); }
+.principle i { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: var(--grad); color: #fff; font-style: normal; font-weight: 700; margin-bottom: 18px; }
+.principle b { display: block; font-weight: 700; font-size: 18px; letter-spacing: -.01em; margin: 0 0 8px; }
+.principle p { color: var(--muted); font-size: 15.5px; margin: 0; }
 
 /* ---- страница на приложение ---- */
-.app-hero { padding: clamp(48px, 7vw, 96px) 0 clamp(28px, 4vw, 48px); display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 40px; align-items: center; }
-.app-hero .visual { display: flex; justify-content: center; position: relative; }
-.app-hero .visual::before { content: ""; position: absolute; inset: 5% 0; border-radius: 40px; background: radial-gradient(60% 60% at 50% 50%, color-mix(in srgb, var(--c) 20%, transparent), transparent 75%); pointer-events: none; }
-.app-hero .visual .mockwrap { position: relative; }
-.app-hero .tile.big { margin-bottom: 26px; }
+.app-hero { padding: clamp(40px, 6vw, 88px) 0 clamp(28px, 4vw, 48px); display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 40px; align-items: center; }
+.app-hero .visual { display: flex; justify-content: center; }
+.app-hero .tile.big { margin-bottom: 24px; }
 @media (max-width: 860px) { .app-hero { grid-template-columns: 1fr; gap: 36px; } }
-.app-hero .name { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; font-family: var(--display); font-weight: 600; font-size: 15px; color: var(--muted); margin-bottom: 14px; }
-.app-hero .name span:first-child { color: var(--fg); }
-.app-hero h1 { max-width: 18ch; font-size: clamp(30px, 4.4vw, 52px); }
-.prose { font-size: 18px; }
-.prose p { max-width: 62ch; }
-.prose p + p { margin-top: -2px; }
-.stores { display: flex; gap: 12px; flex-wrap: wrap; margin: 30px 0 8px; }
-.btn { display: inline-flex; align-items: center; gap: 10px; padding: 13px 20px; border-radius: 999px; font-weight: 600; font-size: 15px; border: 1px solid var(--line-2); transition: transform .15s ease, background .15s ease, border-color .15s ease; }
-.btn:hover { transform: translateY(-1px); border-color: var(--fg); }
-.btn.primary { background: var(--fg); color: var(--bg); border-color: var(--fg); }
-.btn.primary:hover { background: color-mix(in srgb, var(--fg) 88%, var(--c)); }
-.btn svg { width: 18px; height: 18px; }
+.app-hero .name { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; font-weight: 700; font-size: 18px; margin-bottom: 14px; }
+.app-hero h1 { max-width: 16ch; font-size: clamp(32px, 4.6vw, 56px); }
+.prose { font-size: 18px; color: #2b3550; }
+.prose p { max-width: 64ch; }
 .links { display: flex; gap: 8px 22px; flex-wrap: wrap; margin: 36px 0 0; padding-top: 22px; border-top: 1px solid var(--line); font-size: 15px; }
 .links a { color: var(--muted); font-weight: 500; text-decoration: underline; text-decoration-color: var(--line-2); text-underline-offset: 4px; }
 .links a:hover { color: var(--fg); text-decoration-color: var(--c); }
 .section { padding-bottom: clamp(56px, 7vw, 96px); }
 
 /* ---- правни текстове ---- */
-.doc-head { padding: clamp(48px, 7vw, 88px) 0 8px; }
+.doc-head { padding: clamp(40px, 6vw, 80px) 0 8px; }
 .crumbs { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 14px; margin-bottom: 22px; }
-.crumbs a { color: var(--fg); font-weight: 500; }
+.crumbs .tile { width: 32px; height: 32px; border-radius: 10px; } .crumbs .tile svg { width: 17px; height: 17px; }
+.crumbs a { color: var(--fg); font-weight: 600; }
 .crumbs .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--faint); }
-.doc-head h1 { font-size: clamp(28px, 4vw, 44px); }
+.doc-head h1 { font-size: clamp(30px, 4vw, 46px); }
 .doc-head .lead { font-size: 19px; color: var(--muted); margin: 22px 0 0; }
-.doc { display: grid; grid-template-columns: 220px minmax(0, var(--read)); gap: 48px; padding: 32px 0 clamp(56px, 7vw, 96px); }
+.doc { display: grid; grid-template-columns: 230px minmax(0, var(--read)); gap: 48px; padding: 32px 0 clamp(56px, 7vw, 96px); }
 @media (max-width: 900px) { .doc { grid-template-columns: 1fr; gap: 12px; } }
-.toc { position: sticky; top: 88px; align-self: start; font-size: 14px; }
+.toc { position: sticky; top: 92px; align-self: start; font-size: 14px; }
 .toc b { display: block; color: var(--faint); font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; margin: 8px 0 12px; }
 .toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
 .toc a { display: block; padding: 6px 10px; border-radius: 8px; color: var(--muted); border-left: 2px solid var(--line); }
-.toc a:hover { color: var(--fg); border-left-color: var(--c); }
-/* На телефон съдържанието не е „залепено" (иначе стои върху текста при скрол),
-   а е ред от малки връзки над статията. Трябва да е СЛЕД .toc правилата, за да ги надделее. */
+.toc a:hover { color: var(--fg); border-left-color: var(--c); background: var(--bg-2); }
 @media (max-width: 900px) {
   .toc { position: static; margin-bottom: 8px; }
   .toc ol { display: flex; flex-wrap: wrap; gap: 8px; }
   .toc a { padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; }
-  .toc a:hover { border-color: var(--c); }
 }
-.doc article h2 { font-size: 20px; margin: 34px 0 10px; padding-top: 8px; display: flex; gap: 14px; align-items: baseline; }
-.doc article h2 small { font-family: var(--text); font-size: 13px; font-weight: 600; color: var(--c); letter-spacing: .04em; }
-.doc article p { color: color-mix(in srgb, var(--fg) 86%, var(--muted)); }
-.doc article > p:first-of-type { margin-top: 8px; }
+.doc article h2 { font-size: 21px; margin: 34px 0 10px; padding-top: 8px; display: flex; gap: 14px; align-items: baseline; letter-spacing: -.02em; }
+.doc article h2 small { font-size: 13px; font-weight: 700; color: var(--c); }
+.doc article p { color: #2b3550; }
 
 /* ---- поддръжка ---- */
-.mail { display: inline-flex; align-items: center; gap: 14px; margin: 26px 0 6px; padding: 16px 22px 16px 18px; border-radius: 18px; background: var(--card); border: 1px solid var(--line-2); font-family: var(--display); font-weight: 600; font-size: clamp(16px, 2vw, 20px); letter-spacing: -.01em; transition: border-color .15s, transform .15s; }
-.mail:hover { border-color: var(--accent); transform: translateY(-1px); }
-.mail .tile { width: 40px; height: 40px; border-radius: 12px; background: var(--accent); }
-.mail .tile svg { width: 20px; height: 20px; }
-.list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.mail { display: inline-flex; align-items: center; gap: 14px; margin: 26px 0 6px; padding: 14px 22px 14px 14px; border-radius: 18px; background: #fff; border: 1px solid var(--line-2); font-weight: 700; font-size: clamp(16px, 2vw, 20px); transition: border-color .15s, transform .15s, box-shadow .15s; }
+.mail:hover { border-color: var(--blue); transform: translateY(-1px); box-shadow: 0 16px 34px -20px rgba(33,82,255,.6); }
+.mail .tile { width: 42px; height: 42px; border-radius: 12px; background: var(--grad); }
+.mail .tile svg { width: 21px; height: 21px; }
+.list { list-style: none; margin: 0; padding: 0; display: grid; }
 .list li { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding: 14px 0; border-top: 1px solid var(--line); }
 .list li:last-child { border-bottom: 1px solid var(--line); }
 .list .tile { width: 36px; height: 36px; border-radius: 10px; }
 .list .tile svg { width: 18px; height: 18px; }
-.list .n { font-family: var(--display); font-weight: 600; font-size: 15px; min-width: 120px; }
+.list .n { font-weight: 700; font-size: 16px; min-width: 120px; }
 .list .l { display: flex; gap: 16px; flex-wrap: wrap; color: var(--muted); font-size: 14px; margin-left: auto; }
 .list .l a:hover { color: var(--fg); }
 
 /* ---- долу ---- */
-footer { border-top: 1px solid var(--line); padding: 44px 0 48px; color: var(--muted); font-size: 14px; line-height: 1.7; background: var(--bg-2); }
-footer .cols { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; }
-@media (max-width: 720px) { footer .cols { grid-template-columns: 1fr; } }
-footer .brand { color: var(--fg); margin-bottom: 12px; }
-footer b { display: block; color: var(--faint); font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 10px; }
+footer { border-top: 1px solid var(--line); padding: 52px 0 44px; color: var(--muted); font-size: 14.5px; line-height: 1.7; background: var(--bg-2); }
+footer .cols { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px; }
+@media (max-width: 860px) { footer .cols { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { footer .cols { grid-template-columns: 1fr; } }
+footer .logo { width: 150px; height: auto; margin-bottom: 10px; }
+footer b { display: block; color: var(--fg); font-size: 13px; font-weight: 700; margin-bottom: 10px; }
+footer a { display: block; }
 footer a:hover { color: var(--fg); }
-footer .fine { margin-top: 36px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--faint); font-size: 13px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+footer .fine { margin-top: 36px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--faint); font-size: 13px; }
 `;
 
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -223,13 +214,13 @@ const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(
 /** Пътищата: BG е в корена, EN под /en/. */
 export const href = (lang, path = '') => (lang === 'bg' ? '/' : '/en/') + path;
 
-/** Логото: четири пиксела, единият в цвета на фирмата. */
-const LOGO = `<svg viewBox="0 0 26 26" aria-hidden="true"><rect class="px" x="1" y="1" width="11" height="11" rx="3"/><rect class="px-c" x="14" y="1" width="11" height="11" rx="3"/><rect class="px" x="1" y="14" width="11" height="11" rx="3"/><rect class="px" x="14" y="14" width="11" height="11" rx="3"/></svg>`;
-/** Favicon: същото лого, на тъмен фон. */
-export const FAVICON = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#0c0c0e"/><rect x="5" y="5" width="10" height="10" rx="2.5" fill="#f4f2ec"/><rect x="17" y="5" width="10" height="10" rx="2.5" fill="#8b7cff"/><rect x="5" y="17" width="10" height="10" rx="2.5" fill="#f4f2ec"/><rect x="17" y="17" width="10" height="10" rx="2.5" fill="#f4f2ec"/></svg>
-`;
+/** Логото: знакът от новото лого + „Pixel Lab Soft“. */
+const BRAND = `<img src="/assets/logo-mark.png" alt="" width="34" height="34"><span>Pixel <span class="lab">Lab</span></span><small>Soft</small>`;
 const ARROW = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>`;
 const MAIL = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3 8 9 6 9-6"/></svg>`;
+const APPLE = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.02-1.5-2.62-1.7-3.19-1.72-1.36-.14-2.65.8-3.34.8-.69 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.19-1.54 2.67-.39 6.62 1.11 8.79.73 1.06 1.6 2.25 2.75 2.2 1.1-.04 1.52-.71 2.85-.71 1.33 0 1.71.71 2.88.69 1.19-.02 1.94-1.08 2.66-2.14.84-1.23 1.19-2.42 1.21-2.48-.03-.01-2.32-.89-2.32-3.55zM14.18 6.13c.61-.74 1.02-1.76.91-2.78-.88.04-1.94.58-2.57 1.32-.56.65-1.06 1.69-.93 2.69.98.08 1.98-.5 2.59-1.23z"/></svg>`;
+const PLAY = `<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#34d17a" d="M3.6 2.3c-.3.3-.5.8-.5 1.4v16.6c0 .6.2 1.1.5 1.4l9.3-9.7z"/><path fill="#ffd23f" d="m16 15.1-3.1-3.1L16 8.9l3.7 2.1c1.1.6 1.1 1.6 0 2.2z"/><path fill="#ff4d5e" d="M16 15.1 12.9 12l-9.3 9.7c.4.4 1 .4 1.7 0z"/><path fill="#3aa0ff" d="M16 8.9 5.3 2.3c-.7-.4-1.3-.4-1.7 0l9.3 9.7z"/></svg>`;
+const WINDOWS = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.5 10 4.5v7H3zM11 4.4 21 3v8.5H11zM3 12.5h7v7L3 18.5zM11 12.5h10V21l-10-1.4z"/></svg>`;
 const FALLBACK_ICON = `<rect x="4" y="4" width="16" height="16" rx="4"/>`;
 
 /** Иконата на приложение върху цветната плочка. */
@@ -243,7 +234,18 @@ function pill(lang, app) {
   return `<span class="pill${app.status === 'store' ? ' store' : ''}">${esc(label)}</span>`;
 }
 
-export function page({ lang, title, description, path, body, alt, color }) {
+/** Бутоните към магазините и сваляне — едни и същи на началото и на страницата на приложението. */
+function storeButtons(lang, app) {
+  const t = STRINGS[lang];
+  const b = (url, icon, small, big) => `<a class="store-btn" href="${url}">${icon}<span>${esc(small)}<b>${esc(big)}</b></span></a>`;
+  return [
+    app.appStore ? b(app.appStore, APPLE, t.getOn, t.appStore) : '',
+    app.playStore ? b(app.playStore, PLAY, t.getOnPlay, t.playStore) : '',
+    app.external?.download ? b(app.external.download, WINDOWS, t.downloadFor, 'Windows') : '',
+  ].filter(Boolean).join('\n');
+}
+
+export function page({ lang, title, description, path, body, alt, color, glow }) {
   const t = STRINGS[lang];
   const co = COMPANY[lang];
   const other = lang === 'bg' ? 'en' : 'bg';
@@ -256,7 +258,7 @@ export function page({ lang, title, description, path, body, alt, color }) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
-<meta name="theme-color" content="#0c0c0e">
+<meta name="theme-color" content="#ffffff">
 <link rel="canonical" href="${canonical}">
 <link rel="alternate" hreflang="${lang}" href="${canonical}">
 <link rel="alternate" hreflang="${other}" href="${altUrl}">
@@ -264,7 +266,9 @@ export function page({ lang, title, description, path, body, alt, color }) {
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${canonical}">
 <meta property="og:site_name" content="${esc(t.siteName)}">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:image" content="https://${DOMAIN}/assets/favicon-512.png">
+<link rel="icon" href="/assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/assets/favicon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="${FONTS}">
@@ -272,33 +276,37 @@ export function page({ lang, title, description, path, body, alt, color }) {
 </head>
 <body>
 <div class="top"><div class="wrap">
-  <a class="brand" href="${href(lang)}">${LOGO}<span>${esc(t.siteName)}</span></a>
+  <a class="brand" href="${href(lang)}" aria-label="${esc(t.siteName)}">${BRAND}</a>
   <nav>
     <a class="apps-link" href="${href(lang)}#apps">${esc(t.apps)}</a>
     <a href="${href(lang, 'support/')}">${esc(t.support)}</a>
     <a class="lang" href="${href(other, alt ?? path)}" lang="${other}" hreflang="${other}">${esc(t.otherLang)}</a>
   </nav>
 </div></div>
-<main class="wrap">
+<main class="wrap${glow ? ' glow' : ''}">
 ${body}
 </main>
 <footer><div class="wrap">
   <div class="cols">
     <div>
-      <a class="brand" href="${href(lang)}">${LOGO}<span>${esc(t.siteName)}</span></a>
+      <img class="logo" src="/assets/logo-light.webp" alt="Pixel Lab" width="150" height="131">
       <div>${esc(t.tagline)}</div>
+    </div>
+    <div>
+      <b>${esc(t.apps)}</b>
+      ${APPS.filter(a => !a.draft).map(a => `<a href="${href(lang, a.slug + '/')}">${esc(a.name)}</a>`).join('\n      ')}
+    </div>
+    <div>
+      <b>${esc(t.support)}</b>
+      <a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a>
+      <a href="${href(lang, 'support/')}">${esc(t.supportPage)}</a>
     </div>
     <div>
       <b>${esc(co.name)}</b>
       ${esc(co.eik)}<br>${esc(co.address)}
     </div>
-    <div>
-      <b>${esc(t.support)}</b>
-      <a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a><br>
-      <a href="${href(lang, 'support/')}">${esc(t.supportPage)}</a>
-    </div>
   </div>
-  <div class="fine"><span>© ${new Date().getFullYear()} ${esc(co.name)}. ${esc(t.footerRights)}</span><span>${esc(t.madeIn)}</span></div>
+  <div class="fine">© ${new Date().getFullYear()} ${esc(co.name)}. ${esc(t.footerRights)}</div>
 </div></footer>
 </body>
 </html>
@@ -348,34 +356,34 @@ export function legalLinks(lang, app) {
       links.push(`<a href="${href(lang, app.slug + '/' + LEGAL_PATH.deletion + '/')}">${esc(t.deletion)}</a>`);
     }
   } else if (app.external?.privacy) {
-    links.push(`<a href="${app.external.privacy}">${esc(t.privacy)}</a>`);
-    if (app.external.terms) links.push(`<a href="${app.external.terms}">${esc(t.terms)}</a>`);
+    const ext = app.external;
+    const p = typeof ext.privacy === 'object' ? ext.privacy[lang] : ext.privacy;
+    links.push(`<a href="${p}">${esc(t.privacy)}</a>`);
+    if (ext.terms) links.push(`<a href="${typeof ext.terms === 'object' ? ext.terms[lang] : ext.terms}">${esc(t.terms)}</a>`);
   }
+  if (app.external?.site) links.push(`<a href="${app.external.site}">${esc(t.website)}</a>`);
   links.push(`<a href="${href(lang, 'support/')}">${esc(t.support)}</a>`);
   return links;
 }
 
+function visual(app, lang) {
+  return mock(app, lang) || tile(app, 'bigicon');
+}
+
 export function appBody({ lang, app }) {
-  const t = STRINGS[lang];
-  const stores = [
-    app.appStore ? `<a class="btn primary" href="${app.appStore}">${esc(t.appStore)}${ARROW}</a>` : '',
-    app.playStore ? `<a class="btn primary" href="${app.playStore}">${esc(t.playStore)}${ARROW}</a>` : '',
-    app.external?.download ? `<a class="btn primary" href="${app.external.download}">${esc(t.download)}${ARROW}</a>` : '',
-    app.external?.site && !app.external?.download ? `<a class="btn" href="${app.external.site}">${esc(t.website)}${ARROW}</a>` : '',
-  ].filter(Boolean).join('\n');
-  const m = mock(app, lang);
+  const stores = storeButtons(lang, app);
   return `<section class="app-hero">
   <div>
     ${tile(app, 'big')}
     <div class="name"><span>${esc(app.name)}</span>${pill(lang, app)}</div>
     <h1>${esc(app.tagline[lang])}</h1>
     ${app.features ? `<div class="chips">${app.features[lang].map(f => `<span class="chip">${esc(f)}</span>`).join('')}</div>` : ''}
+    ${stores ? `<div class="stores">${stores}</div>` : ''}
   </div>
-  ${m ? `<div class="visual">${m}</div>` : ''}
+  <div class="visual" style="--c:${app.color}">${visual(app, lang)}</div>
 </section>
 <section class="section read prose">
 ${app.description[lang].map(p => `<p>${esc(p)}</p>`).join('\n')}
-${stores ? `<div class="stores">${stores}</div>` : ''}
 <div class="links">
   ${legalLinks(lang, app).join('\n  ')}
 </div>
@@ -384,39 +392,41 @@ ${stores ? `<div class="stores">${stores}</div>` : ''}
 
 export function homeBody({ lang, apps }) {
   const t = STRINGS[lang];
-  const compo = ['konspekt', 'glagoli', 'sroko']
+  const compo = ['glagoli', 'konspekt', 'sroko']
     .map((slug, i) => { const a = apps.find(x => x.slug === slug); return a ? mock(a, lang).replace('class="mockwrap"', `class="mockwrap c${i + 1}"`) : ''; })
     .join('\n');
+  const strip = apps.map(a => `<a href="#${a.slug}">${tile(a)}${esc(a.name)}</a>`).join('\n');
   const shows = apps.map((app, i) => {
-    const m = mock(app, lang);
     const chips = app.features ? `<div class="chips">${app.features[lang].map(f => `<span class="chip">${esc(f)}</span>`).join('')}</div>` : '';
-    const store = app.appStore ? `<a class="btn primary" href="${app.appStore}">${esc(t.appStore)}</a>` : app.external?.download ? `<a class="btn primary" href="${app.external.download}">${esc(t.download)}</a>` : '';
     return `<section class="show${i % 2 ? ' flip' : ''}" id="${app.slug}" style="--c:${app.color ?? 'var(--accent)'}">
-  <div class="visual">${m}</div>
+  <div class="visual">${visual(app, lang)}</div>
   <div>
     <div class="head">${tile(app)}<b>${esc(app.name)}</b>${pill(lang, app)}</div>
     <h2>${esc(app.tagline[lang])}</h2>
     <p>${esc(app.description[lang][0])}</p>
     ${chips}
-    <div class="actions">${store}<a class="more" href="${href(lang, app.slug + '/')}">${esc(t.more)}${ARROW}</a></div>
+    <div class="actions">${storeButtons(lang, app)}<a class="more" href="${href(lang, app.slug + '/')}">${esc(t.more)}${ARROW}</a></div>
   </div>
 </section>`;
   }).join('\n');
-  const principles = t.principles.map(([h, p]) => `<div class="principle"><b>${esc(h)}</b><p>${esc(p)}</p></div>`).join('\n');
+  const principles = t.principles.map(([h, p], i) => `<div class="principle"><i>${i + 1}</i><b>${esc(h)}</b><p>${esc(p)}</p></div>`).join('\n');
   return `<section class="hero">
   <div>
-    <div class="eyebrow">${esc(t.eyebrow)}</div>
+    <div class="eyebrow"><img src="/assets/logo-mark.png" alt="" width="22" height="22">${esc(t.eyebrow)}</div>
     <h1>${t.heroHtml}</h1>
     <p class="lead">${esc(t.homeLead)}</p>
-    <div class="ctas"><a class="btn primary" href="#apps">${esc(t.apps)}${ARROW}</a><a class="btn" href="${href(lang, 'support/')}">${esc(t.support)}</a></div>
+    <div class="ctas"><a class="btn primary" href="#apps">${esc(t.seeApps)}${ARROW}</a><a class="btn" href="${href(lang, 'support/')}">${esc(t.support)}</a></div>
   </div>
   <div class="compo" aria-hidden="true">
 ${compo}
   </div>
 </section>
-<div class="apps-head"><h2 id="apps">${esc(t.apps)}</h2><span class="count">${apps.length}</span></div>
+<nav class="strip" aria-label="${esc(t.apps)}">
+${strip}
+</nav>
+<div class="apps-head"><h2 id="apps">${esc(t.apps)}</h2><p>${esc(t.appsLead)}</p></div>
 ${shows}
-<section class="principles" style="padding-top:clamp(40px,5vw,72px)">
+<section class="principles">
 ${principles}
 </section>`;
 }
@@ -428,13 +438,12 @@ export function supportBody({ lang, apps }) {
     return `<li>${tile(app)}<a class="n" href="${href(lang, app.slug + '/')}">${esc(app.name)}</a><span class="l">${legal.join('\n')}</span></li>`;
   }).join('\n');
   return `<div class="doc-head read">
-  <div class="eyebrow">${esc(t.support)}</div>
   <h1>${esc(t.supportTitle)}</h1>
   <p class="lead">${esc(t.supportLead)}</p>
   <a class="mail" href="mailto:${SUPPORT_EMAIL}"><span class="tile">${MAIL}</span>${SUPPORT_EMAIL}</a>
 </div>
 <section class="section read">
-  <h2 style="font-size:20px;margin:40px 0 16px">${esc(t.apps)}</h2>
+  <h2 style="font-size:22px;margin:40px 0 16px">${esc(t.apps)}</h2>
   <ul class="list">
 ${items}
   </ul>

@@ -1,33 +1,44 @@
 /**
- * Глаголи (преди Гласика) — книгата на английски, прочетена на български.
+ * Глаголи (преди Гласика) — твоите книги, прочетени на глас.
  *
- * ⚑ Описанието е от `3 Glasika/glasika/README.md`. Приложението още не е в
- * магазините — статус „скоро"; правните текстове ще дойдат с публикуването
- * (черновата е в `3 Glasika/glasika/pravni/`).
+ * ⚑ Фактите са от обявите за магазините (`3 Glasika/01 Dokumenti/magazini-obyavi.md`,
+ * сверени с кода): книгата се чете на езика, на който е написана (български
+ * или английски) — каченото НЕ се превежда. До 12.10.2026 тук пишеше, че
+ * превежда — грешно.
+ * В Google Play от октомври 2026 (bg.glagoli.app); в App Store още чака
+ * одобрение — добави `appStore`, щом излезе. Правните текстове са на glagoli.app.
  */
 export default {
   slug: 'glagoli',
-  color: '#f2a33a',
+  color: '#8b6cf6',
   icon: '<path d="M12 6.5C10 5 7 5 4 6.5v13c3-1.5 6-1.5 8 0 2-1.5 5-1.5 8 0v-13c-3-1.5-6-1.5-8 0z"/><path d="M12 6.5v13"/>',
   name: 'Глаголи',
-  status: 'soon',
-  external: { site: 'https://glagoli.app' },
+  status: 'store',
+  appStore: null,
+  playStore: 'https://play.google.com/store/apps/details?id=bg.glagoli.app',
+  external: {
+    site: 'https://glagoli.app',
+    privacy: { bg: 'https://glagoli.app/poveritelnost.html', en: 'https://glagoli.app/privacy.html' },
+    terms: { bg: 'https://glagoli.app/usloviya.html', en: 'https://glagoli.app/terms.html' },
+  },
   features: {
-    bg: ['PDF и EPUB', 'Естествен български глас', 'Питай — без спойлери', 'Продължава откъдето спря'],
-    en: ['PDF and EPUB', 'Natural Bulgarian voice', 'Ask — no spoilers', 'Picks up where you left off'],
+    bg: ['EPUB, PDF, Word или снимка', 'Български и английски', 'Спри и питай — без спойлери', 'Пакети часове, без абонамент'],
+    en: ['EPUB, PDF, Word or a photo', 'Bulgarian and English', 'Pause and ask — no spoilers', 'Hour packs, no subscription'],
   },
   tagline: {
-    bg: 'Кара всичко написано да говори.',
-    en: 'Makes everything written speak.',
+    bg: 'Твоите книги, прочетени на глас.',
+    en: 'Your books, read aloud.',
   },
   description: {
     bg: [
-      'Качваш английска книга — PDF или EPUB — и Глаголи я превежда и ти я чете на естествен български. Спираш, питаш нещо за прочетеното, получаваш отговор без да ти издава края, и продължаваш точно оттам.',
-      'За хората, които искат да четат книги, които още нямат български превод — на път, в колата, вечер.',
+      'Качваш своя книга — EPUB, PDF, Word или снимки на страниците — и Глаголи ти я чете на глас, на езика, на който е написана: български или английски.',
+      'Спираш и питаш нещо за прочетеното. Отговорът е само по това, което вече си чул, и не издава какво следва. После продължаваш точно оттам.',
+      'Плаща се с пакети часове слушане, без абонамент. Първата минута е безплатна.',
     ],
     en: [
-      'Upload an English book — PDF or EPUB — and Glagoli translates it and reads it to you in natural Bulgarian. Pause, ask something about what you have read, get an answer that does not spoil the ending, and continue right where you were.',
-      'For people who want to read books that have no Bulgarian translation yet — on the road, in the car, in the evening.',
+      'Upload your own book — EPUB, PDF, Word or photos of the pages — and Glagoli reads it to you aloud, in the language it was written in: Bulgarian or English.',
+      'Pause and ask something about what you have heard. The answer covers only what you have already listened to and never gives away what comes next. Then carry on right where you were.',
+      'You pay for packs of listening hours, with no subscription. The first minute is free.',
     ],
   },
 };

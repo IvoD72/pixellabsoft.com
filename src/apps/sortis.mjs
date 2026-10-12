@@ -1,14 +1,17 @@
 /**
- * Sortis — Windows приложение: чете фактури и касови бележки с AI, експорт CSV/Excel.
+ * Sortis — Windows програма за счетоводители: чете фактури с AI и прави файл
+ * за счетоводната програма.
  *
- * ⚑ Фактите са от `1 Sortis/PixelLab/Sortis-Istina.md` (каноничният файл).
+ * ⚑ Фактите са от `1 Sortis/PixelLab/Sortis-Istina.md` и sortis.pro (1.5.21).
  * Забранени формулировки: „локална обработка", „не се качва в облак" — не са
  * верни. Вярно: документите не се съхраняват и не се ползват за обучение.
+ * Програмите са само тези, при които файлът е проверен на живо (Делта, Алгос,
+ * ЕДИС). Плюс Минус НЕ се пише, докато те не потвърдят (Иво, 12.10.2026).
  * Sortis има свой сайт и свои правни страници — тук само се сочат.
  */
 export default {
   slug: 'sortis',
-  color: '#1fb886',
+  color: '#0ea5e9',
   icon: '<path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M10 12h5M10 15.5h5"/>',
   name: 'Sortis',
   status: 'store',
@@ -19,8 +22,8 @@ export default {
     download: 'https://sortis.pro',
   },
   features: {
-    bg: ['Снимка, скан или PDF', 'Над 90% сами', 'CSV и Excel', 'Документите не се пазят'],
-    en: ['Photo, scan or PDF', 'Over 90% read automatically', 'CSV and Excel', 'Documents are not stored'],
+    bg: ['PDF, скан или снимка', 'Файл за Делта, Алгос и ЕДИС', 'Подсметки по редове', 'Документите не се пазят'],
+    en: ['PDF, scan or photo', 'Files for Delta, Algos and EDIS', 'Subaccounts per line', 'Documents are not stored'],
   },
   tagline: {
     bg: 'Фактурите, въведени за секунди.',
@@ -28,14 +31,14 @@ export default {
   },
   description: {
     bg: [
-      'Sortis е програма за Windows, която чете фактури и касови бележки — снимка, скан или PDF — и ги превръща в подредена таблица: доставчик, номер, дата, суми, ДДС. Изнасяш в CSV или Excel и ги даваш на счетоводителя.',
-      'Разчита над 90% от документите сам; останалите ти показва за проверка. Документите не се съхраняват и не се ползват за обучение на модели.',
-      'Помощен инструмент за фирми и счетоводители — не заменя счетоводния софтуер, спестява въвеждането на ръка.',
+      'Sortis е програма за Windows за счетоводители. Чете фактури, известия и касови бележки — PDF, скан или снимка — и прави готов файл за Микроинвест Делта Про, Алгос АС2012 или ЕДИС-АСО. За всяка друга програма — Excel или CSV.',
+      'Разчита над 90% от документите сам, а останалите ти показва за поглед. Подсметките по редовете на многоредовите фактури влизат в същия файл. Документите не се съхраняват и не се ползват за обучение на модели.',
+      'Не заменя счетоводната програма — спестява въвеждането на ръка.',
     ],
     en: [
-      'Sortis is a Windows program that reads invoices and receipts — photo, scan or PDF — and turns them into a tidy table: supplier, number, date, amounts, VAT. Export to CSV or Excel and hand it to your accountant.',
-      'It reads over 90% of documents on its own; the rest it shows you to check. Documents are not stored and are not used to train models.',
-      'A helper tool for businesses and accountants — it does not replace accounting software, it saves the manual typing.',
+      'Sortis is a Windows program for accountants. It reads invoices, credit notes and receipts — PDF, scan or photo — and produces a ready file for Microinvest Delta Pro, Algos AS2012 or EDIS-ASO. For any other program — Excel or CSV.',
+      'It reads over 90% of documents on its own and shows you the rest to check. Subaccounts for the lines of multi-line invoices go into the same file. Documents are not stored and are not used to train models.',
+      'It does not replace your accounting software — it saves the manual typing.',
     ],
   },
 };
