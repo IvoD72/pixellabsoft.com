@@ -62,6 +62,35 @@ for (const lang of LANGS) {
   }
 }
 
+// /sroko/get/ — линкът от платената реклама във Facebook: към магазина според
+// устройството, веднага. Не е в sitemap-а и е noindex; без бисквитки и проследяване.
+// Линковете са тези от src/apps/sroko.mjs — на едно място.
+const sroko = APPS.find(a => a.slug === 'sroko');
+await mkdir(join(OUT, 'sroko', 'get'), { recursive: true });
+await writeFile(join(OUT, 'sroko', 'get', 'index.html'), `<!doctype html>
+<html lang="bg"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Сроко</title>
+<script>(function () {
+  var ua = navigator.userAgent || '';
+  // iPadOS 13+ в Safari се представя като Mac — познава се по тъча.
+  var ios = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  location.replace(ios ? ${JSON.stringify(sroko.appStore)}
+    : /Android/i.test(ua) ? ${JSON.stringify(sroko.playStore)}
+    : ${JSON.stringify(`https://${DOMAIN}/sroko/`)});
+})();</script>
+<style>body{font-family:system-ui,sans-serif;text-align:center;padding:48px 16px;background:#fff;color:#1a1d24}
+a{display:inline-block;margin:8px;padding:12px 20px;border-radius:10px;background:#2756FF;color:#fff;text-decoration:none;font-weight:600}</style>
+</head><body>
+<noscript>
+<h1>Сроко</h1>
+<p><a href="${sroko.appStore}">App Store</a><a href="${sroko.playStore}">Google Play</a></p>
+<p><a href="https://${DOMAIN}/sroko/" style="background:none;color:#2756FF">pixellabsoft.com/sroko</a></p>
+</noscript>
+</body></html>
+`);
+
 await writeFile(join(OUT, 'sitemap.xml'),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
   urls.map(u => `  <url><loc>${u}</loc></url>`).join('\n') + '\n</urlset>\n');
