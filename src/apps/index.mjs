@@ -10,6 +10,7 @@ import sortis from './sortis.mjs';
 import glagoli from './glagoli.mjs';
 import sroko from './sroko.mjs';
 import calvio from './calvio.mjs';
+import lingbolt from './lingbolt.mjs';
 
 // Първо тези, които са в магазините; после тестваните и идващите.
-export const APPS = [sroko, glagoli, sortis, konspekt, calvio];
+export const APPS = [sroko, glagoli, lingbolt, sortis, konspekt, calvio];

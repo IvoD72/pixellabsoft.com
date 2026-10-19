@@ -21,7 +21,7 @@ const ORG = lang => ({
   url: `https://${DOMAIN}/`, logo: `https://${DOMAIN}/assets/favicon-512.png`, email: SUPPORT_EMAIL,
   sameAs: ['https://sortis.pro', 'https://glagoli.app'],
 });
-const KATEGORIA = { sroko: 'UtilitiesApplication', glagoli: 'BookApplication', sortis: 'BusinessApplication',
+const KATEGORIA = { sroko: 'UtilitiesApplication', glagoli: 'BookApplication', sortis: 'BusinessApplication', lingbolt: 'UtilitiesApplication',
   konspekt: 'BusinessApplication', calvio: 'BusinessApplication' };
 const appLd = (app, lang) => {
   const os = app.external?.download ? ['Windows'] : [app.appStore && 'iOS', app.playStore && 'Android'].filter(Boolean);
