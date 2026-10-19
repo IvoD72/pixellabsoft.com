@@ -14,7 +14,7 @@
 const UPDATED = { bg: '19 октомври 2026', en: '19 October 2026' };
 
 // Инсталаторът — подписан от Pixel Lab EOOD, качен като release в репото на сайта.
-const DOWNLOAD = 'https://github.com/IvoD72/pixellabsoft.com/releases/download/lingbolt-0.2.0/LingboltSetup.exe';
+const DOWNLOAD = 'https://github.com/IvoD72/pixellabsoft.com/releases/download/lingbolt-0.3.0/LingboltSetup.exe';
 
 export default {
   slug: 'lingbolt',
@@ -37,12 +37,12 @@ export default {
   description: {
     bg: [
       'Lingbolt превежда навсякъде в Windows — в чата, в имейла, в браузъра, във Viber и WhatsApp. Пишеш на български, натискаш Ctrl два пъти и текстът в полето става на английски (или на езика, който си избрал), готов за изпращане. Ctrl+Z връща твоя.',
-      'Получиш ли съобщение на чужд език, маркираш го и до него излиза ⚡. Едно цъкане — и преводът е на картичка до мишката, с бутон „Копирай“. С Про можеш да го чуеш и на естествен глас.',
+      'Получиш ли съобщение на чужд език, маркираш го и до него излиза ⚡. Едно цъкане — и преводът е на картичка до мишката, с бутон „Копирай“. С Про можеш да го чуеш и на естествен глас. Текст в снимка, PDF или игра? Ctrl+Shift+R, ограждаш го с мишката — и го четеш на твоя език. Lingbolt помни на какъв език говори всеки чат и се обновява сам.',
       'Безплатно: 10 превода на ден. Lingbolt Про (до 200 на ден и естествен глас) идва скоро. За Windows 10 и 11, 64-битов.',
     ],
     en: [
       'Lingbolt translates anywhere in Windows — in chat, e-mail, the browser, Viber and WhatsApp. Type in your language, press Ctrl twice and the text in the field becomes English (or the language you picked), ready to send. Ctrl+Z brings yours back.',
-      'Got a message in another language? Select it and a ⚡ appears next to it. One click and the translation shows on a card by the mouse, with a Copy button. With Pro you can also hear it in a natural voice.',
+      'Got a message in another language? Select it and a ⚡ appears next to it. One click and the translation shows on a card by the mouse, with a Copy button. With Pro you can also hear it in a natural voice. Text in a picture, a PDF or a game? Press Ctrl+Shift+R, draw a box around it — and read it in your language. Lingbolt remembers which language each chat speaks and updates itself.',
       'Free: 10 translations a day. Lingbolt Pro (up to 200 a day and the natural voice) is coming soon. For Windows 10 and 11, 64-bit.',
     ],
   },
@@ -56,7 +56,7 @@ export default {
           ['Кой обработва данните',
             'Пиксел Лаб ЕООД, България. Програмата се казва Lingbolt. За въпроси пиши на support@pixellabsoft.com.'],
           ['Какво се праща и къде',
-            'Само когато ти поискаш превод (Ctrl два пъти или ⚡), маркираният текст — или текстът в полето, в което пишеш — се праща криптиран към нашия сървър в Google Cloud (Белгия, ЕС), а той — към Google Gemini API, който го превежда. Преводът се връща при теб. Когато натиснеш „Чуй“, преведеният текст отива по същия път и се връща като звук.'],
+            'Само когато ти поискаш превод (Ctrl два пъти или ⚡), маркираният текст — или текстът в полето, в което пишеш — се праща криптиран към нашия сървър в Google Cloud (Белгия, ЕС), а той — към Google Gemini API, който го превежда. Преводът се връща при теб. Когато натиснеш „Чуй“, преведеният текст отива по същия път и се връща като звук. При превод от екрана се праща само ограденото от теб парче като картинка — пак по същия път и пак без да се пази.'],
           ['Какво НЕ пазим',
             'Текстовете ти и преводите не се записват — нито в база данни, нито в логове. Google обработва текста по условията на платения Gemini API: не го използва за обучение на модели и може да го държи за кратко само за предотвратяване на злоупотреби.'],
           ['Какво пазим',
@@ -81,7 +81,7 @@ export default {
           ['Who processes the data',
             'Pixel Lab EOOD, Bulgaria. The program is called Lingbolt. For questions write to support@pixellabsoft.com.'],
           ['What is sent and where',
-            'Only when you ask for a translation (Ctrl twice or ⚡), the selected text — or the text in the field you are typing in — is sent encrypted to our server on Google Cloud (Belgium, EU), which passes it to the Google Gemini API for translation. The translation comes back to you. When you press “Listen”, the translated text goes the same way and comes back as audio.'],
+            'Only when you ask for a translation (Ctrl twice or ⚡), the selected text — or the text in the field you are typing in — is sent encrypted to our server on Google Cloud (Belgium, EU), which passes it to the Google Gemini API for translation. The translation comes back to you. When you press “Listen”, the translated text goes the same way and comes back as audio. When you translate from the screen, only the part you boxed is sent, as a picture — the same way, and again not kept.'],
           ['What we do NOT keep',
             'Your texts and translations are not recorded — not in a database, not in logs. Google processes the text under the paid Gemini API terms: it does not use it to train models and may hold it briefly only to prevent abuse.'],
           ['What we keep',
@@ -115,7 +115,7 @@ export default {
           ['Наличност',
             'Стараем се услугата да работи винаги, но може да има прекъсвания — при поддръжка, при проблем при доставчиците ни или когато дневният ни таван на разходите е достигнат.'],
           ['Програмата',
-            'Lingbolt се инсталира за твоя потребител в Windows и може да се маха по всяко време от „Приложения“ в настройките. Обновленията ще идват от този сайт.'],
+            'Lingbolt се инсталира за твоя потребител в Windows и може да се маха по всяко време от „Приложения“ в настройките. Веднъж на 12 часа пита нашия сървър за нова версия; ако има, ти я предлага и я инсталира едва след като провери, че е подписана от Пиксел Лаб ЕООД.'],
           ['Промени',
             'Ако променим условията, датата горе ще го покаже. Продължиш ли да ползваш Lingbolt, приемаш новите условия.'],
         ],
@@ -135,7 +135,7 @@ export default {
           ['Availability',
             'We aim to keep the service running at all times, but there may be interruptions — for maintenance, a problem at our providers, or when our daily cost cap is reached.'],
           ['The program',
-            'Lingbolt installs for your Windows user and can be removed at any time from Apps in Settings. Updates will come from this site.'],
+            'Lingbolt installs for your Windows user and can be removed at any time from Apps in Settings. Every 12 hours it asks our server whether there is a new version; if so, it offers it and installs it only after checking that it is signed by Pixel Lab EOOD.'],
           ['Changes',
             'If we change the terms, the date above will show it. If you keep using Lingbolt, you accept the new terms.'],
         ],
