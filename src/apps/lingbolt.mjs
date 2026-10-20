@@ -15,7 +15,7 @@
 const UPDATED = { bg: '20 октомври 2026', en: '20 October 2026' };
 
 // Инсталаторът — подписан от Pixel Lab EOOD, качен като release в репото на сайта.
-const DOWNLOAD = 'https://github.com/IvoD72/pixellabsoft.com/releases/download/lingbolt-0.5.1/LingboltSetup.exe';
+const DOWNLOAD = 'https://github.com/IvoD72/pixellabsoft.com/releases/download/lingbolt-0.5.2/LingboltSetup.exe';
 
 export default {
   slug: 'lingbolt',
