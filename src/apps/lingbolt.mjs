@@ -29,7 +29,7 @@ export default {
     bg: ['Във всяка програма', 'Ctrl два пъти или ⚡', '40 езика', 'Текстовете не се пазят'],
     en: ['In any program', 'Ctrl twice or ⚡', '40 languages', 'Your texts are not stored'],
   },
-  short: { bg: 'Пишеш на твоя език — те четат на техния.', en: 'You write in yours — they read in theirs.' },
+  short: { bg: 'Пишеш на твоя език — те четат на техния. Чете и превежда 40 езика.', en: 'You write in yours — they read in theirs. Reads and translates 40 languages.' },
   note: { bg: 'превод с една мълния', en: 'translation in a flash' },
   tagline: {
     bg: 'Пишеш на твоя език. Те четат на техния.',
@@ -37,11 +37,13 @@ export default {
   },
   description: {
     bg: [
+      'Чете и превежда 40 езика — от български, английски, немски и испански до гръцки, турски, арабски, хинди, японски и китайски. Сам познава на какъв език е текстът, а самата програма също говори на твоя език.',
       'Lingbolt превежда навсякъде в Windows — в чата, в имейла, в браузъра, във Viber и WhatsApp. Пишеш на български, натискаш Ctrl два пъти и текстът в полето става на английски (или на езика, който си избрал), готов за изпращане. Ctrl+Z връща твоя.',
       'Получиш ли съобщение на чужд език, маркираш го и до него излиза ⚡. Едно цъкане — и преводът е на картичка до мишката, с бутон „Копирай“. С Про можеш да го чуеш и на естествен глас. Текст в снимка, PDF или игра? Ctrl+Shift+R, ограждаш го с мишката — и го четеш на твоя език. Lingbolt помни на какъв език говори всеки чат и се обновява сам.',
       'Безплатно: 10 превода на ден. Lingbolt Про: до 200 превода на ден, естествен глас и 10 четения от екрана на ден — 6,99 € на месец или 59,99 € на година, с ДДС. Купува се от менюто на програмата. За Windows 10 и 11, 64-битов.',
     ],
     en: [
+      'Reads and translates 40 languages — from English, German and Spanish to Greek, Turkish, Arabic, Hindi, Japanese and Chinese. It recognises the language of the text by itself, and the program itself speaks your language too.',
       'Lingbolt translates anywhere in Windows — in chat, e-mail, the browser, Viber and WhatsApp. Type in your language, press Ctrl twice and the text in the field becomes English (or the language you picked), ready to send. Ctrl+Z brings yours back.',
       'Got a message in another language? Select it and a ⚡ appears next to it. One click and the translation shows on a card by the mouse, with a Copy button. With Pro you can also hear it in a natural voice. Text in a picture, a PDF or a game? Press Ctrl+Shift+R, draw a box around it — and read it in your language. Lingbolt remembers which language each chat speaks and updates itself.',
       'Free: 10 translations a day. Lingbolt Pro: up to 200 translations a day, the natural voice and 10 screen reads a day — €6.99 a month or €59.99 a year, VAT included. You buy it from the program’s menu. For Windows 10 and 11, 64-bit.',
