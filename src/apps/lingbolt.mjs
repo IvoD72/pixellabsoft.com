@@ -15,7 +15,7 @@
 const UPDATED = { bg: '20 октомври 2026', en: '20 October 2026' };
 
 // Инсталаторът — подписан от Pixel Lab EOOD, качен като release в репото на сайта.
-const DOWNLOAD = 'https://github.com/IvoD72/pixellabsoft.com/releases/download/lingbolt-0.5.3/LingboltSetup.exe';
+const DOWNLOAD = 'https://github.com/IvoD72/pixellabsoft.com/releases/download/lingbolt-0.6.0/LingboltSetup.exe';
 
 export default {
   slug: 'lingbolt',
@@ -40,13 +40,13 @@ export default {
       'Чете и превежда 40 езика — от български, английски, немски и испански до гръцки, турски, арабски, хинди, японски и китайски. Сам познава на какъв език е текстът, а самата програма също говори на твоя език.',
       'Lingbolt превежда навсякъде в Windows — в чата, в имейла, в браузъра, във Viber и WhatsApp. Пишеш на български, натискаш Ctrl два пъти и текстът в полето става на английски (или на езика, който си избрал), готов за изпращане. Ctrl+Z връща твоя.',
       'Получиш ли съобщение на чужд език, маркираш го и до него излиза ⚡. Едно цъкане — и преводът е на картичка до мишката, с бутон „Копирай“. С Про можеш да го чуеш и на естествен глас. Текст в снимка, PDF или игра? Ctrl+Shift+R, ограждаш го с мишката — и го четеш на твоя език. Lingbolt помни на какъв език говори всеки чат и се обновява сам.',
-      'Безплатно: 10 превода на ден. Lingbolt Про: до 200 превода на ден, естествен глас и 10 четения от екрана на ден — 6,99 € на месец или 59,99 € на година, с ДДС. Купува се от менюто на програмата. За Windows 10 и 11, 64-битов.',
+      'Безплатно: 300 думи превод на ден. Lingbolt Про: до 15 000 думи на ден — на практика без чакане, естествен глас и 10 четения от екрана на ден — 6,99 € на месец или 59,99 € на година, с ДДС. Купува се от менюто на програмата. За Windows 10 и 11, 64-битов.',
     ],
     en: [
       'Reads and translates 40 languages — from English, German and Spanish to Greek, Turkish, Arabic, Hindi, Japanese and Chinese. It recognises the language of the text by itself, and the program itself speaks your language too.',
       'Lingbolt translates anywhere in Windows — in chat, e-mail, the browser, Viber and WhatsApp. Type in your language, press Ctrl twice and the text in the field becomes English (or the language you picked), ready to send. Ctrl+Z brings yours back.',
       'Got a message in another language? Select it and a ⚡ appears next to it. One click and the translation shows on a card by the mouse, with a Copy button. With Pro you can also hear it in a natural voice. Text in a picture, a PDF or a game? Press Ctrl+Shift+R, draw a box around it — and read it in your language. Lingbolt remembers which language each chat speaks and updates itself.',
-      'Free: 10 translations a day. Lingbolt Pro: up to 200 translations a day, the natural voice and 10 screen reads a day — €6.99 a month or €59.99 a year, VAT included. You buy it from the program’s menu. For Windows 10 and 11, 64-bit.',
+      'Free: 300 words translated a day. Lingbolt Pro: up to 15,000 words a day — practically no waiting, the natural voice and 10 screen reads a day — €6.99 a month or €59.99 a year, VAT included. You buy it from the program’s menu. For Windows 10 and 11, 64-bit.',
     ],
   },
   legal: {
@@ -114,7 +114,7 @@ export default {
           ['Кой предлага Lingbolt',
             'Пиксел Лаб ЕООД, ЕИК 205472124, България. Контакт: support@pixellabsoft.com.'],
           ['Безплатно и Про',
-            'Безплатната версия дава 10 превода и 3 четения от екрана на ден. Lingbolt Про дава до 200 превода и 10 четения от екрана на ден и естествен глас до 45 минути на месец. Лимитите се нулират всеки ден в полунощ UTC.'],
+            'Преводът се брои на думи, за да е честно: кратко съобщение харчи малко, дълъг имейл — повече. Безплатната версия дава 300 думи превод и 3 четения от екрана на ден. Lingbolt Про дава до 15 000 думи превод и 10 четения от екрана на ден и естествен глас до 45 минути на месец. Броят се думите на текста, който превеждаш; всяка заявка е поне една дума. При китайски и японски една дума е 2 знака, при тайландски — 4. Лимитите се нулират всеки ден в полунощ UTC.'],
           ['Цена и абонамент',
             'Про струва 6,99 € на месец или 59,99 € на година, с включен ДДС. Плаща се с карта през Stripe и се подновява автоматично в края на всеки период, докато не го спреш. Спираш от линка в имейла с ключа (страницата за абонамента на Stripe) — Про остава до края на платения период, после програмата минава на безплатната версия. Ключът е за един човек; може да го ползваш на своите компютри.'],
           ['14 дни за отказ',
@@ -138,7 +138,7 @@ export default {
           ['Who offers Lingbolt',
             'Pixel Lab EOOD, company no. 205472124, Bulgaria. Contact: support@pixellabsoft.com.'],
           ['Free and Pro',
-            'The free version gives 10 translations and 3 screen reads a day. Lingbolt Pro gives up to 200 translations and 10 screen reads a day and the natural voice for up to 45 minutes a month. Limits reset every day at midnight UTC.'],
+            'Translation is counted in words, to be fair: a short message uses little, a long e-mail more. The free version gives 300 words of translation and 3 screen reads a day. Lingbolt Pro gives up to 15,000 words of translation and 10 screen reads a day and the natural voice for up to 45 minutes a month. The words of the text you translate are counted; every request is at least one word. In Chinese and Japanese a word is 2 characters, in Thai 4. Limits reset every day at midnight UTC.'],
           ['Price and subscription',
             'Pro costs €6.99 a month or €59.99 a year, VAT included. You pay by card through Stripe and it renews automatically at the end of each period until you stop it. You stop it from the link in the email with your key (Stripe’s subscription page) — Pro stays on until the end of the paid period, then the program goes back to the free version. The key is for one person; you may use it on your own computers.'],
           ['14 days to change your mind',
