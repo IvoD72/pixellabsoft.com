@@ -40,17 +40,32 @@ const SHOTS = {
       en: 'Sortis screen: the dashboard with purchases, sales, VAT and the documents to check.',
     },
   },
+  lingbolt: {
+    kind: 'window', w: 1280, h: 749, one: true,
+    // On the home cards the whole chat is too small to read, so they show only the translation card.
+    peek: { w: 410, h: 260 },
+    alt: {
+      bg: 'Lingbolt в Google Chat: маркирано съобщение на английски и картата с превода на български, с бутони „Копирай“ и „Чуй“.',
+      en: 'Lingbolt in Google Chat: a selected English message and the card with its Bulgarian translation, with “Copy” and “Listen” buttons.',
+    },
+  },
 };
 
-/** Рамката с истинската снимка за дадения език; празно, ако снимка няма. */
-export function mock(app, lang) {
+/**
+ * Рамката с истинската снимка за дадения език; празно, ако снимка няма.
+ * `small` — за малките карти на началната страница: ако приложението има изрязан
+ * `peek`, показва него в тесен прозорец.
+ */
+export function mock(app, lang, small = false) {
   const s = SHOTS[app.slug];
   if (!s) return '';
-  const src = s.one ? `/assets/${app.slug}.webp` : `/assets/${app.slug}-${lang}.webp`;
-  const h = typeof s.h === 'object' ? s.h[lang] : s.h;
-  const img = `<img src="${src}" alt="${s.alt[lang]}" width="${s.w}" height="${h}" loading="lazy" decoding="async">`;
+  const peek = small && s.peek;
+  const src = peek ? `/assets/${app.slug}-peek.webp` : s.one ? `/assets/${app.slug}.webp` : `/assets/${app.slug}-${lang}.webp`;
+  const w = peek ? s.peek.w : s.w;
+  const h = peek ? s.peek.h : typeof s.h === 'object' ? s.h[lang] : s.h;
+  const img = `<img src="${src}" alt="${s.alt[lang]}" width="${w}" height="${h}" loading="lazy" decoding="async">`;
   const frame = s.kind === 'window'
-    ? `<div class="device window"><div class="bar"><i></i><i></i><i></i></div>${img}</div>`
+    ? `<div class="device window${peek ? ' narrow' : ''}"><div class="bar"><i></i><i></i><i></i></div>${img}</div>`
     : `<div class="device phone"><div class="screen" style="aspect-ratio:${s.w} / ${h}">${img}</div></div>`;
   return `<div class="mockwrap" style="--c:${app.color}">${frame}</div>`;
 }

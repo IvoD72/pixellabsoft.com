@@ -274,6 +274,8 @@ footer .fine { margin-top: 36px; padding-top: 18px; border-top: 1px solid rgba(2
 .bcard .peek .device.phone .screen { border-radius: 25px; }
 .bcard .peek .mockwrap:has(.window) { width: 340px; margin-bottom: 60px; transform: translateX(22%); }
 .bcard .peek .device.window { width: 340px; }
+.bcard .peek .mockwrap:has(.narrow) { width: 200px; margin-bottom: 195px; transform: none; }
+.bcard .peek .device.window.narrow { width: 200px; }
 .bcard .peek .tile.bigicon { width: 110px; height: 110px; border-radius: 30px; margin-bottom: 210px; }
 .bcard .go { position: absolute; left: 18px; bottom: 14px; z-index: 2; display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 999px; background: rgba(255,255,255,.92); font-size: 13.5px; font-weight: 600; box-shadow: 0 6px 18px -10px rgba(11,20,48,.4); }
 .bcard .go svg { width: 15px; height: 15px; color: var(--c); }
@@ -601,7 +603,7 @@ export function homeBody({ lang, apps }) {
   <div class="row">${tile(a)}${pill(lang, a, true)}</div>
   <b>${esc(imeto(a, lang))}</b>
   <p>${esc(a.short?.[lang] ?? a.tagline[lang])}</p>
-  <span class="peek">${mock(a, lang)}</span>
+  <span class="peek">${mock(a, lang, true)}</span>
   <span class="go">${esc(t.more)}${ARROW}</span>
 </a>`;
 
@@ -634,7 +636,7 @@ export function homeBody({ lang, apps }) {
     <p>${esc(a.short?.[lang] ?? '')}</p>
     <span class="go">${esc(t.more)}${ARROW}</span>
   </div>
-  <span class="peek">${mock(a, lang) || tile(a, 'bigicon')}</span>
+  <span class="peek">${mock(a, lang, true) || tile(a, 'bigicon')}</span>
 </a>`).join('\n');
 
   const principles = t.principles.map(([h, p], i) => `<div><i>${['◆', '●', '■'][i] ?? '•'}</i><b>${esc(h)}</b><p>${esc(p)}</p></div>`).join('\n');

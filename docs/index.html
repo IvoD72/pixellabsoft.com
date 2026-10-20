@@ -278,6 +278,8 @@ footer .fine { margin-top: 36px; padding-top: 18px; border-top: 1px solid rgba(2
 .bcard .peek .device.phone .screen { border-radius: 25px; }
 .bcard .peek .mockwrap:has(.window) { width: 340px; margin-bottom: 60px; transform: translateX(22%); }
 .bcard .peek .device.window { width: 340px; }
+.bcard .peek .mockwrap:has(.narrow) { width: 200px; margin-bottom: 195px; transform: none; }
+.bcard .peek .device.window.narrow { width: 200px; }
 .bcard .peek .tile.bigicon { width: 110px; height: 110px; border-radius: 30px; margin-bottom: 210px; }
 .bcard .go { position: absolute; left: 18px; bottom: 14px; z-index: 2; display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 999px; background: rgba(255,255,255,.92); font-size: 13.5px; font-weight: 600; box-shadow: 0 6px 18px -10px rgba(11,20,48,.4); }
 .bcard .go svg { width: 15px; height: 15px; color: var(--c); }
@@ -404,7 +406,7 @@ footer .fine { margin-top: 36px; padding-top: 18px; border-top: 1px solid rgba(2
   <div class="row"><span class="tile img "><img src="/assets/icon-lingbolt.png" alt="" width="128" height="128"></span><span class="pill store">Windows</span></div>
   <b>Lingbolt</b>
   <p>Пишеш на твоя език — те четат на техния.</p>
-  <span class="peek"></span>
+  <span class="peek"><div class="mockwrap" style="--c:#2F54FF"><div class="device window narrow"><div class="bar"><i></i><i></i><i></i></div><img src="/assets/lingbolt-peek.webp" alt="Lingbolt в Google Chat: маркирано съобщение на английски и картата с превода на български, с бутони „Копирай“ и „Чуй“." width="410" height="260" loading="lazy" decoding="async"></div></div></span>
   <span class="go">Виж повече<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
 </a>
 <a class="bcard" href="/sortis/" style="--c:#0ea5e9">
@@ -469,7 +471,7 @@ footer .fine { margin-top: 36px; padding-top: 18px; border-top: 1px solid rgba(2
     <p>Пишеш на твоя език — те четат на техния.</p>
     <span class="go">Виж повече<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
   </div>
-  <span class="peek"><span class="tile img bigicon"><img src="/assets/icon-lingbolt.png" alt="" width="128" height="128"></span></span>
+  <span class="peek"><div class="mockwrap" style="--c:#2F54FF"><div class="device window narrow"><div class="bar"><i></i><i></i><i></i></div><img src="/assets/lingbolt-peek.webp" alt="Lingbolt в Google Chat: маркирано съобщение на английски и картата с превода на български, с бутони „Копирай“ и „Чуй“." width="410" height="260" loading="lazy" decoding="async"></div></div></span>
 </a>
 <a class="small" id="konspekt" href="/konspekt/" style="--c:#f0432f">
   <div>

@@ -112,6 +112,11 @@ def main():
 
     webp(Image.open(ROOT / "1 Sortis" / "sortis-site" / "assets" / "pomosht" / "07-tablo.png"), "sortis.webp", 1280)
 
+    # Lingbolt: истински Google Chat (20.10.2026), имената и снимките са замазани.
+    chat = Image.open(Path(__file__).resolve().parent / "izhodnici" / "lingbolt-chat.png")
+    webp(chat, "lingbolt.webp", 1280)
+    webp(chat.crop((440, 385, 850, 645)), "lingbolt-peek.webp", 410)
+
 
 if __name__ == "__main__":
     main()
