@@ -504,7 +504,7 @@ export function legalBody({ lang, app, kind, doc }) {
   const title = kind === 'privacy' ? t.privacy : kind === 'deletion' ? t.deletion : t.terms;
   const id = i => `s${i + 1}`;
   const toc = doc.sections.map(([h], i) => `<li><a href="#${id(i)}">${esc(h)}</a></li>`).join('\n');
-  const sections = doc.sections.map(([h, p], i) => `<h2 id="${id(i)}"><small>${String(i + 1).padStart(2, '0')}</small>${esc(h)}</h2>\n<p>${esc(p)}</p>`).join('\n');
+  const sections = doc.sections.map(([h, p], i) => `<h2 id="${id(i)}"><small>${String(i + 1).padStart(2, '0')}</small>${esc(h)}</h2>\n${[p].flat().map(x => `<p>${esc(x)}</p>`).join('\n')}`).join('\n');
   return `<div class="doc-head read">
   <div class="crumbs">${tile(app)}<a href="${href(lang, app.slug + '/')}">${esc(imeto(app, lang))}</a><span class="dot"></span><span>${esc(t.updated)}: ${esc(doc.updated)}</span></div>
   <h1>${esc(title)}</h1>
