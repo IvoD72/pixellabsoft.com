@@ -1,6 +1,7 @@
 import { COMPANY, DOMAIN, STRINGS, SUPPORT_EMAIL } from './site.mjs';
 import { MOCK_CSS, mock } from './mocks.mjs';
 import { APPS } from './apps/index.mjs';
+import { LINGBOLT_LANGS, RTL } from './i18n/langs.mjs';
 
 /**
  * Един шаблон за всички страници. Без JavaScript — текст, заглавия, връзки,
@@ -54,6 +55,13 @@ h2 { font-size: clamp(28px, 3.4vw, 44px); }
 .top nav a { padding: 8px 14px; border-radius: 999px; color: var(--muted); font-size: 15px; font-weight: 500; transition: color .15s, background .15s; }
 .top nav a:hover { color: var(--fg); background: var(--bg-2); }
 .top nav a.lang { border: 1px solid var(--line-2); color: var(--fg); margin-left: 8px; font-size: 13px; padding: 6px 13px; }
+.langs { position: relative; margin-inline-start: 8px; }
+.langs summary { list-style: none; cursor: pointer; border: 1px solid var(--line-2); border-radius: 999px; color: var(--fg); font-size: 13px; font-weight: 500; padding: 6px 13px; white-space: nowrap; }
+.langs summary::-webkit-details-marker { display: none; }
+.langs .list { position: absolute; inset-inline-end: 0; top: calc(100% + 8px); z-index: 20; width: min(440px, calc(100vw - 32px)); max-height: 70vh; overflow: auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 2px; padding: 10px; background: var(--bg); border: 1px solid var(--line-2); border-radius: 14px; box-shadow: 0 18px 50px rgba(20,24,40,.16); }
+.top nav .langs .list a { padding: 7px 10px; border-radius: 8px; font-size: 14px; color: var(--fg); }
+.top nav .langs .list a[aria-current] { background: var(--bg-2); font-weight: 600; }
+.legal-lang { color: var(--muted); font-size: 14px; }
 @media (max-width: 600px) { .top nav a.apps-link, .brand small { display: none; } .top nav a { padding: 8px 10px; font-size: 14px; } }
 
 /* ---- фонът на началото: мекото синьо от логото и пиксели ---- */
@@ -346,10 +354,14 @@ footer .fine { margin-top: 36px; padding-top: 18px; border-top: 1px solid rgba(2
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 /** Името на приложението на езика на страницата (Сроко → Sroko на английски). */
-export const imeto = (app, lang) => (lang === 'en' && app.nameEn) || app.name;
+export const imeto = (app, lang) => (lang !== 'bg' && app.nameEn) || app.name;
 
-/** Пътищата: BG е в корена, EN под /en/. */
-export const href = (lang, path = '') => (lang === 'bg' ? '/' : '/en/') + path;
+/** Страниците, които имат и другите езици на Lingbolt (/de/lingbolt/…); останалото им е на английски. */
+export const LOCAL_PATHS = new Set(['lingbolt/']);
+
+/** Пътищата: BG е в корена, EN под /en/, другите езици — под /<код>/ само за LOCAL_PATHS. */
+export const href = (lang, path = '') =>
+  lang === 'bg' ? '/' + path : lang === 'en' || !LOCAL_PATHS.has(path) ? '/en/' + path : `/${lang}/` + path;
 
 /** Логото: знакът от новото лого + „Pixel Lab Soft“. */
 const BRAND = `<img src="/assets/logo-mark.png" alt="" width="34" height="34"><span>Pixel <span class="lab">Lab</span></span><small>Soft</small>`;
@@ -397,14 +409,31 @@ function backLink(lang, path) {
   return `<a class="back" href="${to}">${ARROW_BACK}${esc(label)}</a>\n`;
 }
 
+/** Менюто с езиците на страница, която ги има всичките (Lingbolt). */
+function langMenu(lang, path) {
+  const here = LINGBOLT_LANGS.find(l => l.code === lang);
+  const links = LINGBOLT_LANGS.map(l =>
+    `<a href="${href(l.code, path)}" lang="${l.code}" hreflang="${l.code}"${l.code === lang ? ' aria-current="page"' : ''}>${esc(l.native)}</a>`);
+  return `<details class="langs"><summary aria-label="${esc(STRINGS[lang].languages ?? 'Language')}">${esc(here.native)}</summary><div class="list">${links.join('')}</div></details>`;
+}
+
+/** hreflang: на страница с всичките езици — всичките (и x-default към английския), иначе BG и EN. */
+function alternates(lang, path, other, altUrl, canonical) {
+  if (!LOCAL_PATHS.has(path)) {
+    return `<link rel="alternate" hreflang="${lang}" href="${canonical}">\n<link rel="alternate" hreflang="${other}" href="${altUrl}">`;
+  }
+  return [...LINGBOLT_LANGS.map(l => [l.code, href(l.code, path)]), ['x-default', href('en', path)]]
+    .map(([code, url]) => `<link rel="alternate" hreflang="${code}" href="https://${DOMAIN}${url}">`).join('\n');
+}
+
 export function page({ lang, title, description, path, body, alt, color, glow, after = '', image = '', jsonld = null }) {
   const t = STRINGS[lang];
-  const co = COMPANY[lang];
+  const co = COMPANY[lang] ?? COMPANY.en;
   const other = lang === 'bg' ? 'en' : 'bg';
   const canonical = `https://${DOMAIN}${href(lang, path)}`;
   const altUrl = `https://${DOMAIN}${href(other, alt ?? path)}`;
   return `<!doctype html>
-<html lang="${lang}"${color ? ` style="--c:${color}"` : ''}>
+<html lang="${lang}"${RTL.has(lang) ? ' dir="rtl"' : ''}${color ? ` style="--c:${color}"` : ''}>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -412,8 +441,7 @@ export function page({ lang, title, description, path, body, alt, color, glow, a
 <meta name="description" content="${esc(description)}">
 <meta name="theme-color" content="#ffffff">
 <link rel="canonical" href="${canonical}">
-<link rel="alternate" hreflang="${lang}" href="${canonical}">
-<link rel="alternate" hreflang="${other}" href="${altUrl}">
+${alternates(lang, path, other, altUrl, canonical)}
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${canonical}">
@@ -422,7 +450,7 @@ export function page({ lang, title, description, path, body, alt, color, glow, a
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:type" content="website">
-<meta property="og:locale" content="${lang === 'bg' ? 'bg_BG' : 'en_US'}">
+<meta property="og:locale" content="${LINGBOLT_LANGS.find(l => l.code === lang)?.locale ?? 'en_US'}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/assets/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="/assets/favicon-180.png">
@@ -437,7 +465,7 @@ ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld).replace(
   <nav>
     <a class="apps-link" href="${href(lang)}#apps">${esc(t.apps)}</a>
     <a href="${href(lang, 'support/')}">${esc(t.support)}</a>
-    <a class="lang" href="${href(other, alt ?? path)}" lang="${other}" hreflang="${other}">${esc(t.otherLang)}</a>
+    ${LOCAL_PATHS.has(path) ? langMenu(lang, path) : `<a class="lang" href="${href(other, alt ?? path)}" lang="${other}" hreflang="${other}">${esc(t.otherLang)}</a>`}
     <a class="cta" href="${href(lang)}#apps">${esc(t.seeApps)}</a>
   </nav>
 </div></div>
@@ -571,7 +599,7 @@ export function appBody({ lang, app }) {
 </section>
 <section class="section read prose">
 ${app.description[lang].map(p => `<p>${esc(p)}</p>`).join('\n')}
-<div class="links">
+${STRINGS[lang].legalInEnglish ? `<p class="legal-lang">${esc(STRINGS[lang].legalInEnglish)}</p>\n` : ''}<div class="links">
   ${legalLinks(lang, app).join('\n  ')}
 </div>
 </section>`;

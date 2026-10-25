@@ -58,6 +58,13 @@ h2 { font-size: clamp(28px, 3.4vw, 44px); }
 .top nav a { padding: 8px 14px; border-radius: 999px; color: var(--muted); font-size: 15px; font-weight: 500; transition: color .15s, background .15s; }
 .top nav a:hover { color: var(--fg); background: var(--bg-2); }
 .top nav a.lang { border: 1px solid var(--line-2); color: var(--fg); margin-left: 8px; font-size: 13px; padding: 6px 13px; }
+.langs { position: relative; margin-inline-start: 8px; }
+.langs summary { list-style: none; cursor: pointer; border: 1px solid var(--line-2); border-radius: 999px; color: var(--fg); font-size: 13px; font-weight: 500; padding: 6px 13px; white-space: nowrap; }
+.langs summary::-webkit-details-marker { display: none; }
+.langs .list { position: absolute; inset-inline-end: 0; top: calc(100% + 8px); z-index: 20; width: min(440px, calc(100vw - 32px)); max-height: 70vh; overflow: auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 2px; padding: 10px; background: var(--bg); border: 1px solid var(--line-2); border-radius: 14px; box-shadow: 0 18px 50px rgba(20,24,40,.16); }
+.top nav .langs .list a { padding: 7px 10px; border-radius: 8px; font-size: 14px; color: var(--fg); }
+.top nav .langs .list a[aria-current] { background: var(--bg-2); font-weight: 600; }
+.legal-lang { color: var(--muted); font-size: 14px; }
 @media (max-width: 600px) { .top nav a.apps-link, .brand small { display: none; } .top nav a { padding: 8px 10px; font-size: 14px; } }
 
 /* ---- фонът на началото: мекото синьо от логото и пиксели ---- */
@@ -360,7 +367,7 @@ footer .fine { margin-top: 36px; padding-top: 18px; border-top: 1px solid rgba(2
 .device.window img { height: auto; }
 .mockwrap:has(.window) { display: block; width: min(620px, 100%); }
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"MobileApplication","name":"Sroko","description":"Sroko keeps every deadline for your car in one place and reminds you before it is too late. Enter the plate number — the vignette is checked automatically through BG Toll’s public check and you see how many days are left. Add the MOT, liability insurance, casco, driving licence or service once; for yearly renewals Sroko already knows when the next one is due.","url":"https://pixellabsoft.com/en/sroko/","applicationCategory":"UtilitiesApplication","publisher":{"@type":"Organization","name":"Pixel Lab EOOD","alternateName":"Pixel Lab Soft","url":"https://pixellabsoft.com/","logo":"https://pixellabsoft.com/assets/favicon-512.png","email":"support@pixellabsoft.com","sameAs":["https://sortis.pro","https://glagoli.app"]},"image":"https://pixellabsoft.com/assets/og/sroko-en.png","operatingSystem":"iOS, Android","downloadUrl":["https://apps.apple.com/app/sroko/id6810996777","https://play.google.com/store/apps/details?id=com.vinetka.pazach"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"MobileApplication","name":"Sroko","description":"Sroko keeps every deadline for your car in one place and reminds you before it is too late. Enter the plate number — the vignette is checked automatically through BG Toll’s public check and you see how many days are left. Add the MOT, liability insurance, casco, driving licence or service once; for yearly renewals Sroko already knows when the next one is due.","url":"https://pixellabsoft.com/en/sroko/","applicationCategory":"UtilitiesApplication","publisher":{"@type":"Organization","name":"Pixel Lab EOOD","alternateName":"Pixel Lab Soft","url":"https://pixellabsoft.com/","logo":"https://pixellabsoft.com/assets/favicon-512.png","email":"support@pixellabsoft.com","sameAs":["https://sortis.pro","https://glagoli.app"]},"inLanguage":"en","image":"https://pixellabsoft.com/assets/og/sroko-en.png","operatingSystem":"iOS, Android","downloadUrl":["https://apps.apple.com/app/sroko/id6810996777","https://play.google.com/store/apps/details?id=com.vinetka.pazach"]}</script>
 </head>
 <body>
 <div class="top"><div class="wrap">

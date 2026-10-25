@@ -11,7 +11,7 @@
  * на приложението.
  */
 
-const SHOTS = {
+export const SHOTS = {
   konspekt: {
     kind: 'phone', w: 520, h: 1125,
     alt: {

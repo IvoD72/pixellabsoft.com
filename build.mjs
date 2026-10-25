@@ -1,8 +1,10 @@
-import { cp, mkdir, rm, writeFile } from 'node:fs/promises';
+import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { APPS } from './src/apps/index.mjs';
+import { LINGBOLT_LANGS } from './src/i18n/langs.mjs';
+import { SHOTS } from './src/mocks.mjs';
 import { COMPANY, DOMAIN, LANGS, STRINGS, SUPPORT_EMAIL } from './src/site.mjs';
-import { LEGAL_PATH, imeto, aboutBand, appBody, homeBody, legalBody, page, supportBody } from './src/template.mjs';
+import { LEGAL_PATH, href, imeto, aboutBand, appBody, homeBody, legalBody, page, supportBody } from './src/template.mjs';
 
 /**
  * Генерира сайта в docs/ (GitHub Pages сервира тази папка).
@@ -17,7 +19,7 @@ const OUT = 'docs';
 
 // ---- за търсачките: кой сме и какви са приложенията (JSON-LD, schema.org) ----
 const ORG = lang => ({
-  '@type': 'Organization', name: COMPANY[lang].name, alternateName: 'Pixel Lab Soft',
+  '@type': 'Organization', name: (COMPANY[lang] ?? COMPANY.en).name, alternateName: 'Pixel Lab Soft',
   url: `https://${DOMAIN}/`, logo: `https://${DOMAIN}/assets/favicon-512.png`, email: SUPPORT_EMAIL,
   sameAs: ['https://sortis.pro', 'https://glagoli.app'],
 });
@@ -27,9 +29,9 @@ const appLd = (app, lang) => {
   const os = app.external?.download ? ['Windows'] : [app.appStore && 'iOS', app.playStore && 'Android'].filter(Boolean);
   const ld = {
     '@context': 'https://schema.org', '@type': app.external?.download ? 'SoftwareApplication' : 'MobileApplication',
-    name: imeto(app, lang), description: app.description[lang][0], url: `https://${DOMAIN}${lang === 'bg' ? '/' : '/en/'}${app.slug}/`,
-    applicationCategory: KATEGORIA[app.slug] ?? 'UtilitiesApplication', publisher: ORG(lang),
-    image: `https://${DOMAIN}/assets/og/${app.slug}-${lang}.png`,
+    name: imeto(app, lang), description: app.description[lang][0], url: `https://${DOMAIN}${href(lang, app.slug + '/')}`,
+    applicationCategory: KATEGORIA[app.slug] ?? 'UtilitiesApplication', publisher: ORG(lang), inLanguage: lang,
+    image: `https://${DOMAIN}/assets/og/${app.slug}-${lang === 'bg' ? 'bg' : 'en'}.png`,
   };
   if (os.length) ld.operatingSystem = os.join(', ');
   const dl = [app.appStore, app.playStore, app.external?.download].filter(Boolean);
@@ -38,8 +40,24 @@ const appLd = (app, lang) => {
 };
 const apps = APPS.filter(a => !a.draft);
 
+// ---- Lingbolt на другите си езици (src/i18n/lingbolt.json от tools/translate_lingbolt.py) ----
+// Надписите на сайта, които липсват в превода, остават английски.
+const lingbolt = APPS.find(a => a.slug === 'lingbolt');
+const translated = JSON.parse(await readFile(join('src', 'i18n', 'lingbolt.json'), 'utf-8'));
+const MORE = LINGBOLT_LANGS.map(l => l.code).filter(code => code !== 'bg' && code !== 'en');
+for (const code of MORE) {
+  const t = translated[code];
+  if (!t) throw new Error(`src/i18n/lingbolt.json has no ${code}: run tools/translate_lingbolt.py`);
+  const pick = prefix => Object.keys(t).filter(k => k.startsWith(prefix)).sort().map(k => t[k]);
+  STRINGS[code] = { ...STRINGS.en, ...Object.fromEntries(Object.entries(t).filter(([k]) => k.startsWith('site.')).map(([k, v]) => [k.slice(5), v])) };
+  lingbolt.tagline[code] = t.tagline;
+  lingbolt.features[code] = pick('feature.');
+  lingbolt.description[code] = pick('description.');
+  SHOTS.lingbolt.alt[code] = t.alt;
+}
+
 async function emit(lang, path, html) {
-  const dir = join(OUT, lang === 'bg' ? '' : 'en', path);
+  const dir = join(OUT, lang === 'bg' ? '' : lang, path);
   await mkdir(dir, { recursive: true });
   await writeFile(join(dir, 'index.html'), html);
 }
@@ -87,6 +105,15 @@ for (const lang of LANGS) {
       add(`${path}/`);
     }
   }
+}
+
+for (const lang of MORE) {
+  await emit(lang, lingbolt.slug, page({
+    lang, path: `${lingbolt.slug}/`, title: `${lingbolt.name} — ${lingbolt.tagline[lang]}`,
+    description: lingbolt.description[lang][0], body: appBody({ lang, app: lingbolt }), color: lingbolt.color,
+    image: `/assets/og/${lingbolt.slug}-en.png`, jsonld: appLd(lingbolt, lang),
+  }));
+  urls.push(`https://${DOMAIN}${href(lang, lingbolt.slug + '/')}`);
 }
 
 // /sroko/get/ — линкът от платената реклама във Facebook: към магазина според

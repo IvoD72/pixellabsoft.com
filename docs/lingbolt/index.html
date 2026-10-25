@@ -9,6 +9,45 @@
 <link rel="canonical" href="https://pixellabsoft.com/lingbolt/">
 <link rel="alternate" hreflang="bg" href="https://pixellabsoft.com/lingbolt/">
 <link rel="alternate" hreflang="en" href="https://pixellabsoft.com/en/lingbolt/">
+<link rel="alternate" hreflang="ar" href="https://pixellabsoft.com/ar/lingbolt/">
+<link rel="alternate" hreflang="zh-hans" href="https://pixellabsoft.com/zh-hans/lingbolt/">
+<link rel="alternate" hreflang="zh-hant" href="https://pixellabsoft.com/zh-hant/lingbolt/">
+<link rel="alternate" hreflang="hr" href="https://pixellabsoft.com/hr/lingbolt/">
+<link rel="alternate" hreflang="cs" href="https://pixellabsoft.com/cs/lingbolt/">
+<link rel="alternate" hreflang="da" href="https://pixellabsoft.com/da/lingbolt/">
+<link rel="alternate" hreflang="nl" href="https://pixellabsoft.com/nl/lingbolt/">
+<link rel="alternate" hreflang="et" href="https://pixellabsoft.com/et/lingbolt/">
+<link rel="alternate" hreflang="fi" href="https://pixellabsoft.com/fi/lingbolt/">
+<link rel="alternate" hreflang="fr" href="https://pixellabsoft.com/fr/lingbolt/">
+<link rel="alternate" hreflang="de" href="https://pixellabsoft.com/de/lingbolt/">
+<link rel="alternate" hreflang="el" href="https://pixellabsoft.com/el/lingbolt/">
+<link rel="alternate" hreflang="he" href="https://pixellabsoft.com/he/lingbolt/">
+<link rel="alternate" hreflang="hi" href="https://pixellabsoft.com/hi/lingbolt/">
+<link rel="alternate" hreflang="hu" href="https://pixellabsoft.com/hu/lingbolt/">
+<link rel="alternate" hreflang="id" href="https://pixellabsoft.com/id/lingbolt/">
+<link rel="alternate" hreflang="it" href="https://pixellabsoft.com/it/lingbolt/">
+<link rel="alternate" hreflang="ja" href="https://pixellabsoft.com/ja/lingbolt/">
+<link rel="alternate" hreflang="ko" href="https://pixellabsoft.com/ko/lingbolt/">
+<link rel="alternate" hreflang="lv" href="https://pixellabsoft.com/lv/lingbolt/">
+<link rel="alternate" hreflang="lt" href="https://pixellabsoft.com/lt/lingbolt/">
+<link rel="alternate" hreflang="mk" href="https://pixellabsoft.com/mk/lingbolt/">
+<link rel="alternate" hreflang="nb" href="https://pixellabsoft.com/nb/lingbolt/">
+<link rel="alternate" hreflang="fa" href="https://pixellabsoft.com/fa/lingbolt/">
+<link rel="alternate" hreflang="pl" href="https://pixellabsoft.com/pl/lingbolt/">
+<link rel="alternate" hreflang="pt" href="https://pixellabsoft.com/pt/lingbolt/">
+<link rel="alternate" hreflang="pt-br" href="https://pixellabsoft.com/pt-br/lingbolt/">
+<link rel="alternate" hreflang="ro" href="https://pixellabsoft.com/ro/lingbolt/">
+<link rel="alternate" hreflang="ru" href="https://pixellabsoft.com/ru/lingbolt/">
+<link rel="alternate" hreflang="sr" href="https://pixellabsoft.com/sr/lingbolt/">
+<link rel="alternate" hreflang="sk" href="https://pixellabsoft.com/sk/lingbolt/">
+<link rel="alternate" hreflang="sl" href="https://pixellabsoft.com/sl/lingbolt/">
+<link rel="alternate" hreflang="es" href="https://pixellabsoft.com/es/lingbolt/">
+<link rel="alternate" hreflang="sv" href="https://pixellabsoft.com/sv/lingbolt/">
+<link rel="alternate" hreflang="th" href="https://pixellabsoft.com/th/lingbolt/">
+<link rel="alternate" hreflang="tr" href="https://pixellabsoft.com/tr/lingbolt/">
+<link rel="alternate" hreflang="uk" href="https://pixellabsoft.com/uk/lingbolt/">
+<link rel="alternate" hreflang="vi" href="https://pixellabsoft.com/vi/lingbolt/">
+<link rel="alternate" hreflang="x-default" href="https://pixellabsoft.com/en/lingbolt/">
 <meta property="og:title" content="Lingbolt — Пишеш на твоя език. Те четат на техния.">
 <meta property="og:description" content="Чете и превежда 40 езика — от български, английски, немски и испански до гръцки, турски, арабски, хинди, японски и китайски. Сам познава на какъв език е текстът, а самата програма също говори на твоя език.">
 <meta property="og:url" content="https://pixellabsoft.com/lingbolt/">
@@ -58,6 +97,13 @@ h2 { font-size: clamp(28px, 3.4vw, 44px); }
 .top nav a { padding: 8px 14px; border-radius: 999px; color: var(--muted); font-size: 15px; font-weight: 500; transition: color .15s, background .15s; }
 .top nav a:hover { color: var(--fg); background: var(--bg-2); }
 .top nav a.lang { border: 1px solid var(--line-2); color: var(--fg); margin-left: 8px; font-size: 13px; padding: 6px 13px; }
+.langs { position: relative; margin-inline-start: 8px; }
+.langs summary { list-style: none; cursor: pointer; border: 1px solid var(--line-2); border-radius: 999px; color: var(--fg); font-size: 13px; font-weight: 500; padding: 6px 13px; white-space: nowrap; }
+.langs summary::-webkit-details-marker { display: none; }
+.langs .list { position: absolute; inset-inline-end: 0; top: calc(100% + 8px); z-index: 20; width: min(440px, calc(100vw - 32px)); max-height: 70vh; overflow: auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 2px; padding: 10px; background: var(--bg); border: 1px solid var(--line-2); border-radius: 14px; box-shadow: 0 18px 50px rgba(20,24,40,.16); }
+.top nav .langs .list a { padding: 7px 10px; border-radius: 8px; font-size: 14px; color: var(--fg); }
+.top nav .langs .list a[aria-current] { background: var(--bg-2); font-weight: 600; }
+.legal-lang { color: var(--muted); font-size: 14px; }
 @media (max-width: 600px) { .top nav a.apps-link, .brand small { display: none; } .top nav a { padding: 8px 10px; font-size: 14px; } }
 
 /* ---- фонът на началото: мекото синьо от логото и пиксели ---- */
@@ -360,7 +406,7 @@ footer .fine { margin-top: 36px; padding-top: 18px; border-top: 1px solid rgba(2
 .device.window img { height: auto; }
 .mockwrap:has(.window) { display: block; width: min(620px, 100%); }
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Lingbolt","description":"Чете и превежда 40 езика — от български, английски, немски и испански до гръцки, турски, арабски, хинди, японски и китайски. Сам познава на какъв език е текстът, а самата програма също говори на твоя език.","url":"https://pixellabsoft.com/lingbolt/","applicationCategory":"UtilitiesApplication","publisher":{"@type":"Organization","name":"Пиксел Лаб ЕООД","alternateName":"Pixel Lab Soft","url":"https://pixellabsoft.com/","logo":"https://pixellabsoft.com/assets/favicon-512.png","email":"support@pixellabsoft.com","sameAs":["https://sortis.pro","https://glagoli.app"]},"image":"https://pixellabsoft.com/assets/og/lingbolt-bg.png","operatingSystem":"Windows","downloadUrl":"https://github.com/IvoD72/pixellabsoft.com/releases/download/lingbolt-0.7.0/LingboltSetup.exe"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Lingbolt","description":"Чете и превежда 40 езика — от български, английски, немски и испански до гръцки, турски, арабски, хинди, японски и китайски. Сам познава на какъв език е текстът, а самата програма също говори на твоя език.","url":"https://pixellabsoft.com/lingbolt/","applicationCategory":"UtilitiesApplication","publisher":{"@type":"Organization","name":"Пиксел Лаб ЕООД","alternateName":"Pixel Lab Soft","url":"https://pixellabsoft.com/","logo":"https://pixellabsoft.com/assets/favicon-512.png","email":"support@pixellabsoft.com","sameAs":["https://sortis.pro","https://glagoli.app"]},"inLanguage":"bg","image":"https://pixellabsoft.com/assets/og/lingbolt-bg.png","operatingSystem":"Windows","downloadUrl":"https://github.com/IvoD72/pixellabsoft.com/releases/download/lingbolt-0.7.0/LingboltSetup.exe"}</script>
 </head>
 <body>
 <div class="top"><div class="wrap">
@@ -368,7 +414,7 @@ footer .fine { margin-top: 36px; padding-top: 18px; border-top: 1px solid rgba(2
   <nav>
     <a class="apps-link" href="/#apps">Приложенията</a>
     <a href="/support/">Поддръжка</a>
-    <a class="lang" href="/en/lingbolt/" lang="en" hreflang="en">English</a>
+    <details class="langs"><summary aria-label="Language">Български</summary><div class="list"><a href="/lingbolt/" lang="bg" hreflang="bg" aria-current="page">Български</a><a href="/en/lingbolt/" lang="en" hreflang="en">English</a><a href="/ar/lingbolt/" lang="ar" hreflang="ar">العربية</a><a href="/zh-hans/lingbolt/" lang="zh-hans" hreflang="zh-hans">简体中文</a><a href="/zh-hant/lingbolt/" lang="zh-hant" hreflang="zh-hant">繁體中文</a><a href="/hr/lingbolt/" lang="hr" hreflang="hr">Hrvatski</a><a href="/cs/lingbolt/" lang="cs" hreflang="cs">Čeština</a><a href="/da/lingbolt/" lang="da" hreflang="da">Dansk</a><a href="/nl/lingbolt/" lang="nl" hreflang="nl">Nederlands</a><a href="/et/lingbolt/" lang="et" hreflang="et">Eesti</a><a href="/fi/lingbolt/" lang="fi" hreflang="fi">Suomi</a><a href="/fr/lingbolt/" lang="fr" hreflang="fr">Français</a><a href="/de/lingbolt/" lang="de" hreflang="de">Deutsch</a><a href="/el/lingbolt/" lang="el" hreflang="el">Ελληνικά</a><a href="/he/lingbolt/" lang="he" hreflang="he">עברית</a><a href="/hi/lingbolt/" lang="hi" hreflang="hi">हिन्दी</a><a href="/hu/lingbolt/" lang="hu" hreflang="hu">Magyar</a><a href="/id/lingbolt/" lang="id" hreflang="id">Bahasa Indonesia</a><a href="/it/lingbolt/" lang="it" hreflang="it">Italiano</a><a href="/ja/lingbolt/" lang="ja" hreflang="ja">日本語</a><a href="/ko/lingbolt/" lang="ko" hreflang="ko">한국어</a><a href="/lv/lingbolt/" lang="lv" hreflang="lv">Latviešu</a><a href="/lt/lingbolt/" lang="lt" hreflang="lt">Lietuvių</a><a href="/mk/lingbolt/" lang="mk" hreflang="mk">Македонски</a><a href="/nb/lingbolt/" lang="nb" hreflang="nb">Norsk</a><a href="/fa/lingbolt/" lang="fa" hreflang="fa">فارسی</a><a href="/pl/lingbolt/" lang="pl" hreflang="pl">Polski</a><a href="/pt/lingbolt/" lang="pt" hreflang="pt">Português</a><a href="/pt-br/lingbolt/" lang="pt-br" hreflang="pt-br">Português (Brasil)</a><a href="/ro/lingbolt/" lang="ro" hreflang="ro">Română</a><a href="/ru/lingbolt/" lang="ru" hreflang="ru">Русский</a><a href="/sr/lingbolt/" lang="sr" hreflang="sr">Српски</a><a href="/sk/lingbolt/" lang="sk" hreflang="sk">Slovenčina</a><a href="/sl/lingbolt/" lang="sl" hreflang="sl">Slovenščina</a><a href="/es/lingbolt/" lang="es" hreflang="es">Español</a><a href="/sv/lingbolt/" lang="sv" hreflang="sv">Svenska</a><a href="/th/lingbolt/" lang="th" hreflang="th">ไทย</a><a href="/tr/lingbolt/" lang="tr" hreflang="tr">Türkçe</a><a href="/uk/lingbolt/" lang="uk" hreflang="uk">Українська</a><a href="/vi/lingbolt/" lang="vi" hreflang="vi">Tiếng Việt</a></div></details>
     <a class="cta" href="/#apps">Виж приложенията</a>
   </nav>
 </div></div>
