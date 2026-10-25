@@ -4,6 +4,7 @@ import { APPS } from './src/apps/index.mjs';
 import { LINGBOLT_LANGS } from './src/i18n/langs.mjs';
 import { SHOTS } from './src/mocks.mjs';
 import { COMPANY, DOMAIN, LANGS, STRINGS, SUPPORT_EMAIL } from './src/site.mjs';
+import { teamsBody, teamsText } from './src/teams.mjs';
 import { LEGAL_PATH, href, imeto, aboutBand, appBody, homeBody, legalBody, page, supportBody } from './src/template.mjs';
 
 /**
@@ -105,6 +106,16 @@ for (const lang of LANGS) {
       add(`${path}/`);
     }
   }
+}
+
+// Lingbolt за фирми (design „Lingbolt — Фирми“): bg и en.
+for (const lang of LANGS) {
+  const w = teamsText(lang);
+  await emit(lang, `${lingbolt.slug}/teams`, page({
+    lang, path: `${lingbolt.slug}/teams/`, title: `${w.title} — ${w.h1}`, description: w.lead,
+    body: teamsBody(lang, lingbolt.external.download), color: lingbolt.color, image: `/assets/og/${lingbolt.slug}-${lang}.png`,
+  }));
+  urls.push(`https://${DOMAIN}${href(lang, lingbolt.slug + '/teams/')}`);
 }
 
 for (const lang of MORE) {

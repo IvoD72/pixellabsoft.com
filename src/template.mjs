@@ -351,7 +351,7 @@ footer .fine { margin-top: 36px; padding-top: 18px; border-top: 1px solid rgba(2
 .about .a3 p { color: #9aa3bf; font-size: 13.5px; line-height: 1.5; margin: 0; }
 `;
 
-const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+export const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 /** Името на приложението на езика на страницата (Сроко → Sroko на английски). */
 export const imeto = (app, lang) => (lang !== 'bg' && app.nameEn) || app.name;
@@ -575,6 +575,8 @@ export function legalLinks(lang, app) {
     links.push(`<a href="${p}">${esc(t.privacy)}</a>`);
     if (ext.terms) links.push(`<a href="${typeof ext.terms === 'object' ? ext.terms[lang] : ext.terms}">${esc(t.terms)}</a>`);
   }
+  // Lingbolt за фирми: своя страница, само на български и английски.
+  if (app.external?.teams?.[lang]) links.unshift(`<a href="${href(lang, app.slug + '/teams/')}">${esc(app.external.teams[lang])}</a>`);
   if (app.external?.site) links.push(`<a href="${app.external.site}">${esc(t.website)}</a>`);
   links.push(`<a href="${href(lang, 'support/')}">${esc(t.support)}</a>`);
   return links;
