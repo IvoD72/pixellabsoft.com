@@ -26,27 +26,29 @@ export default {
   status: 'windows',
   external: { download: DOWNLOAD },
   features: {
-    bg: ['Във всяка програма', 'Ctrl два пъти или ⚡', '40 езика', 'Текстовете не се пазят'],
-    en: ['In any program', 'Ctrl twice or ⚡', '40 languages', 'Your texts are not stored'],
+    bg: ['Във всяка програма', 'Превод на глас в срещите', 'Запис и конспект', 'Текстовете не се пазят'],
+    en: ['In any program', 'Voice translation in meetings', 'Recording and minutes', 'Your texts are not stored'],
   },
-  short: { bg: 'Пишеш на твоя език — те четат на техния. Чете и превежда 40 езика.', en: 'You write in yours — they read in theirs. Reads and translates 40 languages.' },
+  short: { bg: 'Превежда текста навсякъде, гласа ти в срещите и пише конспекта им. 40 езика.', en: 'Translates text anywhere, your voice in meetings, and writes their minutes. 40 languages.' },
   note: { bg: 'превод с една мълния', en: 'translation in a flash' },
   tagline: {
-    bg: 'Пишеш на твоя език. Те четат на техния.',
-    en: 'Write in your language. They read in theirs.',
+    bg: 'Пишеш и говориш на твоя език. Те те разбират на техния.',
+    en: 'Write and speak in your language. They understand you in theirs.',
   },
   description: {
     bg: [
       'Чете и превежда 40 езика — от български, английски, немски и испански до гръцки, турски, арабски, хинди, японски и китайски. Сам познава на какъв език е текстът, а самата програма също говори на твоя език.',
       'Lingbolt превежда навсякъде в Windows — в чата, в имейла, в браузъра, във Viber и WhatsApp. Пишеш на български, натискаш Ctrl два пъти и текстът в полето става на английски (или на езика, който си избрал), готов за изпращане. Ctrl+Z връща твоя.',
       'Получиш ли съобщение на чужд език, маркираш го и до него излиза ⚡. Едно цъкане — и преводът е на картичка до мишката, с бутон „Копирай“. С Про можеш да го чуеш и на естествен глас. Текст в снимка, PDF или игра? Ctrl+Shift+R, ограждаш го с мишката — и го четеш на твоя език. Lingbolt помни на какъв език говори всеки чат и се обновява сам.',
-      'Безплатно: 300 думи превод на ден. Lingbolt Про: до 15 000 думи на ден — на практика без чакане, естествен глас и 10 четения от екрана на ден — 6,99 € на месец или 59,99 € на година, с ДДС. Купува се от менюто на програмата. За Windows 10 и 11, 64-битов.',
+      'В Zoom, Teams, Google Meet и всяка друга програма за срещи Lingbolt е един панел с три бутона. „Говори“: говориш на твоя език, а другите чуват превода ти на живо, с естествен глас. „Слушай“: чуваш другите на твоя език, със субтитри. „Запис + конспект“: записва срещата и после ти дава протокол по говорители, резюме и задачи.',
+      'Безплатно: 300 думи превод на ден. Lingbolt Про — 6,99 € на месец или 59,99 € на година, с ДДС: до 15 000 думи превод на ден, 10 четения от екрана на ден, 45 минути естествен глас, 30 минути Разговор и 3 часа запис на срещи на месец. Ако за срещите ти трябва повече — кредити на пакети от 9,99 €, без абонамент. Купува се от менюто на програмата. За Windows 10 и 11, 64-битов.',
     ],
     en: [
       'Reads and translates 40 languages — from English, German and Spanish to Greek, Turkish, Arabic, Hindi, Japanese and Chinese. It recognises the language of the text by itself, and the program itself speaks your language too.',
       'Lingbolt translates anywhere in Windows — in chat, e-mail, the browser, Viber and WhatsApp. Type in your language, press Ctrl twice and the text in the field becomes English (or the language you picked), ready to send. Ctrl+Z brings yours back.',
       'Got a message in another language? Select it and a ⚡ appears next to it. One click and the translation shows on a card by the mouse, with a Copy button. With Pro you can also hear it in a natural voice. Text in a picture, a PDF or a game? Press Ctrl+Shift+R, draw a box around it — and read it in your language. Lingbolt remembers which language each chat speaks and updates itself.',
-      'Free: 300 words translated a day. Lingbolt Pro: up to 15,000 words a day — practically no waiting, the natural voice and 10 screen reads a day — €6.99 a month or €59.99 a year, VAT included. You buy it from the program’s menu. For Windows 10 and 11, 64-bit.',
+      'In Zoom, Teams, Google Meet and any other meeting app, Lingbolt is one bar with three buttons. Talk: you speak in your language and the others hear your translation live, in a natural voice. Listen: you hear the others in your language, with subtitles. Record + summary: it records the meeting and then gives you the minutes by speaker, a summary and the tasks.',
+      'Free: 300 words translated a day. Lingbolt Pro — €6.99 a month or €59.99 a year, VAT included: up to 15,000 words translated a day, 10 screen reads a day, 45 minutes of natural voice, 30 minutes of Talk and 3 hours of meeting recording a month. Need more for meetings? Credits in packs from €9.99, no subscription. You buy it from the program’s menu. For Windows 10 and 11, 64-bit.',
     ],
   },
   legal: {

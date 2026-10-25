@@ -20,16 +20,16 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "src" / "i18n" / "lingbolt.json"
 MODEL = "gemini-3.1-pro-preview"
-KEEP = ["Lingbolt", "Ctrl+Shift+R", "Ctrl+Z", "Ctrl", "⚡", "Pro", "Windows", "Viber", "WhatsApp", "Google Chat", "PDF"]
+KEEP = ["Lingbolt", "Ctrl+Shift+R", "Ctrl+Z", "Ctrl", "⚡", "Pro", "Windows", "Viber", "WhatsApp", "Google Chat", "PDF", "Zoom", "Teams", "Google Meet"]
 # Prices and numbers: the digits must survive (a language may write 6,99 € or €6.99, 15 000 or 15.000).
-DIGITS = ["699", "5999", "300", "15000", "40", "10", "64"]
+DIGITS = ["699", "5999", "999", "300", "15000", "40", "10", "64", "45", "30"]
 
 PROMPT = """You translate the web page of Lingbolt, a small Windows program that translates text in any app.
 "Pro" is the paid plan — keep the word Pro. Translate every value of this JSON object into {lang}.
 Rules: clear, natural marketing wording a native speaker would write (informal "you" where the language has it);
-keep Lingbolt, Ctrl, Ctrl+Z, Ctrl+Shift+R, ⚡, Pro, Windows, Viber, WhatsApp, Google Chat and PDF exactly as written;
+keep Lingbolt, Ctrl, Ctrl+Z, Ctrl+Shift+R, ⚡, Pro, Windows, Viber, WhatsApp, Google Chat, PDF, Zoom, Teams and Google Meet exactly as written;
 keep every number and price (write prices and thousands the way {lang} does, the euro stays the euro);
-the button names Copy and Listen are the program's buttons — translate them as a {lang} program would label them;
+the button names Copy, Listen, Talk and Record + summary are the program's buttons — translate them as a {lang} program would label them;
 keep the same keys. Return only the JSON object.
 
 {src}"""
