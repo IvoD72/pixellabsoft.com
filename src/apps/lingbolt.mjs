@@ -12,7 +12,7 @@
  * Смени ли се кодът — сменя се и този текст.
  */
 
-const UPDATED = { bg: '24 октомври 2026', en: '24 October 2026' };
+const UPDATED = { bg: '25 октомври 2026', en: '25 October 2026' };
 
 // Инсталаторът — подписан от Pixel Lab EOOD, качен като release в репото на сайта.
 const DOWNLOAD = 'https://github.com/IvoD72/pixellabsoft.com/releases/download/lingbolt-0.7.0/LingboltSetup.exe';
@@ -130,7 +130,7 @@ export default {
           ['Кой предлага Lingbolt',
             'Пиксел Лаб ЕООД, ЕИК 205472124, България. Контакт: support@pixellabsoft.com.'],
           ['Безплатно и Про',
-            'Преводът се брои на думи, за да е честно: кратко съобщение харчи малко, дълъг имейл — повече. Безплатната версия дава 300 думи превод и 3 четения от екрана на ден. Lingbolt Про дава до 15 000 думи превод и 10 четения от екрана на ден, естествен глас до 45 минути на месец, до 120 минути „Разговор“ (превод на глас на живо) и до 5 часа „Срещи“ (запис, резюме и задачи) на месец. Броят се думите на текста, който превеждаш; всяка заявка е поне една дума. При китайски и японски една дума е 2 знака, при тайландски — 4. Лимитите се нулират всеки ден в полунощ UTC.'],
+            'Преводът се брои на думи, за да е честно: кратко съобщение харчи малко, дълъг имейл — повече. Безплатната версия дава 300 думи превод и 3 четения от екрана на ден. Lingbolt Про дава до 15 000 думи превод и 10 четения от екрана на ден, естествен глас до 45 минути на месец, до 30 минути „Разговор“ (превод на глас на живо) и до 3 часа „Срещи“ (запис, резюме и задачи) на месец. Броят се думите на текста, който превеждаш; всяка заявка е поне една дума. При китайски и японски една дума е 2 знака, при тайландски — 4. Лимитите се нулират всеки ден в полунощ UTC.'],
           ['Цена и абонамент',
             'Про струва 6,99 € на месец или 59,99 € на година, с включен ДДС. Плаща се с карта през Stripe и се подновява автоматично в края на всеки период, докато не го спреш. Спираш от линка в имейла с ключа (страницата за абонамента на Stripe) — Про остава до края на платения период, после програмата минава на безплатната версия. Ключът е за един човек; може да го ползваш на своите компютри.'],
           ['14 дни за отказ',
@@ -158,7 +158,7 @@ export default {
           ['Who offers Lingbolt',
             'Pixel Lab EOOD, company no. 205472124, Bulgaria. Contact: support@pixellabsoft.com.'],
           ['Free and Pro',
-            'Translation is counted in words, to be fair: a short message uses little, a long e-mail more. The free version gives 300 words of translation and 3 screen reads a day. Lingbolt Pro gives up to 15,000 words of translation and 10 screen reads a day, the natural voice for up to 45 minutes a month, up to 120 minutes of Conversation (live speech translation) and up to 5 hours of Meetings (recording, summary and tasks) a month. The words of the text you translate are counted; every request is at least one word. In Chinese and Japanese a word is 2 characters, in Thai 4. Limits reset every day at midnight UTC.'],
+            'Translation is counted in words, to be fair: a short message uses little, a long e-mail more. The free version gives 300 words of translation and 3 screen reads a day. Lingbolt Pro gives up to 15,000 words of translation and 10 screen reads a day, the natural voice for up to 45 minutes a month, up to 30 minutes of Conversation (live speech translation) and up to 3 hours of Meetings (recording, summary and tasks) a month. The words of the text you translate are counted; every request is at least one word. In Chinese and Japanese a word is 2 characters, in Thai 4. Limits reset every day at midnight UTC.'],
           ['Price and subscription',
             'Pro costs €6.99 a month or €59.99 a year, VAT included. You pay by card through Stripe and it renews automatically at the end of each period until you stop it. You stop it from the link in the email with your key (Stripe’s subscription page) — Pro stays on until the end of the paid period, then the program goes back to the free version. The key is for one person; you may use it on your own computers.'],
           ['14 days to change your mind',
