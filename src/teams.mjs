@@ -5,7 +5,7 @@
  * сменят се и тук. „Купи“ е GET към сървъра (/v1/org/buy), който пренасочва към Stripe; без JS формата
  * пак работи, скриптът само смята сумата.
  */
-import { esc } from './template.mjs';
+import { esc, withLang } from './template.mjs';
 
 export const SERVER = 'https://lingbolt-73339647229.europe-west1.run.app';
 export const PRICES = { month: 9.99, year: 99.99 };
@@ -159,7 +159,7 @@ export function teamsBody(lang, download) {
   <h2>${esc(w.how)}</h2>
   <div class="grid3">${w.steps.map(([b, s], i) => `<div class="step"><i>${i + 1}</i><span><b>${esc(b)}</b> ${esc(s)}</span></div>`).join('')}</div>
   <pre><code>LingboltSetup.exe /ALLUSERS /VERYSILENT /KEY=LB-ORG-XXXX-XXXX-XXXX</code></pre>
-  <small>${esc(w.signed)} <a href="${download}" style="text-decoration:underline">${esc(w.download)}</a></small>
+  <small>${esc(w.signed)} <a href="${withLang(download, lang)}" style="text-decoration:underline">${esc(w.download)}</a></small>
   <div class="grid3 fine">${w.fine.map(([b, s]) => `<div><b>${esc(b)}</b> ${esc(s)}</div>`).join('')}</div>
   <p class="fine">${esc(w.more)}</p>
 </section>

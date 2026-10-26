@@ -386,6 +386,9 @@ function pill(lang, app, short = false) {
   return `<span class="pill${ok ? ' store' : ''}">${esc(label)}</span>`;
 }
 
+/** Изтеглянето през нашия сървър казва и от коя езикова страница е (за имейла до Иво). */
+export const withLang = (url, lang) => (url.includes('/v1/download') ? `${url}?lang=${lang}` : url);
+
 /** Бутоните към магазините и сваляне — едни и същи на началото и на страницата на приложението. */
 function storeButtons(lang, app) {
   const t = STRINGS[lang];
@@ -393,7 +396,7 @@ function storeButtons(lang, app) {
   return [
     app.appStore ? b(app.appStore, APPLE, t.getOn, t.appStore) : '',
     app.playStore ? b(app.playStore, PLAY, t.getOnPlay, t.playStore) : '',
-    app.external?.download ? b(app.external.download, WINDOWS, t.downloadFor, 'Windows') : '',
+    app.external?.download ? b(withLang(app.external.download, lang), WINDOWS, t.downloadFor, 'Windows') : '',
   ].filter(Boolean).join('\n');
 }
 
