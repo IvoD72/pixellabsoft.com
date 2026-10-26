@@ -38,7 +38,9 @@ keep the same keys. Return only the JSON object.
 def ask(key: str, lang: str, src: dict) -> dict:
     body = {
         "contents": [{"parts": [{"text": PROMPT.format(lang=lang, src=json.dumps(src, ensure_ascii=False, indent=1))}]}],
-        "generationConfig": {"responseMimeType": "application/json", "temperature": 0.2},
+        # Thinking is billed as output: on Pro's default it cost ~$35 for the 40-language runs of 19–25.10.2026.
+        "generationConfig": {"responseMimeType": "application/json", "temperature": 0.2,
+                             "thinkingConfig": {"thinkingLevel": "low"}},
     }
     req = urllib.request.Request(
         f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent",
