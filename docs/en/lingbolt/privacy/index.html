@@ -162,6 +162,7 @@ h2 { font-size: clamp(28px, 3.4vw, 44px); }
 .app-hero { padding: clamp(40px, 6vw, 88px) 0 clamp(28px, 4vw, 48px); display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 40px; align-items: center; }
 .app-hero .visual { display: flex; justify-content: center; }
 .app-hero .tile.big { margin-bottom: 24px; }
+.app-hero .wordmark { display: block; width: clamp(180px, 22vw, 240px); height: auto; margin-bottom: 18px; }
 @media (max-width: 860px) { .app-hero { grid-template-columns: 1fr; gap: 36px; } }
 .app-hero .name { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; font-weight: 700; font-size: 18px; margin-bottom: 14px; }
 .app-hero h1 { max-width: 16ch; font-size: clamp(32px, 4.6vw, 56px); }
@@ -381,7 +382,7 @@ footer .fine { margin-top: 36px; padding-top: 18px; border-top: 1px solid rgba(2
 <main class="wrap">
 <a class="back" href="/en/lingbolt/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Back</a>
 <div class="doc-head read">
-  <div class="crumbs"><span class="tile img "><img src="/assets/icon-lingbolt.png" alt="" width="128" height="128"></span><a href="/en/lingbolt/">Lingbolt</a><span class="dot"></span><span>Last updated: 25 October 2026</span></div>
+  <div class="crumbs"><span class="tile img "><img src="/assets/icon-lingbolt.png" alt="" width="128" height="128"></span><a href="/en/lingbolt/">Lingbolt</a><span class="dot"></span><span>Last updated: 26 October 2026</span></div>
   <h1>Privacy Policy</h1>
   <p class="lead">Lingbolt sends the text you want translated in order to translate it — and nothing else. We do not keep it or record it. Here is exactly what happens.</p>
 </div>
@@ -393,14 +394,15 @@ footer .fine { margin-top: 36px; padding-top: 18px; border-top: 1px solid rgba(2
 <li><a href="#s4">What we keep</a></li>
 <li><a href="#s5">7-day trial</a></li>
 <li><a href="#s6">Paying for Pro</a></li>
-<li><a href="#s7">Lingbolt for teams</a></li>
-<li><a href="#s8">Keyboard, mouse and clipboard</a></li>
-<li><a href="#s9">On your computer</a></li>
-<li><a href="#s10">Conversation (Pro)</a></li>
-<li><a href="#s11">Meetings (Pro)</a></li>
-<li><a href="#s12">Ads and analytics</a></li>
-<li><a href="#s13">Your rights</a></li>
-<li><a href="#s14">Changes</a></li>
+<li><a href="#s7">Paying on the phone</a></li>
+<li><a href="#s8">Lingbolt for teams</a></li>
+<li><a href="#s9">Keyboard, mouse and clipboard</a></li>
+<li><a href="#s10">On your computer</a></li>
+<li><a href="#s11">Conversation (Pro)</a></li>
+<li><a href="#s12">Meetings (Pro)</a></li>
+<li><a href="#s13">Ads and analytics</a></li>
+<li><a href="#s14">Your rights</a></li>
+<li><a href="#s15">Changes</a></li>
   </ol></nav>
   <article>
 <h2 id="s1"><small>01</small>Who processes the data</h2>
@@ -415,25 +417,27 @@ footer .fine { margin-top: 36px; padding-top: 18px; border-top: 1px solid rgba(2
 <p>For the trial we keep the random device number and when it started and ends, and separately the one-way code of the network it started from (the IP address cannot be recovered from it), so there is one trial per network. We also keep how many words, minutes of Conversation and recording and how many meetings were used in the trial — numbers only, for the “Your 7 days” card. These records are kept for up to 12 months.</p>
 <h2 id="s6"><small>06</small>Paying for Pro</h2>
 <p>You pay on Stripe’s page (Stripe Payments Europe, Ireland) — your card details go only to Stripe; we never see them. From the purchase we keep: your email, the licence key, the Stripe subscription number, until when it is paid, and the random number of the device you paid from (so Pro is on at once, without typing the key). The email is used only for the key and questions about the subscription. Accounting records of the payment are kept as long as the law requires.</p>
-<h2 id="s7"><small>07</small>Lingbolt for teams</h2>
+<h2 id="s7"><small>07</small>Paying on the phone</h2>
+<p>On iPhone and Android, Pro is bought as a subscription in the App Store or Google Play. The payment and your card details stay with Apple or Google — we never see them and do not get your email. The app sends us the store-signed proof of purchase; we check it with Apple or Google and keep, with the licence key: the store’s subscription number, whether it is monthly or yearly, until when it is paid, and the random number of the device. These records stay while the key is in use and are deleted if you write to support@pixellabsoft.com.</p>
+<h2 id="s8"><small>08</small>Lingbolt for teams</h2>
 <p>When Lingbolt runs with a company key, we keep with that key: which computers hold a seat (the random device number), the computer’s name, the Windows user name, the Lingbolt version, when the computer took the seat and when it was last seen, and how many minutes of Conversation and recording each computer used that month. The company’s admin sees this on the admin page in order to manage the seats; there are no texts, translations, sound or meeting minutes there, and we do not keep them. From the purchase we keep the company’s name and the buyer’s email (which is also the address behind “Write to your admin” in the program). These records are kept while the company has a subscription, and deleted when the admin frees the seat or the company asks; the minute counters expire by themselves after 90 days. For its employees’ data the company is the controller and we process it on its behalf.</p>
-<h2 id="s8"><small>08</small>Keyboard, mouse and clipboard</h2>
+<h2 id="s9"><small>09</small>Keyboard, mouse and clipboard</h2>
 <p>Lingbolt only watches for two quick presses of Ctrl and for selecting with the mouse — it does not record or send what you type. It asks Windows whether text is selected in order to show ⚡; the text is taken only when you click. To take and paste the text it uses the clipboard for a moment and then puts back what you had there.</p>
-<h2 id="s9"><small>09</small>On your computer</h2>
+<h2 id="s10"><small>10</small>On your computer</h2>
 <p>Settings (languages, the device number, the Pro key, which language each chat speaks — kept only as a one-way code of the window, with no names) and a log of errors only — without your texts — are kept in Lingbolt’s folders in your Windows profile. They go away when you uninstall the program and delete the %APPDATA%\Lingbolt folder.</p>
-<h2 id="s10"><small>10</small>Conversation (Pro)</h2>
+<h2 id="s11"><small>11</small>Conversation (Pro)</h2>
 <p>In Conversation mode, while it is on (the Talk button), Lingbolt sends the sound of your microphone, encrypted, to our server on Google Cloud (Belgium, EU), which passes it to Alibaba Cloud's Qwen live translation model (Singapore region). The translation comes back as text and as a synthetic voice, which Lingbolt plays into its own virtual microphone, Lingbolt Microphone; your meeting app sends it to the others. If you also translate what you hear, the voices of the other people in the meeting are processed too — tell them you are using a translator.</p>
 <p>We do not record or keep the sound or the text — not in a database, not in logs; we keep only how many seconds of translation were used (for the monthly limit) and what it cost. Alibaba Cloud processes the data as our processor under its data processing agreement with the EU standard contractual clauses; under its rules requests and responses are kept for up to 30 days and are not used to train models without separate consent.</p>
 <p>The voice the others hear is generated by AI (machine translation). Lingbolt Microphone works only on your computer and sends nothing out. Its driver (usbip-win2, open source) is downloaded by Lingbolt from its official GitHub page once, and only if you ask.</p>
-<h2 id="s11"><small>11</small>Meetings (Pro)</h2>
+<h2 id="s12"><small>12</small>Meetings (Pro)</h2>
 <p>When you record a meeting, Lingbolt records your microphone and the computer’s sound (what you hear from the meeting app — so the other people’s voices too). The recording is cut into 5-minute pieces kept in the Documents\Lingbolt\Meetings folder on your computer. Each piece is sent, encrypted, to our server on Google Cloud (Belgium, EU), which passes it to the Google Gemini API to turn it into text by speaker; then the text of the whole meeting goes the same way for the summary and the tasks.</p>
 <p>The sound is deleted at Google right after it has become text, and on your computer as soon as the text is saved (unless you turn on “Keep the meetings’ audio”). We do not keep the sound or the text — not in a database, not in logs; we keep only how many seconds were processed (for the monthly limit) and what it cost. The minutes stay only on your computer until you delete or send them.</p>
 <p>Recording other people needs their consent: tell them you are recording (Lingbolt offers a ready line for the chat).</p>
-<h2 id="s12"><small>12</small>Ads and analytics</h2>
+<h2 id="s13"><small>13</small>Ads and analytics</h2>
 <p>No ads, no tracking, no statistics about your behaviour.</p>
-<h2 id="s13"><small>13</small>Your rights</h2>
+<h2 id="s14"><small>14</small>Your rights</h2>
 <p>You can ask for access to the data linked to your device number, or for its deletion — write to support@pixellabsoft.com. You also have the right to complain to your data protection authority (in Bulgaria: cpdp.bg).</p>
-<h2 id="s14"><small>14</small>Changes</h2>
+<h2 id="s15"><small>15</small>Changes</h2>
 <p>If we change this policy, the date above will show it, and the current version will always be at this address.</p>
     <div class="links">
       <a href="/en/lingbolt/teams/">Lingbolt for teams</a>
