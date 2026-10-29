@@ -358,7 +358,7 @@ export const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').r
 export const imeto = (app, lang) => (lang !== 'bg' && app.nameEn) || app.name;
 
 /** Страниците, които имат и другите езици на Lingbolt (/de/lingbolt/…); останалото им е на английски. */
-export const LOCAL_PATHS = new Set(['lingbolt/']);
+export const LOCAL_PATHS = new Set(['lingbolt/', 'lingbolt/whatsapp/']);
 
 /** Пътищата: BG е в корена, EN под /en/, другите езици — под /<код>/ само за LOCAL_PATHS. */
 export const href = (lang, path = '') =>
@@ -370,7 +370,7 @@ const ARROW = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke
 const MAIL = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3 8 9 6 9-6"/></svg>`;
 const APPLE = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.02-1.5-2.62-1.7-3.19-1.72-1.36-.14-2.65.8-3.34.8-.69 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.19-1.54 2.67-.39 6.62 1.11 8.79.73 1.06 1.6 2.25 2.75 2.2 1.1-.04 1.52-.71 2.85-.71 1.33 0 1.71.71 2.88.69 1.19-.02 1.94-1.08 2.66-2.14.84-1.23 1.19-2.42 1.21-2.48-.03-.01-2.32-.89-2.32-3.55zM14.18 6.13c.61-.74 1.02-1.76.91-2.78-.88.04-1.94.58-2.57 1.32-.56.65-1.06 1.69-.93 2.69.98.08 1.98-.5 2.59-1.23z"/></svg>`;
 const PLAY = `<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#34d17a" d="M3.6 2.3c-.3.3-.5.8-.5 1.4v16.6c0 .6.2 1.1.5 1.4l9.3-9.7z"/><path fill="#ffd23f" d="m16 15.1-3.1-3.1L16 8.9l3.7 2.1c1.1.6 1.1 1.6 0 2.2z"/><path fill="#ff4d5e" d="M16 15.1 12.9 12l-9.3 9.7c.4.4 1 .4 1.7 0z"/><path fill="#3aa0ff" d="M16 8.9 5.3 2.3c-.7-.4-1.3-.4-1.7 0l9.3 9.7z"/></svg>`;
-const WINDOWS = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.5 10 4.5v7H3zM11 4.4 21 3v8.5H11zM3 12.5h7v7L3 18.5zM11 12.5h10V21l-10-1.4z"/></svg>`;
+export const WINDOWS = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.5 10 4.5v7H3zM11 4.4 21 3v8.5H11zM3 12.5h7v7L3 18.5zM11 12.5h10V21l-10-1.4z"/></svg>`;
 const FALLBACK_ICON = `<rect x="4" y="4" width="16" height="16" rx="4"/>`;
 
 /** Иконата на приложение върху цветната плочка. */

@@ -5,6 +5,7 @@ import { LINGBOLT_LANGS } from './src/i18n/langs.mjs';
 import { SHOTS } from './src/mocks.mjs';
 import { COMPANY, DOMAIN, LANGS, STRINGS, SUPPORT_EMAIL } from './src/site.mjs';
 import { teamsBody, teamsText } from './src/teams.mjs';
+import { USES, useBody, useLinks, useTranslated } from './src/uses.mjs';
 import { LEGAL_PATH, href, imeto, aboutBand, appBody, homeBody, legalBody, page, supportBody } from './src/template.mjs';
 
 /**
@@ -57,6 +58,7 @@ for (const code of MORE) {
   lingbolt.features[code] = pick('feature.');
   lingbolt.description[code] = pick('description.');
   SHOTS.lingbolt.alt[code] = t.alt;
+  useTranslated(code, t);
 }
 
 async function emit(lang, path, html) {
@@ -92,7 +94,7 @@ for (const lang of LANGS) {
     await emit(lang, app.slug, page({
       lang, path: `${app.slug}/`, title: app.seo?.title[lang] ?? `${imeto(app, lang)} — ${app.tagline[lang]}`,
       description: app.seo?.description[lang] ?? app.description[lang][0], body: appBody({ lang, app }), color: app.color,
-      image: `/assets/og/${app.slug}-${lang}.png`, jsonld: appLd(app, lang),
+      image: `/assets/og/${app.slug}-${lang}.png`, jsonld: appLd(app, lang), after: app === lingbolt ? useLinks(lang, app) : '',
     }));
     add(`${app.slug}/`);
     if (!app.legal) continue;
@@ -120,11 +122,23 @@ for (const lang of LANGS) {
   urls.push(`https://${DOMAIN}${href(lang, lingbolt.slug + '/teams/')}`);
 }
 
+// Lingbolt — една страница за една нужда, на всичките 40 езика (src/uses.mjs).
+for (const lang of LINGBOLT_LANGS.map(l => l.code))
+  for (const slug of Object.keys(USES)) {
+    const path = `${lingbolt.slug}/${slug}/`;
+    await emit(lang, path.slice(0, -1), page({
+      lang, path, title: USES[slug].title[lang], description: USES[slug].description[lang],
+      body: useBody(lang, slug, lingbolt), color: lingbolt.color,
+      image: `/assets/og/${lingbolt.slug}-${lang === 'bg' ? 'bg' : 'en'}.png`,
+    }));
+    urls.push(`https://${DOMAIN}${href(lang, path)}`);
+  }
+
 for (const lang of MORE) {
   await emit(lang, lingbolt.slug, page({
     lang, path: `${lingbolt.slug}/`, title: lingbolt.seo.title[lang],
     description: lingbolt.seo.description[lang], body: appBody({ lang, app: lingbolt }), color: lingbolt.color,
-    image: `/assets/og/${lingbolt.slug}-en.png`, jsonld: appLd(lingbolt, lang),
+    image: `/assets/og/${lingbolt.slug}-en.png`, jsonld: appLd(lingbolt, lang), after: useLinks(lang, lingbolt),
   }));
   urls.push(`https://${DOMAIN}${href(lang, lingbolt.slug + '/')}`);
 }
