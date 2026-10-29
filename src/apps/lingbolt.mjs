@@ -33,6 +33,17 @@ export default {
   },
   short: { bg: 'Превежда текста навсякъде, гласа ти в срещите и пише конспекта им. 40 езика.', en: 'Translates text anywhere, your voice in meetings, and writes their minutes. 40 languages.' },
   note: { bg: 'превод с една мълния', en: 'translation in a flash' },
+  // What search shows (29.10.2026): the words people search for, not the slogan — the slogan stays the page's H1.
+  seo: {
+    title: {
+      bg: 'Lingbolt — преводач за Windows: WhatsApp, Viber, Zoom и Teams',
+      en: 'Lingbolt — translator for Windows: WhatsApp, Viber, Zoom, Teams',
+    },
+    description: {
+      bg: 'Превеждай съобщения във WhatsApp, Viber и всяка програма с едно цъкане, говори на живо в Zoom и Teams на 40 езика и вземи конспект на срещата. 7 дни Про подарък.',
+      en: 'Translate WhatsApp, Viber and any app with one click, speak live in Zoom and Teams in 40 languages, and get the meeting minutes. 7 days of Pro as a gift.',
+    },
+  },
   tagline: {
     bg: 'Пишеш и говориш на твоя език. Те те разбират на техния.',
     en: 'Write and speak in your language. They understand you in theirs.',

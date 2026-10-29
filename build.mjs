@@ -52,6 +52,8 @@ for (const code of MORE) {
   const pick = prefix => Object.keys(t).filter(k => k.startsWith(prefix)).sort().map(k => t[k]);
   STRINGS[code] = { ...STRINGS.en, ...Object.fromEntries(Object.entries(t).filter(([k]) => k.startsWith('site.')).map(([k, v]) => [k.slice(5), v])) };
   lingbolt.tagline[code] = t.tagline;
+  lingbolt.seo.title[code] = t['seo.title'];
+  lingbolt.seo.description[code] = t['seo.description'];
   lingbolt.features[code] = pick('feature.');
   lingbolt.description[code] = pick('description.');
   SHOTS.lingbolt.alt[code] = t.alt;
@@ -88,8 +90,8 @@ for (const lang of LANGS) {
 
   for (const app of apps) {
     await emit(lang, app.slug, page({
-      lang, path: `${app.slug}/`, title: `${imeto(app, lang)} — ${app.tagline[lang]}`,
-      description: app.description[lang][0], body: appBody({ lang, app }), color: app.color,
+      lang, path: `${app.slug}/`, title: app.seo?.title[lang] ?? `${imeto(app, lang)} — ${app.tagline[lang]}`,
+      description: app.seo?.description[lang] ?? app.description[lang][0], body: appBody({ lang, app }), color: app.color,
       image: `/assets/og/${app.slug}-${lang}.png`, jsonld: appLd(app, lang),
     }));
     add(`${app.slug}/`);
@@ -120,8 +122,8 @@ for (const lang of LANGS) {
 
 for (const lang of MORE) {
   await emit(lang, lingbolt.slug, page({
-    lang, path: `${lingbolt.slug}/`, title: `${lingbolt.name} — ${lingbolt.tagline[lang]}`,
-    description: lingbolt.description[lang][0], body: appBody({ lang, app: lingbolt }), color: lingbolt.color,
+    lang, path: `${lingbolt.slug}/`, title: lingbolt.seo.title[lang],
+    description: lingbolt.seo.description[lang], body: appBody({ lang, app: lingbolt }), color: lingbolt.color,
     image: `/assets/og/${lingbolt.slug}-en.png`, jsonld: appLd(lingbolt, lang),
   }));
   urls.push(`https://${DOMAIN}${href(lang, lingbolt.slug + '/')}`);

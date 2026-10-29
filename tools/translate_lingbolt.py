@@ -54,7 +54,9 @@ def ask(key: str, lang: str, src: dict) -> dict:
         except urllib.error.HTTPError as e:
             if e.code != 429:
                 raise
-    raise RuntimeError(f"{lang}: Gemini keeps saying 429")
+        except TimeoutError:               # a slow answer (29.10.2026): ask again, like a 429
+            print(f"{lang}: timed out, asking again", flush=True)
+    raise RuntimeError(f"{lang}: Gemini keeps saying 429 or timing out")
 
 
 def digits(text: str) -> str:
