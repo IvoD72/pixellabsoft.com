@@ -141,6 +141,48 @@ export const USES = {
     },
     more: { bg: 'Всичко, което Lingbolt може', en: 'Everything Lingbolt can do' },
   },
+  screen: {
+    title: {
+      bg: 'Превод на текст от снимка, PDF или игра на екрана — Lingbolt',
+      en: 'Translate text from a picture, PDF or game on your screen — Lingbolt',
+    },
+    description: {
+      bg: 'Текст, който не може да се маркира? Натисни Ctrl+Shift+R, огради го с мишката и го прочети на твоя език: снимки, PDF, игри, менюта на програми. 40 езика, Windows.',
+      en: 'Text you cannot select? Press Ctrl+Shift+R, draw a box around it and read it in your language: pictures, PDFs, games, program menus. 40 languages, Windows.',
+    },
+    h1: { bg: 'Превод на текст от снимка, PDF или игра', en: 'Translate text from a picture, PDF or game' },
+    lead: {
+      bg: 'Не всеки текст може да се маркира и копира. С Lingbolt ограждаш това, което виждаш на екрана, и го четеш на твоя език, без да преписваш нищо.',
+      en: 'Not every text can be selected and copied. With Lingbolt you draw a box around what you see on the screen and read it in your language, without retyping anything.',
+    },
+    how: { bg: 'Как става', en: 'How it works' },
+    steps: {
+      bg: [
+        ['Изтегли Lingbolt.', 'Стои до часовника и чака, докато ти потрябва.'],
+        ['Натисни Ctrl+Shift+R', 'и огради с мишката парчето от екрана: снимка, страница от PDF, надпис в игра или меню.'],
+        ['Прочети го на твоя език', 'на картичка до мишката, с бутон „Копирай“. С Про можеш да го чуеш и на естествен глас.'],
+      ],
+      en: [
+        ['Download Lingbolt.', 'It sits by the clock and waits until you need it.'],
+        ['Press Ctrl+Shift+R', 'and draw a box with the mouse around the part of the screen: a picture, a PDF page, a line in a game or a menu.'],
+        ['Read it in your language', 'on a card by the mouse, with a Copy button. With Pro you can also hear it in a natural voice.'],
+      ],
+    },
+    faqTitle: { bg: 'Честите въпроси', en: 'Questions people ask' },
+    faq: {
+      bg: [
+        ['Безплатно ли е?', 'Да, 3 четения от екрана на ден безплатно. Lingbolt Про дава 10 на ден, за 6,99 € на месец. Първите 7 дни са Про подарък, без карта.'],
+        ['Какво се праща?', 'Само парчето, което си оградил, като картинка. Минава криптирано през нашия сървър в ЕС за превода и не се пази.'],
+        ['На какви езици?', 'Lingbolt разпознава текста на 40 езика, включително китайски, японски, корейски, арабски и хинди, и го превежда на твоя.'],
+      ],
+      en: [
+        ['Is it free?', 'Yes, 3 screen reads a day for free. Lingbolt Pro gives 10 a day, for €6.99 a month. The first 7 days are Pro as a gift, no card needed.'],
+        ['What is sent?', 'Only the part you drew a box around, as a picture. It goes encrypted through our server in the EU to be translated and is not kept.'],
+        ['In which languages?', 'Lingbolt reads text in 40 languages, including Chinese, Japanese, Korean, Arabic and Hindi, and translates it into yours.'],
+      ],
+    },
+    more: { bg: 'Всичко, което Lingbolt може', en: 'Everything Lingbolt can do' },
+  },
 };
 
 const CSS = `<style>
