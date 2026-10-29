@@ -97,6 +97,50 @@ export const USES = {
     },
     more: { bg: 'Всичко, което Lingbolt може', en: 'Everything Lingbolt can do' },
   },
+  meetings: {
+    title: {
+      bg: 'Протокол, резюме и задачи от всяка среща — Lingbolt',
+      en: 'Minutes, summary and tasks from every meeting — Lingbolt',
+    },
+    description: {
+      bg: 'Lingbolt записва срещата в Zoom, Teams, Google Meet или в стаята и ти дава протокол по говорители, кратко резюме, взетите решения и задачите. 40 езика, Windows.',
+      en: 'Lingbolt records your meeting in Zoom, Teams, Google Meet or in the room and gives you the minutes by speaker, a short summary, the decisions and the tasks. 40 languages, Windows.',
+    },
+    h1: { bg: 'Протокол, резюме и задачи от срещата, сами', en: 'Minutes, summary and tasks from the meeting, by themselves' },
+    lead: {
+      bg: 'Натискаш „Запиши срещата“ и говориш спокойно, без да си водиш бележки. След края получаваш кой какво е казал, кратко резюме, решенията и задачите, с отговорник и срок, когато са казани.',
+      en: 'Press Record the meeting and talk freely, without taking notes. When it ends you get who said what, a short summary, the decisions and the tasks, with an owner and a deadline when they were said.',
+    },
+    how: { bg: 'Как става', en: 'How it works' },
+    steps: {
+      bg: [
+        ['Изтегли Lingbolt', 'и в началото на срещата избери „Запиши срещата“ от иконата до часовника или натисни Ctrl+Shift+M. Работи в Zoom, Teams, Google Meet и на среща в стаята.'],
+        ['Говорете спокойно.', 'Lingbolt записва твоя микрофон и звука на компютъра, тоест и другите в срещата.'],
+        ['„Приключи срещата“', 'и след малко протоколът е готов: по говорители, с резюме, решения и задачи.'],
+      ],
+      en: [
+        ['Download Lingbolt', 'and when the meeting starts, choose Record the meeting from the icon by the clock or press Ctrl+Shift+M. It works in Zoom, Teams, Google Meet and in a meeting in the room.'],
+        ['Talk freely.', 'Lingbolt records your microphone and the computer’s sound, so the others in the meeting too.'],
+        ['Finish the meeting', 'and a moment later the minutes are ready: by speaker, with a summary, decisions and tasks.'],
+      ],
+    },
+    faqTitle: { bg: 'Честите въпроси', en: 'Questions people ask' },
+    faq: {
+      bg: [
+        ['Колко струва?', '„Срещи“ е в Lingbolt Про: 6,99 € на месец, с 3 часа запис на месец. Ако ти трябват повече, има кредити от 9,99 €, без абонамент. Първите 7 дни са Про подарък, с 1 час запис, без карта.'],
+        ['Познава ли кой какво казва?', 'Да, протоколът е по говорители. Ти си „Аз“, а другите излизат с имената си, когато бъдат казани в срещата.'],
+        ['Трябва ли да кажа на другите, че записвам?', 'Да. Lingbolt копира готов ред за чата: „Записвам срещата за протокол.“'],
+        ['Къде отива записът?', 'Записът стои в папката Documents\\Lingbolt\\Meetings на твоя компютър. За текста и резюмето минава криптиран през нашия сървър в ЕС; у нас не се пази.'],
+      ],
+      en: [
+        ['How much does it cost?', 'Meetings is in Lingbolt Pro: €6.99 a month, with 3 hours of recording a month. Need more? There are credits from €9.99, no subscription. The first 7 days are Pro as a gift, with 1 hour of recording, no card needed.'],
+        ['Does it know who said what?', 'Yes, the minutes are by speaker. You are “Me”, and the others appear by name when their names are said in the meeting.'],
+        ['Should I tell the others that I record?', 'Yes. Lingbolt copies a ready line for the chat: “I am recording the meeting for the minutes.”'],
+        ['Where does the recording go?', 'The recording stays in the Documents\\Lingbolt\\Meetings folder on your computer. For the text and the summary it goes encrypted through our server in the EU; we do not keep it.'],
+      ],
+    },
+    more: { bg: 'Всичко, което Lingbolt може', en: 'Everything Lingbolt can do' },
+  },
 };
 
 const CSS = `<style>

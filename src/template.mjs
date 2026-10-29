@@ -358,7 +358,7 @@ export const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').r
 export const imeto = (app, lang) => (lang !== 'bg' && app.nameEn) || app.name;
 
 /** Страниците, които имат и другите езици на Lingbolt (/de/lingbolt/…); останалото им е на английски. */
-export const LOCAL_PATHS = new Set(['lingbolt/', 'lingbolt/whatsapp/', 'lingbolt/zoom/']);
+export const LOCAL_PATHS = new Set(['lingbolt/', 'lingbolt/whatsapp/', 'lingbolt/zoom/', 'lingbolt/meetings/']);
 
 /** Пътищата: BG е в корена, EN под /en/, другите езици — под /<код>/ само за LOCAL_PATHS. */
 export const href = (lang, path = '') =>
