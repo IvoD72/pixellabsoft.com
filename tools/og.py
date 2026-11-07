@@ -38,7 +38,7 @@ body{width:1200px;height:630px;overflow:hidden;font-family:Onest,sans-serif;back
 .bg{position:absolute;inset:0;background:radial-gradient(50% 70% at 85% 40%,color-mix(in srgb,var(--c) 30%,transparent),transparent 70%),radial-gradient(40% 50% at 10% 100%,rgba(24,195,240,.12),transparent 70%)}
 .brand{position:absolute;left:64px;top:52px;display:flex;align-items:center;gap:12px;font-weight:800;font-size:28px;letter-spacing:-.03em}
 .brand img{width:46px;height:46px}.lab{background:linear-gradient(115deg,#3a3dff,#1a9bff,#18c8f0);-webkit-background-clip:text;color:transparent}
-.txt{position:absolute;left:64px;top:170px;width:600px}
+.txt{position:absolute;left:64px;top:170px;width:540px}
 .ic{width:84px;height:84px;border-radius:22px;overflow:hidden;box-shadow:0 14px 30px -14px rgba(11,20,48,.5);margin-bottom:26px}.ic img{width:100%;height:100%}
 h1{font-size:64px;line-height:1.02;letter-spacing:-.04em;font-weight:800}
 h1 .g{background:linear-gradient(115deg,#3a3dff,#2163ff,#1a9bff,#18c8f0);-webkit-background-clip:text;color:transparent}
@@ -68,7 +68,9 @@ def card(lang, app=None):
         if app["slug"] in SHOTS:
             vis = f'<div class="ph" style="right:90px;top:80px;transform:rotate(4deg)"><img src="/assets/{app["slug"]}-{lang}.webp"></div>'
         elif app["slug"] in WIN:
-            vis = f'<div class="win"><div class="bar"></div><img src="/assets/{app["slug"]}.webp"></div>'
+            # one screen per language when there is one (photopick-bg.webp), else one for both (sortis.webp)
+            shot = f'{app["slug"]}-{lang}' if (SAJT / "src" / "assets" / f'{app["slug"]}-{lang}.webp').exists() else app["slug"]
+            vis = f'<div class="win"><div class="bar"></div><img src="/assets/{shot}.webp"></div>'
         else:
             vis = (f'<div class="ic" style="position:absolute;right:150px;top:170px;width:260px;height:260px;border-radius:64px">'
                    f'<img src="{app["iconImg"]}"></div>')
