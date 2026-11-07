@@ -10,6 +10,7 @@ import http.server
 import json
 import re
 import subprocess
+import sys
 import threading
 from pathlib import Path
 
@@ -26,7 +27,9 @@ APPS = json.loads(subprocess.run(
      " color: a.color, iconImg: a.iconImg, tagline: a.tagline, short: a.short}))))"],
     cwd=SAJT, capture_output=True, text=True, check=True, encoding="utf-8").stdout)
 SHOTS = {"sroko", "glagoli", "konspekt"}
-WIN = {"sortis"}
+WIN = {"sortis", "photopick"}
+# python tools/og.py photopick  -> only that app's two cards (the others stay as they are)
+ONLY = set(sys.argv[1:])
 
 CSS = """
 @import url('https://fonts.googleapis.com/css2?family=Onest:wght@500;700;800&display=swap');
@@ -65,7 +68,7 @@ def card(lang, app=None):
         if app["slug"] in SHOTS:
             vis = f'<div class="ph" style="right:90px;top:80px;transform:rotate(4deg)"><img src="/assets/{app["slug"]}-{lang}.webp"></div>'
         elif app["slug"] in WIN:
-            vis = '<div class="win"><div class="bar"></div><img src="/assets/sortis.webp"></div>'
+            vis = f'<div class="win"><div class="bar"></div><img src="/assets/{app["slug"]}.webp"></div>'
         else:
             vis = (f'<div class="ic" style="position:absolute;right:150px;top:170px;width:260px;height:260px;border-radius:64px">'
                    f'<img src="{app["iconImg"]}"></div>')
@@ -93,6 +96,8 @@ def main():
             pg = b.new_page(viewport={"width": 1200, "height": 630})
             for lang in ("bg", "en"):
                 for app in [None] + APPS:
+                    if ONLY and (app['slug'] if app else 'home') not in ONLY:
+                        continue
                     name = f"{app['slug'] if app else 'home'}-{lang}"
                     (tmp / f"{name}.html").write_text(card(lang, app), encoding="utf-8")
                     pg.goto(f"http://127.0.0.1:8799/_og/{name}.html")

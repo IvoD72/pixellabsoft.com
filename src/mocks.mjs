@@ -40,6 +40,14 @@ export const SHOTS = {
       en: 'Sortis screen: the dashboard with purchases, sales, VAT and the documents to check.',
     },
   },
+  // PhotoPick: the real window in each language (tools\shot.ps1 -Lang bg|en in `20 Snimki ot iPhone`), with made-up photos — no real ones on the site.
+  photopick: {
+    kind: 'window', w: 1180, h: 769,
+    alt: {
+      bg: 'Прозорецът на PhotoPick: снимките от последните 7 дни, четири избрани, „В папки по място и дата“ и бутон „Свали 4“.',
+      en: 'The PhotoPick window: the photos of the last 7 days, four of them picked, “Folders by place and date” and a “Download 4” button.',
+    },
+  },
   lingbolt: {
     kind: 'window', w: 1280, h: 749, one: true,
     // On the home cards the whole chat is too small to read, so they show only the translation card.
