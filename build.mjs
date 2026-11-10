@@ -4,6 +4,7 @@ import { APPS } from './src/apps/index.mjs';
 import { LINGBOLT_LANGS } from './src/i18n/langs.mjs';
 import { SHOTS } from './src/mocks.mjs';
 import { COMPANY, DOMAIN, LANGS, STRINGS, SUPPORT_EMAIL } from './src/site.mjs';
+import { restorantiBody, restorantiText } from './src/restoranti.mjs';
 import { teamsBody, teamsText } from './src/teams.mjs';
 import { USES, useBody, useLinks, useTranslated } from './src/uses.mjs';
 import { LEGAL_PATH, href, imeto, aboutBand, appBody, homeBody, legalBody, page, supportBody } from './src/template.mjs';
@@ -141,6 +142,14 @@ for (const lang of MORE) {
     image: `/assets/og/${lingbolt.slug}-en.png`, jsonld: appLd(lingbolt, lang), after: useLinks(lang, lingbolt),
   }));
   urls.push(`https://${DOMAIN}${href(lang, lingbolt.slug + '/')}`);
+}
+
+// Приложение за ресторанти (11.11.2026) — само bg, в sitemap-а.
+{
+  const t = restorantiText();
+  await emit('bg', 'restoranti', page({ lang: 'bg', path: 'restoranti/', title: `${t.title} — Пиксел Лаб`, description: t.description,
+    body: restorantiBody(), image: '/assets/video/prilozhenie-za-restoranti.jpg' }));
+  urls.push(`https://${DOMAIN}/restoranti/`);
 }
 
 // /sroko/get/ — линкът от платената реклама във Facebook: към магазина според
