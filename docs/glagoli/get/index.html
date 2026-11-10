@@ -7,7 +7,7 @@
   var ua = navigator.userAgent || '';
   // iPadOS 13+ в Safari се представя като Mac — познава се по тъча.
   var ios = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-  location.replace(ios ? "https://apps.apple.com/bg/app/id6803861642"
+  location.replace(ios ? "https://apps.apple.com/app/id6803861642"
     : /Android/i.test(ua) ? "https://play.google.com/store/apps/details?id=bg.glagoli.app"
     : "https://glagoli.app/");
 })();</script>
@@ -16,7 +16,7 @@ a{display:inline-block;margin:8px;padding:12px 20px;border-radius:10px;backgroun
 </head><body>
 <noscript>
 <h1>Глаголи</h1>
-<p><a href="https://apps.apple.com/bg/app/id6803861642">App Store</a><a href="https://play.google.com/store/apps/details?id=bg.glagoli.app">Google Play</a></p>
+<p><a href="https://apps.apple.com/app/id6803861642">App Store</a><a href="https://play.google.com/store/apps/details?id=bg.glagoli.app">Google Play</a></p>
 <p><a href="https://glagoli.app/" style="background:none;color:#c9b8ff">glagoli.app</a></p>
 </noscript>
 </body></html>
