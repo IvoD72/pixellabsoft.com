@@ -74,6 +74,9 @@ await writeFile(join(OUT, 'CNAME'), DOMAIN + '\n');
 await writeFile(join(OUT, '.nojekyll'), '');
 // Снимки на приложенията (истински екрани) — влизат в сайта както са.
 await cp(join('src', 'assets'), join(OUT, 'assets'), { recursive: true });
+// Ръчно правени страници, които build-ът не генерира (напр. /glagoli/get/ — линкът от рекламата на Глаголи,
+// f1720ab). Стоят в src/static/ и се копират както са — иначе rm на docs/ по-горе ги трие (намерено 11.11.2026).
+await cp(join('src', 'static'), OUT, { recursive: true });
 // IndexNow (Bing, Yandex…): ключът е публичен по замисъл — файлът доказва, че сайтът е наш.
 // Пинг след качване: python tools/indexnow.py
 export const INDEXNOW_KEY = 'ce9627f068b626b12c972aaa0735b430';
