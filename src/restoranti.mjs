@@ -4,7 +4,7 @@
  *
  * Цените са решение на Иво (11.11.2026) — едно място за тях е PRICES тук; същите са във видеото
  * (18 Urban GO/demo/patch_kino.py, s_price) и в имейла до ресторантите. Сменят ли се — и на трите места.
- * Видеото: src/assets/video/prilozhenie-za-restoranti.mp4 (компресирано копие на demo/out/…-4x5.mp4).
+ * Видеото: src/assets/video/pixel-lab-restoranti.mp4 (компресирано копие на demo/out/…-4x5.mp4).
  */
 import { esc } from './template.mjs';
 import { SUPPORT_EMAIL } from './site.mjs';
@@ -80,8 +80,8 @@ export function restorantiBody() {
   <h1>${esc(T.h1)}</h1>
   <p class="lead">${esc(T.lead)}</p>
   <p><a class="btn primary" href="${mail}">${esc(T.write)}</a></p>
-  <video controls playsinline preload="metadata" poster="/assets/video/prilozhenie-za-restoranti.jpg"
-    src="/assets/video/prilozhenie-za-restoranti.mp4" aria-label="${esc(T.video)}"></video>
+  <video controls playsinline preload="metadata" poster="/assets/video/pixel-lab-restoranti.jpg"
+    src="/assets/video/pixel-lab-restoranti.mp4" aria-label="${esc(T.video)}"></video>
   <small class="fine">${esc(T.video)}</small>
   <h2>${esc(T.how)}</h2>
   <div class="g2">${T.steps.map(([b, s]) => `<div class="box"><b>${esc(b)}</b><span>${esc(s)}</span></div>`).join('')}</div>

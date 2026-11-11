@@ -148,7 +148,7 @@ for (const lang of MORE) {
 {
   const t = restorantiText();
   await emit('bg', 'restoranti', page({ lang: 'bg', path: 'restoranti/', title: `${t.title} — Пиксел Лаб`, description: t.description,
-    body: restorantiBody(), image: '/assets/video/prilozhenie-za-restoranti.jpg' }));
+    body: restorantiBody(), image: '/assets/video/pixel-lab-restoranti.jpg' }));
   urls.push(`https://${DOMAIN}/restoranti/`);
 }
 
