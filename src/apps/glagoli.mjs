@@ -6,8 +6,8 @@
  * сверени с кода): книгата се чете на езика, на който е написана (български
  * или английски) — каченото НЕ се превежда. До 12.10.2026 тук пишеше, че
  * превежда — грешно.
- * В Google Play от октомври 2026 (bg.glagoli.app); в App Store още чака
- * одобрение — добави `appStore`, щом излезе. Правните текстове са на glagoli.app.
+ * В Google Play от октомври 2026 (bg.glagoli.app), в App Store от 30.10.2026
+ * (id6803861642). Правните текстове са на glagoli.app.
  */
 export default {
   slug: 'glagoli',
@@ -17,7 +17,7 @@ export default {
   name: 'Глаголи',
   nameEn: 'Glagoli', // на английските страници
   status: 'store',
-  appStore: null,
+  appStore: 'https://apps.apple.com/app/glagoli/id6803861642',
   playStore: 'https://play.google.com/store/apps/details?id=bg.glagoli.app',
   external: {
     site: 'https://glagoli.app',
