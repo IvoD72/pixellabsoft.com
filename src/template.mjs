@@ -142,6 +142,8 @@ h2 { font-size: clamp(28px, 3.4vw, 44px); }
 .btn svg { width: 18px; height: 18px; }
 .store-btn { display: inline-flex; align-items: center; gap: 11px; padding: 9px 18px 9px 14px; border-radius: 13px; background: #0b1430; color: #fff; transition: transform .15s ease, box-shadow .15s ease; min-width: 172px; }
 .store-btn:hover { transform: translateY(-2px); box-shadow: 0 16px 30px -16px rgba(11,20,48,.7); }
+.pc-note { flex-basis: 100%; margin: 0; font-size: 15px; line-height: 1.5; color: #3b4766; }
+.pc-note button { display: block; margin-top: 10px; padding: 10px 18px; border: 0; border-radius: 13px; background: #0b1430; color: #fff; font: inherit; font-weight: 600; cursor: pointer; }
 .store-btn svg { width: 26px; height: 26px; flex: none; }
 .store-btn span { display: flex; flex-direction: column; line-height: 1.15; font-size: 11px; opacity: .85; }
 .store-btn b { font-size: 17px; font-weight: 600; opacity: 1; letter-spacing: -.01em; }
@@ -389,6 +391,15 @@ function pill(lang, app, short = false) {
 /** Изтеглянето през нашия сървър казва и от коя езикова страница е (за имейла до Иво). */
 export const withLang = (url, lang) => (url.includes('/v1/download') ? `${url}?lang=${lang}` : url);
 
+/**
+ * Бутонът „Изтегли за Windows“. На телефон не върши работа (12.11.2026: 138 клика от рекламата, 0 тегления),
+ * затова там скриптът долу го сменя с „Прати си линка“ — текстовете идват от data-атрибутите на езика на страницата.
+ */
+export function winButton(url, lang) {
+  const t = STRINGS[lang];
+  return `<a class="store-btn win" href="${withLang(url, lang)}" data-pc="${esc(t.pcOnly)}" data-send="${esc(t.sendLink)}" data-copied="${esc(t.linkCopied)}">${WINDOWS}<span>${esc(t.downloadFor)}<b>Windows</b></span></a>`;
+}
+
 /** Бутоните към магазините и сваляне — едни и същи на началото и на страницата на приложението. */
 function storeButtons(lang, app) {
   const t = STRINGS[lang];
@@ -396,7 +407,7 @@ function storeButtons(lang, app) {
   return [
     app.appStore ? b(app.appStore, APPLE, t.getOn, t.appStore) : '',
     app.playStore ? b(app.playStore, PLAY, t.getOnPlay, t.playStore) : '',
-    app.external?.download ? b(withLang(app.external.download, lang), WINDOWS, t.downloadFor, 'Windows') : '',
+    app.external?.download ? winButton(app.external.download, lang) : '',
   ].filter(Boolean).join('\n');
 }
 
@@ -510,6 +521,25 @@ ${after}<footer><div class="wrap">
         e.preventDefault(); history.back();
       }
     } catch (err) { console.warn('back', err); }
+  });
+  // Телефон: програмата е за Windows — вместо „Изтегли“ бележка и „Прати си линка“ (споделяне или копиране).
+  const phone = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)
+    || (navigator.maxTouchPoints > 1 && /Macintosh/.test(navigator.userAgent));
+  if (phone) document.querySelectorAll('a.store-btn.win').forEach(a => {
+    const note = document.createElement('p'), btn = document.createElement('button');
+    note.className = 'pc-note';
+    note.textContent = a.dataset.pc + ' ';
+    btn.type = 'button';
+    btn.textContent = a.dataset.send;
+    btn.addEventListener('click', async () => {
+      const url = location.href.split('#')[0];
+      try {
+        if (navigator.share) await navigator.share({ title: document.title, url });
+        else { await navigator.clipboard.writeText(url); btn.textContent = a.dataset.copied; }
+      } catch (err) { if (err.name !== 'AbortError') console.warn('share', err); }
+    });
+    note.appendChild(btn);
+    a.replaceWith(note);
   });
   // Нагоре: появява се след първия екран; пръстенът показва докъде си стигнал.
   const t = document.querySelector('.totop'), c = t && t.querySelector('circle');

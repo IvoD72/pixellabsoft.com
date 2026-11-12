@@ -57,7 +57,7 @@ export const RTL = new Set(['ar', 'he', 'fa']);
  * STRINGS.en се превеждат, плюс тези два, които ги има само тук.
  */
 export const PAGE_KEYS = ['tagline', 'apps', 'support', 'privacy', 'terms', 'allApps', 'toTop', 'statusWindows',
-  'downloadFor', 'supportPage', 'footerRights', 'seeApps', 'contact'];
+  'downloadFor', 'supportPage', 'footerRights', 'seeApps', 'contact', 'pcOnly', 'sendLink', 'linkCopied'];
 export const EXTRA_EN = {
   languages: 'Language',
   legalInEnglish: 'The privacy policy and the terms of use are in English.',

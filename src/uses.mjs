@@ -4,8 +4,7 @@
  * програмата наистина прави (същото като src/apps/lingbolt.mjs). BG и EN тук; другите 38 езика —
  * src/i18n/lingbolt.json (ключове use.<slug>.…, tools/translate_lingbolt.py).
  */
-import { STRINGS } from './site.mjs';
-import { WINDOWS, esc, href, withLang } from './template.mjs';
+import { esc, href, winButton } from './template.mjs';
 import { mock } from './mocks.mjs';
 
 export const USES = {
@@ -202,7 +201,6 @@ const CSS = `<style>
 /** The page body: hero with the download button, the three steps, the questions, a link to the main page. */
 export function useBody(lang, slug, app) {
   const u = USES[slug];
-  const t = STRINGS[lang];
   const m = mock(app, lang);
   const pick = f => u[f][lang] ?? u[f].en;
   return `${CSS}<section class="app-hero use">
@@ -210,7 +208,7 @@ export function useBody(lang, slug, app) {
     <img class="wordmark" src="${app.wordmark}" alt="Lingbolt" width="260" height="84">
     <h1>${esc(pick('h1'))}</h1>
     <p class="lead">${esc(pick('lead'))}</p>
-    <div class="stores"><a class="store-btn" href="${withLang(app.external.download, lang)}">${WINDOWS}<span>${esc(t.downloadFor)}<b>Windows</b></span></a></div>
+    <div class="stores">${winButton(app.external.download, lang)}</div>
   </div>
   <div class="visual" style="--c:${app.color}">${m}</div>
 </section>
