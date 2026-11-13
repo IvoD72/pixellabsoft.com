@@ -15,6 +15,8 @@
  */
 
 const UPDATED = { bg: '15 септември 2026', en: '15 September 2026' };
+// Политиката е обновена отделно (поздрав по име), страницата за изтриване не е.
+const UPDATED_PRIVACY = { bg: '14 ноември 2026', en: '14 November 2026' };
 
 export default {
   slug: 'calvio',
@@ -48,7 +50,7 @@ export default {
   legal: {
     privacy: {
       bg: {
-        updated: UPDATED.bg,
+        updated: UPDATED_PRIVACY.bg,
         intro:
           'Calvio има акаунти и наш сървър, защото без тях няма как да вдигне телефона ти. Тук пише какво пазим, къде стои и кой друг го докосва по пътя на едно обаждане. Нищо не е скрито в дребен шрифт.',
         sections: [
@@ -60,6 +62,8 @@ export default {
             'Име на фирмата и на собственика, телефонният номер на бизнеса, телефонът или имейлът за вход, телефонът на асистента, ако си добавил такъв, и настройките на асистентката — как се представя, работно време, професия, тон. Плюс техническия идентификатор на телефона за пуш известия. Ако си влязъл с имейл, паролата се пази само като отпечатък.'],
           ['Какво пазим от обажданията',
             'За всяко обаждане, поето от Calvio: номерът на обаждащия се, часът, продължителността и — когато е говорил гласовият асистент — резюме и текстов запис на разговора. Когато е вдигнал жив човек от екипа ти, пазим бележката, която той е написал. Тези записи са там, за да ги прочетеш ти; никой друг клиент не ги вижда.'],
+          ['Поздрав по име (по избор)',
+            'Ако включиш „Поздравявай познатите по име“ в приложението, Calvio чете контактите на телефона ти и качва на нашия сървър само името и телефонния номер на всеки контакт с номер — без имейли, адреси, снимки или бележки. Те стоят в Google Cloud (Firebase), регион Белгия, и са достъпни само за твоя акаунт и за Calvio. Ползват се за едно нещо: когато ти звъни някой от тях, гласовият асистент го поздравява по име. За целта при обаждането името на обаждащия се се подава на ElevenLabs (ElevenLabs Inc., САЩ) заедно с поздрава. За данните на хората в контактите ти администратор си ти, както при обажданията. Не ги ползваме за реклама, не ги показваме на никого и не ги продаваме. Списъкът се опреснява, когато отвориш приложението, най-много веднъж на ден. Изключиш ли превключвателя, всички качени контакти се изтриват от сървъра веднага; изтриват се и при изтриване на акаунта. Функцията е изключена по подразбиране.'],
           ['Гласовият асистент казва, че е автоматичен',
             'В началото на разговора асистентката се представя като автоматична. Това е задължение по Регламента на ЕС за изкуствения интелект и не може да се изключи от настройките. Тя не поема ангажименти от твое име, не казва цени и не дава съвети — записва и предава.'],
           ['Къде стоят данните',
@@ -79,7 +83,7 @@ export default {
         ],
       },
       en: {
-        updated: UPDATED.en,
+        updated: UPDATED_PRIVACY.en,
         intro:
           'Calvio has accounts and a server of ours, because without them it could not answer your phone. This page says what we keep, where it lives, and who else touches it on the way of a call. Nothing is hidden in small print.',
         sections: [
@@ -91,6 +95,8 @@ export default {
             'Company and owner name, the business phone number, the phone or email used to sign in, the assistant’s phone if you added one, and the assistant’s settings — how she introduces herself, working hours, profession, tone. Plus the technical device identifier for push notifications. If you sign in with email, the password is stored only as a hash.'],
           ['What we keep from calls',
             'For every call handled by Calvio: the caller’s number, the time, the duration and — when the voice assistant spoke — a summary and a text transcript of the conversation. When a real person on your team answered, we keep the note they wrote. These records exist so that you can read them; no other customer sees them.'],
+          ['Greeting callers by name (optional)',
+            'If you turn on “Greet known callers by name” in the app, Calvio reads the contacts on your phone and uploads to our server only the name and phone number of each contact that has a number — no emails, addresses, photos or notes. They live in Google Cloud (Firebase), Belgium region, and are available only to your account and to Calvio. They are used for one thing: when one of them calls you, the voice assistant greets them by name. For this, during the call the caller’s name is passed to ElevenLabs (ElevenLabs Inc., USA) together with the greeting. For the data of the people in your contacts you are the controller, just as with calls. We do not use them for advertising, show them to anyone or sell them. The list is refreshed when you open the app, at most once a day. If you turn the switch off, all uploaded contacts are deleted from the server immediately; they are also deleted when you delete your account. The feature is off by default.'],
           ['The voice assistant says it is automated',
             'At the start of the call the assistant introduces herself as automated. This is an obligation under the EU Artificial Intelligence Act and cannot be switched off in the settings. She makes no commitments on your behalf, quotes no prices and gives no advice — she takes the message and passes it on.'],
           ['Where the data lives',
