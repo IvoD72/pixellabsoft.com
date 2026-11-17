@@ -16,6 +16,14 @@ export const PRICES = {
   delivery: '300 €',
 };
 
+/** Launch offer for the first 5 restaurants (Ivo, 17.11.2026). Lower `left` as each one signs; 0 hides the box. */
+export const PROMO = {
+  slots: 5,
+  left: 5,
+  once: { upfront: '490 €', monthly: '39 €', was: '1 000 €' },
+  monthly: { monthly: '59 €', months: 24, after: '39 €', was: '79 €' },
+};
+
 const T = {
   title: 'Приложение за поръчки за вашия ресторант',
   description: 'Собствено приложение с името и менюто на вашия ресторант в App Store и Google Play. Поръчки за вземане и доставка, екран в кухнята, без комисиона на поръчка.',
@@ -43,6 +51,15 @@ const T = {
     ['На 3 вноски', PRICES.split.upfront, `+ ${PRICES.split.monthly} на месец`],
     ['Без първоначална такса', `${PRICES.monthly.monthly} на месец`, `договор за ${PRICES.monthly.months} месеца`],
   ],
+  promo: `Цена за първите ${PROMO.slots} заведения`,
+  promoLeft: `Остават ${PROMO.left} от ${PROMO.slots} места`,
+  promoPlans: [
+    ['Наведнъж', PROMO.once.upfront, PROMO.once.was, `+ ${PROMO.once.monthly} на месец`],
+    ['Без първоначална такса', `${PROMO.monthly.monthly} на месец`, PROMO.monthly.was,
+      `договор за ${PROMO.monthly.months} месеца, после ${PROMO.monthly.after} на месец`],
+  ],
+  promoTerms: 'Цената остава ваша, докато ползвате приложението. Срещу нея искаме само две неща: да показваме приложението ви като пример и кратък отзив, когато тръгне.',
+  regular: 'Обичайна цена',
   vat: 'Цените са без ДДС. Без комисиона на поръчка. В месечната такса са сървърът, поддръжката и промените в менюто.',
   delivery: `Имате доставка? Доставка до адрес — по желание, още ${PRICES.delivery} без ДДС.`,
   cta: 'Искате такова приложение?',
@@ -63,6 +80,10 @@ const CSS = `<style>
 .rs .plan .name { font-weight: 600; color: var(--muted); }
 .rs .plan .big { font-size: 34px; font-weight: 800; margin: 6px 0 2px; }
 .rs .need { background: #FFD60A; color: #111; border-radius: 16px; padding: 14px 18px; font-weight: 700; margin: 10px 0 0; }
+.rs .promo { border: 2px solid #FFD60A; border-radius: 22px; padding: 20px; margin: 18px 0 26px; background: #fffbe6; }
+.rs .promo h3 { margin: 0 0 4px; font-size: 22px; }
+.rs .promo .badge { background: #FFD60A; color: #111; }
+.rs .promo s { font-size: 18px; font-weight: 600; color: var(--muted); margin-left: 6px; }
 .rs .fine { color: var(--muted); font-size: 15px; }
 .rs .cta { margin: 40px 0 20px; padding: 26px; border-radius: 22px; background: #0b1430; color: #fff; }
 .rs .cta p { color: #c9cde3; }
@@ -89,6 +110,11 @@ export function restorantiBody() {
   <div class="g2">${T.weList.map(([b, s]) => `<div class="box"><b>✓ ${esc(b)}</b><span>${esc(s)}</span></div>`).join('')}</div>
   <p class="need">${esc(T.need)}</p>
   <h2>${esc(T.price)}</h2>
+  ${PROMO.left > 0 ? `<div class="promo"><span class="badge">${esc(T.promoLeft)}</span>
+    <h3>${esc(T.promo)}</h3>
+    <div class="g2">${T.promoPlans.map(([n, big, was, small]) => `<div class="box plan"><div class="name">${esc(n)}</div><div class="big">${esc(big)} <s>${esc(was)}</s></div><span>${esc(small)}</span></div>`).join('')}</div>
+    <p class="fine">${esc(T.promoTerms)}</p></div>
+  <h3>${esc(T.regular)}</h3>` : ''}
   <div class="g2">${T.plans.map(([n, big, small]) => `<div class="box plan"><div class="name">${esc(n)}</div><div class="big">${esc(big)}</div><span>${esc(small)}</span></div>`).join('')}</div>
   <p class="fine">${esc(T.vat)}</p>
   <p class="need">${esc(T.delivery)}</p>
