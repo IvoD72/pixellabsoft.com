@@ -16,11 +16,11 @@ export const PRICES = {
   delivery: '300 €',
 };
 
-/** Launch offer for the first 5 restaurants, 15–30 November (Ivo, 17.11.2026). Lower `left` as each one signs;
+/** Launch offer for the first 5 restaurants, 15 November – 31 December (Ivo, 17.11.2026; extended 21.11.2026). Lower `left` as each one signs;
  * 0 hides the banner and the box (also set it to 0 when the period ends). */
 export const PROMO = {
   slots: 5,
-  period: '15–30 ноември',
+  period: 'до 31 декември',
   left: 5,
   once: { upfront: '490 €', monthly: '39 €', was: '1 000 €' },
   monthly: { monthly: '59 €', months: 24, after: '39 €', was: '79 €' },
