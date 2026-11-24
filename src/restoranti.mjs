@@ -69,6 +69,8 @@ const T = {
   ctaLead: 'Пишете ни — отговаряме в рамките на деня.',
   write: 'Пишете ни',
   video: 'Как работи — видео, 2 минути',
+  // the full explainer (24.11.2026): kitchen and phone side by side, every module incl. the menu and delivery
+  video2: 'Подробно, 7 минути: кухнята и телефонът един до друг — поръчки, работно време, меню, обед и доставка',
 };
 
 const CSS = `<style>
@@ -76,6 +78,7 @@ const CSS = `<style>
 .rs .badge { display: inline-block; font-size: 13px; font-weight: 600; background: var(--fg); color: #fff; border-radius: 999px; padding: 5px 12px; margin-bottom: 18px; }
 .rs .lead { font-size: 19px; color: var(--muted); max-width: 680px; }
 .rs video { width: 100%; max-width: 560px; border-radius: 18px; display: block; margin: 28px 0 8px; background: #000; }
+.rs video.wide { max-width: 960px; }
 .rs .g2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin: 18px 0; }
 .rs .box { border: 1px solid var(--line-2); border-radius: 18px; padding: 18px 20px; background: #fff; }
 .rs .box b { display: block; margin-bottom: 4px; }
@@ -112,6 +115,9 @@ export function restorantiBody() {
   <video controls playsinline preload="metadata" poster="/assets/video/pixel-lab-restoranti.jpg"
     src="/assets/video/pixel-lab-restoranti.mp4" aria-label="${esc(T.video)}"></video>
   <small class="fine">${esc(T.video)}</small>
+  <video class="wide" controls playsinline preload="metadata" poster="/assets/video/pixel-lab-restoranti-podrobno.jpg"
+    src="/assets/video/pixel-lab-restoranti-podrobno.mp4" aria-label="${esc(T.video2)}"></video>
+  <small class="fine">${esc(T.video2)}</small>
   <h2>${esc(T.how)}</h2>
   <div class="g2">${T.steps.map(([b, s]) => `<div class="box"><b>${esc(b)}</b><span>${esc(s)}</span></div>`).join('')}</div>
   <h2>${esc(T.we)}</h2>
