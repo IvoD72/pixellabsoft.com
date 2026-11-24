@@ -2,8 +2,8 @@
  * Приложение за ресторанти — /restoranti/ (само bg; ресторантите, на които пишем, са в България).
  * Ivo, 10–11.11.2026: продаваме приложението на Urban G.O. на други заведения.
  *
- * Цените са решение на Иво (11.11.2026) — едно място за тях е PRICES тук; същите са във видеото
- * (18 Urban GO/demo/patch_kino.py, s_price) и в имейла до ресторантите. Сменят ли се — и на трите места.
+ * Цени на страницата няма (Иво, 24.11.2026): „Цена по договаряне“, както и в края на видеото. PRICES и PROMO остават
+ * тук като справка за офертите; PROMO.slots / period / left движат само лентата „Стартови условия“.
  * Видеото: src/assets/video/pixel-lab-restoranti.mp4 (компресирано копие на demo/out/…-4x5.mp4).
  */
 import { esc } from './template.mjs';
@@ -47,14 +47,23 @@ const T = {
     ['App Store и Google Play', 'качваме приложението ние, с вашето име'],
   ],
   need: 'От вас трябва само едно: таблет с тъч екран в кухнята.',
-  price: 'Цената — както ви е удобно',
+  price: 'Цена по договаряне',
+  priceLead: 'Всяко заведение е различно, затова не слагаме една цена за всички. Пишете ни какво ви трябва — до един работен ден ви пращаме оферта, без ангажимент.',
+  priceIn: 'Какво влиза винаги',
+  priceInList: [
+    ['Приложението с вашето име', 'в App Store и Google Play, с вашето лого, цветове и меню'],
+    ['Екранът за кухнята', 'поръчки, час от кухнята, работно време, меню, обед — всичко от таблета'],
+    ['Сървър, поддръжка и обновления', 'ние се грижим приложението да работи; промените в менюто правите сами'],
+    ['Без комисиона на поръчка', 'всяка поръчка е изцяло ваша — няма процент за нас'],
+  ],
+  priceDepends: 'Цената зависи от: броя на обектите, дали искате доставка до адрес с доставчици, обедно меню и колко специален дизайн искате. Можете да платите наведнъж или на месечна такса — както ви е удобно.',
   plans: [
     ['Наведнъж', PRICES.once.upfront, `+ ${PRICES.once.monthly} на месец`],
     ['На 3 вноски', PRICES.split.upfront, `+ ${PRICES.split.monthly} на месец`],
     ['Без първоначална такса', `${PRICES.monthly.monthly} на месец`, `договор за ${PRICES.monthly.months} месеца`],
   ],
   promo: `Стартова цена за първите ${PROMO.slots} заведения · ${PROMO.period}`,
-  banner: [`Стартова цена · ${PROMO.period}`, `Първите ${PROMO.slots} заведения: ${PROMO.once.upfront} вместо ${PROMO.once.was}`, 'Вижте цената'],
+  banner: [`Стартови условия · ${PROMO.period}`, `За първите ${PROMO.slots} заведения — по-изгодно, срещу отзив и пример`, 'Пишете ни'],
   promoLeft: `Остават ${PROMO.left} от ${PROMO.slots} места`,
   promoPlans: [
     ['Наведнъж', PROMO.once.upfront, PROMO.once.was, `+ ${PROMO.once.monthly} на месец`],
@@ -124,14 +133,14 @@ export function restorantiBody() {
   <div class="g2">${T.weList.map(([b, s]) => `<div class="box"><b>✓ ${esc(b)}</b><span>${esc(s)}</span></div>`).join('')}</div>
   <p class="need">${esc(T.need)}</p>
   <h2 id="cena">${esc(T.price)}</h2>
+  <p class="lead">${esc(T.priceLead)}</p>
   ${PROMO.left > 0 ? `<div class="promo"><span class="badge">${esc(T.promoLeft)}</span>
-    <h3>${esc(T.promo)}</h3>
-    <div class="g2">${T.promoPlans.map(([n, big, was, small]) => `<div class="box plan"><div class="name">${esc(n)}</div><div class="big">${esc(big)} <s>${esc(was)}</s></div><span>${esc(small)}</span></div>`).join('')}</div>
-    <p class="fine">${esc(T.promoTerms)}</p></div>
-  <h3>${esc(T.regular)}</h3>` : ''}
-  <div class="g2">${T.plans.map(([n, big, small]) => `<div class="box plan"><div class="name">${esc(n)}</div><div class="big">${esc(big)}</div><span>${esc(small)}</span></div>`).join('')}</div>
-  <p class="fine">${esc(T.vat)}</p>
-  <p class="need">${esc(T.delivery)}</p>
+    <h3>Стартови условия за първите ${PROMO.slots} заведения · ${esc(PROMO.period)}</h3>
+    <p class="fine">${esc(T.promoTerms)}</p></div>` : ''}
+  <h3>${esc(T.priceIn)}</h3>
+  <div class="g2">${T.priceInList.map(([b, s2]) => `<div class="box"><b>✓ ${esc(b)}</b><span>${esc(s2)}</span></div>`).join('')}</div>
+  <p class="fine">${esc(T.priceDepends)}</p>
+  <p><a class="btn primary" href="${mail}">Поискайте оферта</a></p>
   <div class="cta"><h2 style="margin-top:0;color:#fff">${esc(T.cta)}</h2><p>${esc(T.ctaLead)}</p>
     <p><a class="mail" href="${mail}">${esc(SUPPORT_EMAIL)}</a></p></div>
 </section>`;
