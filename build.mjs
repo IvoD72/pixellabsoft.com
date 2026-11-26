@@ -150,7 +150,7 @@ for (const lang of MORE) {
 // Приложение за ресторанти (11.11.2026) — само bg, в sitemap-а.
 {
   const t = restorantiText();
-  await emit('bg', 'restoranti', page({ lang: 'bg', path: 'restoranti/', title: `${t.title} — Пиксел Лаб`, description: t.description,
+  await emit('bg', 'restoranti', page({ lang: 'bg', path: 'restoranti/', alt: '', title: `${t.title} — Пиксел Лаб`, description: t.description,
     body: restorantiBody(), image: '/assets/video/pixel-lab-restoranti.jpg' }));
   urls.push(`https://${DOMAIN}/restoranti/`);
 }
