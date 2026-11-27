@@ -29,7 +29,7 @@ export const SHOTS = {
   sroko: {
     kind: 'phone', w: 520, h: 1125,
     alt: {
-      bg: 'Екран на Сроко: два автомобила с оставащите дни до винетката, ГТП, гражданската и книжката.',
+      bg: 'Екран на Сроко: два автомобила с оставащите дни за винетката, ГТП, гражданската и книжката.',
       en: 'Sroko screen: two vehicles with the days left on the vignette, roadworthiness test, insurance and licence.',
     },
   },
@@ -53,7 +53,7 @@ export const SHOTS = {
     // On the home cards the whole chat is too small to read, so they show only the translation card.
     peek: { w: 410, h: 260 },
     alt: {
-      bg: 'Lingbolt в Google Chat: маркирано съобщение на английски и картата с превода на български, с бутони „Копирай“ и „Чуй“.',
+      bg: 'Lingbolt в Google Chat: маркирано съобщение на английски и прозорче с превода на български, с бутони „Копирай“ и „Чуй“.',
       en: 'Lingbolt in Google Chat: a selected English message and the card with its Bulgarian translation, with “Copy” and “Listen” buttons.',
     },
   },

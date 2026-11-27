@@ -14,7 +14,7 @@ export const USES = {
       en: 'WhatsApp and Viber translator for your computer — Lingbolt',
     },
     description: {
-      bg: 'Превеждай съобщения във WhatsApp и Viber на компютъра с едно цъкане: получените — на твоя език, написаното от теб — на техния. А в разговорите те чуват преведен на живо. 40 езика, Windows.',
+      bg: 'Превеждай съобщения в WhatsApp и Viber на компютъра с едно цъкане: получените са на твоя език, а написаното от теб — на техния. В разговорите пък те чуват преведен на живо. 40 езика, Windows.',
       en: 'Translate WhatsApp and Viber messages on your computer with one click: the ones you get into your language, the ones you write into theirs. And in calls they hear you translated live. 40 languages, Windows.',
     },
     h1: { bg: 'Превод на WhatsApp и Viber на компютъра', en: 'WhatsApp and Viber translation on your computer' },
@@ -35,7 +35,7 @@ export const USES = {
         ['Replying?', 'Write in your language and press Ctrl twice: the text in the field becomes their language, ready to send.'],
       ],
     },
-    faqTitle: { bg: 'Честите въпроси', en: 'Questions people ask' },
+    faqTitle: { bg: 'Чести въпроси', en: 'Questions people ask' },
     faq: {
       bg: [
         ['Безплатно ли е?', 'Да, до 300 думи превод на ден. Първите 7 дни са Про подарък, без карта. Lingbolt Про е 6,99 € на месец.'],
@@ -63,7 +63,7 @@ export const USES = {
     },
     h1: { bg: 'Превод на живо в Zoom, Teams и Google Meet', en: 'Live translation in Zoom, Teams and Google Meet' },
     lead: {
-      bg: 'Говориш на твоя език, а другите те чуват на своя, с естествен мъжки или женски глас. Те говорят на техния, а ти ги чуваш и четеш на твоя. Без преводач в срещата.',
+      bg: 'Говориш на твоя език, а другите те чуват на своя с естествен мъжки или женски глас. Те говорят на техния, а ти ги чуваш и четеш на своя. Без преводач в срещата.',
       en: 'You speak in your language and the others hear you in theirs, in a natural male or female voice. They speak in theirs, and you hear and read them in yours. No interpreter in the meeting.',
     },
     how: { bg: 'Как става', en: 'How it works' },
@@ -79,11 +79,11 @@ export const USES = {
         ['Translate them:', 'you hear the others in your language and read subtitles while they speak.'],
       ],
     },
-    faqTitle: { bg: 'Честите въпроси', en: 'Questions people ask' },
+    faqTitle: { bg: 'Чести въпроси', en: 'Questions people ask' },
     faq: {
       bg: [
         ['В кои програми работи?', 'В Zoom, Microsoft Teams, Google Meet, WhatsApp и Viber за компютър, и във всяка програма, в която можеш да избереш микрофон.'],
-        ['Колко струва?', 'Разговорът е в Lingbolt Про: 6,99 € на месец, с 30 минути Разговор на месец. Ако ти трябват повече, има кредити от 9,99 €, без абонамент. Първите 7 дни са Про подарък, с 20 минути Разговор, без карта.'],
+        ['Колко струва?', '„Разговор“ е част от Lingbolt Про: 6,99 € на месец, с 30 минути Разговор. Ако ти трябват повече, има кредити от 9,99 € без абонамент. Първите 7 дни получаваш Про подарък с 20 минути Разговор, без карта.'],
         ['Трябва ли да кажа на другите?', 'Да. Гласът, който чуват, е създаден от изкуствен интелект, и е честно да знаят, че ползваш превод.'],
         ['Записва ли се разговорът?', 'Не. Звукът минава криптиран през нашия сървър в ЕС само за превода и не се пази, нито се записва. Ако искаш протокол на срещата, „Запис + конспект“ е отделен бутон.'],
       ],
@@ -105,7 +105,7 @@ export const USES = {
       bg: 'Lingbolt записва срещата в Zoom, Teams, Google Meet или в стаята и ти дава протокол по говорители, кратко резюме, взетите решения и задачите. 40 езика, Windows.',
       en: 'Lingbolt records your meeting in Zoom, Teams, Google Meet or in the room and gives you the minutes by speaker, a short summary, the decisions and the tasks. 40 languages, Windows.',
     },
-    h1: { bg: 'Протокол, резюме и задачи от срещата, сами', en: 'Minutes, summary and tasks from the meeting, by themselves' },
+    h1: { bg: 'Протокол, резюме и задачи от срещата, автоматично', en: 'Minutes, summary and tasks from the meeting, by themselves' },
     lead: {
       bg: 'Натискаш „Запиши срещата“ и говориш спокойно, без да си водиш бележки. След края получаваш кой какво е казал, кратко резюме, решенията и задачите, с отговорник и срок, когато са казани.',
       en: 'Press Record the meeting and talk freely, without taking notes. When it ends you get who said what, a short summary, the decisions and the tasks, with an owner and a deadline when they were said.',
@@ -123,10 +123,10 @@ export const USES = {
         ['Finish the meeting', 'and a moment later the minutes are ready: by speaker, with a summary, decisions and tasks.'],
       ],
     },
-    faqTitle: { bg: 'Честите въпроси', en: 'Questions people ask' },
+    faqTitle: { bg: 'Чести въпроси', en: 'Questions people ask' },
     faq: {
       bg: [
-        ['Колко струва?', '„Срещи“ е в Lingbolt Про: 6,99 € на месец, с 3 часа запис на месец. Ако ти трябват повече, има кредити от 9,99 €, без абонамент. Първите 7 дни са Про подарък, с 1 час запис, без карта.'],
+        ['Колко струва?', '„Срещи“ е част от Lingbolt Про: 6,99 € на месец, с 3 часа запис. Ако ти трябват повече, има кредити от 9,99 € без абонамент. Първите 7 дни получаваш Про подарък с 1 час запис, без карта.'],
         ['Познава ли кой какво казва?', 'Да, протоколът е по говорители. Ти си „Аз“, а другите излизат с имената си, когато бъдат казани в срещата.'],
         ['Трябва ли да кажа на другите, че записвам?', 'Да. Lingbolt копира готов ред за чата: „Записвам срещата за протокол.“'],
         ['Къде отива записът?', 'Записът стои в папката Documents\\Lingbolt\\Meetings на твоя компютър. За текста и резюмето минава криптиран през нашия сървър в ЕС; у нас не се пази.'],
@@ -159,7 +159,7 @@ export const USES = {
       bg: [
         ['Изтегли Lingbolt.', 'Стои до часовника и чака, докато ти потрябва.'],
         ['Натисни Ctrl+Shift+R', 'и огради с мишката парчето от екрана: снимка, страница от PDF, надпис в игра или меню.'],
-        ['Прочети го на твоя език', 'на картичка до мишката, с бутон „Копирай“. С Про можеш да го чуеш и на естествен глас.'],
+        ['Прочети го на твоя език', 'на картичка до мишката, с бутон „Копирай“. С Про можеш и да го чуеш с естествен глас.'],
       ],
       en: [
         ['Download Lingbolt.', 'It sits by the clock and waits until you need it.'],
@@ -167,7 +167,7 @@ export const USES = {
         ['Read it in your language', 'on a card by the mouse, with a Copy button. With Pro you can also hear it in a natural voice.'],
       ],
     },
-    faqTitle: { bg: 'Честите въпроси', en: 'Questions people ask' },
+    faqTitle: { bg: 'Чести въпроси', en: 'Questions people ask' },
     faq: {
       bg: [
         ['Безплатно ли е?', 'Да, 3 четения от екрана на ден безплатно. Lingbolt Про дава 10 на ден, за 6,99 € на месец. Първите 7 дни са Про подарък, без карта.'],
