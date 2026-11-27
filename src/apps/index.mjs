@@ -12,6 +12,7 @@ import sroko from './sroko.mjs';
 import calvio from './calvio.mjs';
 import lingbolt from './lingbolt.mjs';
 import photopick from './photopick.mjs';
+import pixelFood from './pixel-food.mjs';
 
 // Първо тези, които са в магазините; после тестваните и идващите.
-export const APPS = [sroko, glagoli, lingbolt, sortis, photopick, konspekt, calvio];
+export const APPS = [sroko, glagoli, lingbolt, sortis, photopick, pixelFood, konspekt, calvio];
